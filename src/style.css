@@ -100,6 +100,10 @@ canvas {
   margin-left: 2ch;
 }
 
+.contact-offset {
+  margin-top: clamp(4rem, 14vh, 10rem);
+}
+
 .alert-emphasis {
   color: #ff3b3b;
   font-weight: 400;
@@ -211,6 +215,40 @@ canvas {
   letter-spacing: 0.32em;
 }
 
+.center-action {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 90;
+  text-align: center;
+  pointer-events: auto;
+  animation: pulseAction 1.6s ease-in-out infinite;
+}
+
+.center-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0, 242, 255, 0.12) 0%,
+    rgba(0, 0, 0, 0.7) 55%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+  backdrop-filter: blur(1px);
+  z-index: 80;
+}
+
+@keyframes pulseAction {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.02);
+  }
+}
+
 .fade-enter {
   opacity: 0;
   transform: translateY(20px);
@@ -229,6 +267,11 @@ canvas {
   justify-content: center;
   padding: clamp(2rem, 4vw, 5rem);
   animation: fadeIn 0.8s ease-out;
+}
+
+.screen-container--stacked {
+  align-items: flex-start;
+  padding-top: clamp(4rem, 10vh, 8rem);
 }
 
 .screen-container p,

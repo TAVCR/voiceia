@@ -281,8 +281,10 @@ export default function App() {
               ))}
             </div>
 
-            <div className="mt-32 pt-20 pb-6 border-t border-white/10 text-center">
-              {canProceed && (
+            {canProceed && (
+              <>
+                <div className="center-overlay" />
+                <div className="center-action">
                 <button
                   className="tech-button-primary"
                   onClick={() => {
@@ -293,7 +295,11 @@ export default function App() {
                 >
                   {COPY.screen2.buttonText}
                 </button>
-              )}
+                </div>
+              </>
+            )}
+
+            <div className="mt-32 pt-20 pb-6 border-t border-white/10 text-center">
               {!canProceed && !isAdmin && (
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
                   {COPY.screen2.pendingMessage}
@@ -413,7 +419,7 @@ export default function App() {
       )}
 
       {currentScreen === 5 && (
-        <section className="screen-container">
+        <section className="screen-container screen-container--stacked">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-12">
               <span className="text-[clamp(1rem,2.4vw,1.3rem)] text-tech-accent tracking-[0.45em] opacity-70">
@@ -454,6 +460,29 @@ export default function App() {
             >
               {COPY.screen5.buttonText}
             </button>
+
+            {(CONTACT.email || CONTACT.whatsapp) && (
+              <>
+                <div className="contact-offset flex flex-wrap gap-10 justify-center text-xs tracking-[0.15em] text-white contact-links">
+                  {CONTACT.email && (
+                    <a
+                    href={`mailto:${CONTACT.email}`}
+                    className="border border-white/60 px-4 py-2 text-white"
+                  >
+                    {CONTACT.email}
+                  </a>
+                )}
+                {CONTACT.whatsapp && (
+                  <a
+                    href={`https://wa.me/${whatsappLink}`}
+                    className="border border-white/60 px-4 py-2 text-white whatsapp-link"
+                  >
+                    WhatsApp {CONTACT.whatsapp}
+                  </a>
+                )}
+                </div>
+              </>
+            )}
           </div>
         </section>
       )}
