@@ -1,0 +1,143 @@
+{
+  "config": {
+    "formspreeUrl": "https://formspree.io/f/TU_ID_FORMSPREE",
+    "audioProjects": [
+      {
+        "id": 1,
+        "title": "PROYECTO_ALPHA",
+        "aiAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_01.mp3",
+        "humanAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_01.mp3",
+        "description": "Descripción opcional del proyecto 1"
+      },
+      {
+        "id": 2,
+        "title": "PROYECTO_BETA",
+        "aiAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_02.mp3",
+        "humanAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_02.mp3",
+        "description": "Descripción opcional del proyecto 2"
+      },
+      {
+        "id": 3,
+        "title": "PROYECTO_GAMMA",
+        "aiAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_03.mp3",
+        "humanAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_03.mp3",
+        "description": "Descripción opcional del proyecto 3"
+      },
+      {
+        "id": 4,
+        "title": "PROYECTO_DELTA",
+        "aiAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_04.mp3",
+        "humanAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_04.mp3",
+        "description": "Descripción opcional del proyecto 4"
+      },
+      {
+        "id": 5,
+        "title": "PROYECTO_EPSILON",
+        "aiAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_05.mp3",
+        "humanAudioUrl": "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_05.mp3",
+        "description": "Descripción opcional del proyecto 5"
+      }
+    ]
+  },
+  "content": {
+    "screen1": {
+      "tagline": "INICIO_PROTOCOLO_EVALUACIÓN",
+      "title1": "¿PUEDES",
+      "title2": "DISTINGUIR?",
+      "subtitle": "Voz humana vs voz generada por IA.\nUna prueba que cambiará tu percepción.",
+      "buttonText": "Comenzar_Prueba"
+    },
+    "screen2": {
+      "title": "EVALUACIÓN_AUDITIVA",
+      "warning": "⚠ Cada audio se reproducirá una sola vez. Escucha con atención.",
+      "optionHuman": "Voz Humana",
+      "optionAI": "Voz Generada IA",
+      "buttonText": "Ver_Resultado",
+      "pendingMessage": "Completa todos los audios y selecciones para continuar"
+    },
+    "screen3": {
+      "mainText": "TODAS LAS VOCES QUE ESCUCHASTE",
+      "accentText": "FUERON GENERADAS\nCON IA",
+      "secondaryText": "Pero ninguna fue creada desde texto",
+      "buttonText": "Explicarme"
+    },
+    "screen4": {
+      "title": "EL PROCESO",
+      "subtitle": "Cómo funciona la tecnología",
+      "concepts": [
+        {
+          "number": "01",
+          "title": "ACTOR INTERPRETA",
+          "description": "Un profesional de voz realiza la actuación completa con emoción, timing y matices humanos reales."
+        },
+        {
+          "number": "02",
+          "title": "IA CAMBIA EL TIMBRE",
+          "description": "La tecnología modifica únicamente las características tonales de la voz, manteniendo la interpretación intacta."
+        },
+        {
+          "number": "03",
+          "title": "LA ACTUACIÓN PERMANECE HUMANA",
+          "description": "El resultado final conserva toda la expresividad y naturalidad de la interpretación original del actor."
+        }
+      ],
+      "buttonText": "Continuar"
+    },
+    "screen5": {
+      "tagline": "CREDENCIALES_SISTEMA",
+      "title1": "TRAYECTORIA",
+      "title2": "DESDE 1991",
+      "expertise": [
+        "Locución profesional",
+        "Producción audiovisual",
+        "Diseño sonoro",
+        "Dirección vocal"
+      ],
+      "description": "Experiencia profesional aplicada a la producción de voces dirigidas\nespecíficamente para sistemas de inteligencia artificial.",
+      "buttonText": "Continuar"
+    },
+    "screen6": {
+      "title": "COMPARACIÓN_FINAL",
+      "mainText": "Ahora escucha las tomas humanas originales",
+      "subtitle": "Reproducción libre - Compara conscientemente",
+      "buttonText": "Finalizar_Experiencia"
+    },
+    "screen7": {
+      "logoUrl": "https://i.postimg.cc/BvBjJLbV/Soluciones_Digitales_Creativas_(1).png",
+      "title1": "PRODUCCIÓN DE",
+      "title2": "VOCES HUMANAS",
+      "title3": "DIRIGIDAS PARA IA",
+      "companyName": "Dimensión Interactiva",
+      "formTitle": "Establecer_Contacto",
+      "formLabels": {
+        "name": "Input_Nombre",
+        "email": "Input_Email",
+        "message": "Input_Mensaje"
+      },
+      "formPlaceholders": {
+        "name": "Tu nombre",
+        "email": "tu@email.com",
+        "message": "Describe tu proyecto..."
+      },
+      "buttonText": "Enviar_Transmisión",
+      "buttonStates": {
+        "sending": "Transmitiendo...",
+        "success": "Transmisión_Exitosa",
+        "error": "Error_Reintentar"
+      },
+      "footer": "Sistema_Operativo / Dimensión_Interactiva / 2026"
+    }
+  },
+  "customization": {
+    "colors": {
+      "techAccent": "#00f2ff",
+      "techWarning": "#ff8c00",
+      "techBase": "#050505",
+      "techDim": "#555555"
+    },
+    "timing": {
+      "scanlineSpeed": "8s",
+      "revelationDelay": 1500
+    }
+  }
+}

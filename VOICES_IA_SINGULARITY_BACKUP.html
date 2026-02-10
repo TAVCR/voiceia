@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensión Interactiva | Voz IA - Backup Singularity 2.4</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { color-scheme: dark; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'IBM Plex Mono', monospace;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%),
+                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100vh; } }
+        .tech-box {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-box::before, .tech-box::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00f2ff;
+            box-shadow: 0 0 10px #00f2ff;
+        }
+        .tech-box::before { top: 0; left: 0; }
+        .tech-box::after { bottom: 0; right: 0; }
+        .tech-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            font-size: clamp(3rem, 12vw, 130px);
+        }
+        .title-primary { color: #ffffff; }
+        .title-accent {
+            color: #00f2ff;
+            text-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
+        }
+        .tech-tag {
+            color: #ff8c00;
+            font-weight: 900;
+            letter-spacing: 0.5em;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .tech-tag::before {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: #ff8c00;
+        }
+        .logo-halobox {
+            border: 1px solid rgba(0, 242, 255, 0.4);
+            background: #000000;
+            padding: 1.5rem;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+        }
+        .logo-halobox img {
+            height: 120px;
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <div class="relative z-10 min-h-screen px-6 py-8 md:px-12 md:py-24 max-w-7xl mx-auto">
+        <header class="mb-48 border-l-4 border-[#00f2ff] pl-12 py-10 relative">
+            <div class="absolute -top-12 left-12">
+                <span class="text-[11px] text-[#00f2ff] font-black opacity-30 tracking-[0.6em]">SISTEMA_V3.5_LOKI_PROTOCOL_SUCCESS</span>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-16 mb-20">
+                <div class="logo-halobox">
+                    <img src="https://images.squarespace-cdn.com/content/v1/676378e9185aab6463990666/9064c53d-24ed-4fba-bb5c-15a019484b39/LOGO+NODO+HORIZONTAL+FULL+COLOR.png" alt="Logo">
+                </div>
+                
+                <div class="text-center md:text-left pt-4">
+                    <h1 class="tech-title">
+                        <span class="title-primary block">DIMENSIÓN</span>
+                        <span class="title-accent">INTERACTIVA</span>
+                    </h1>
+                    <div class="tech-tag text-sm md:text-2xl mt-12">
+                        NODO_AGENCIA_CREATIVA
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-zinc-500 max-w-3xl text-xl leading-relaxed border-t border-white/5 pt-16 uppercase italic tracking-[0.2em]">
+                Operaciones estratégicas de branding y producción cinematográfica para ecosistemas digitales competitivos.
+            </p>
+            
+            <div class="mt-20 flex flex-wrap gap-10">
+                <button class="bg-[#00f2ff] text-black px-16 py-6 font-black uppercase text-sm tracking-[0.4em] shadow-[0_0_40px_rgba(0,242,255,0.4)]">
+                    Comenzar_Prueba_ID
+                </button>
+                <a href="#" class="border-2 border-[#00f2ff] text-[#00f2ff] px-16 py-6 font-black uppercase text-sm tracking-[0.4em] flex items-center justify-center">
+                    Enlace_Protocolo
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-white/5">
+                <div class="tech-box p-12 bg-black col-span-2">
+                    <h2 class="text-xs font-black text-[#555555] uppercase tracking-[0.4em] mb-10">CORE_OBJECTIVE</h2>
+                    <p class="text-lg text-zinc-400 leading-relaxed text-justify italic uppercase">
+                        Dominamos la transición del mercado físico al digital. Diseñamos identidades que no solo existen, sino que <span class="text-[#00f2ff]">dominan</span> el flujo informativo.
+                    </p>
+                </div>
+                <div class="tech-box p-12 bg-black flex flex-col justify-center border-l border-white/10">
+                    <div class="text-4xl font-black text-white mb-2">100%</div>
+                    <div class="text-[10px] text-[#555555] uppercase font-bold tracking-widest">Digital_Pyme_Focus</div>
+                </div>
+                <div class="tech-box p-12 bg-black flex flex-col justify-center border-l border-white/10">
+                    <div class="text-4xl font-black text-[#00f2ff] mb-2">4K</div>
+                    <div class="text-[10px] text-[#555555] uppercase font-bold tracking-widest">Video_Standard</div>
+                </div>
+            </div>
+        </main>
+
+        <div class="mt-48 text-center text-[10px] opacity-20 tracking-[1em] uppercase">
+            ESTADO_SINGULARIDAD_COMPLETO_V2.4
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensión Interactiva | Voces IA - Experiencia Narrativa</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Wavesurfer.js -->
+    <script src="https://unpkg.com/wavesurfer.js@7.7.3/dist/wavesurfer.min.js"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        :root {
+            --tech-accent: #00f2ff;
+            --tech-warning: #ff8c00;
+            --tech-base: #050505;
+            --tech-border: rgba(255, 255, 255, 0.1);
+            --tech-dim: #555555;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: var(--tech-base);
+            color: #d1d5db;
+            font-family: 'IBM Plex Mono', monospace;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100vh; }
+        }
+        
+        .tech-box {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--tech-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-box::before,
+        .tech-box::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--tech-accent);
+            box-shadow: 0 0 8px var(--tech-accent);
+        }
+        
+        .tech-box::before {
+            top: 0;
+            left: 0;
+        }
+        
+        .tech-box::after {
+            bottom: 0;
+            right: 0;
+        }
+        
+        .tech-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        
+        .title-accent {
+            color: var(--tech-accent);
+            text-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
+        }
+        
+        .tech-button-primary {
+            background: var(--tech-accent);
+            color: #000;
+            padding: 1rem 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
+            position: relative;
+        }
+        
+        .tech-button-primary:hover {
+            box-shadow: 0 0 60px rgba(0, 242, 255, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .tech-button-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .tech-button-outline {
+            background: transparent;
+            color: var(--tech-accent);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            border: 2px solid var(--tech-accent);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tech-button-outline:hover {
+            background: rgba(0, 242, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+        
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .screen-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .audio-player {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--tech-border);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .waveform-container {
+            margin: 1rem 0;
+            opacity: 0.8;
+        }
+        
+        .play-button {
+            width: 50px;
+            height: 50px;
+            background: var(--tech-accent);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.6);
+        }
+        
+        .play-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .radio-tech {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--tech-accent);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .radio-tech:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: var(--tech-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--tech-accent);
+        }
+        
+        .radio-tech:hover {
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--tech-border);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--tech-accent);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .tech-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-left: 3px solid var(--tech-accent);
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .glitch-text {
+            animation: glitchText 3s infinite;
+        }
+        
+        @keyframes glitchText {
+            0%, 90%, 100% {
+                text-shadow: none;
+            }
+            92% {
+                text-shadow: 2px 0 var(--tech-warning), -2px 0 var(--tech-accent);
+            }
+            94% {
+                text-shadow: -2px 0 var(--tech-warning), 2px 0 var(--tech-accent);
+            }
+        }
+        
+        .logo-container {
+            border: 1px solid rgba(0, 242, 255, 0.4);
+            background: #000;
+            padding: 1.5rem;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
+            display: inline-block;
+        }
+        
+        .logo-container img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        
+        // ===== CONFIGURACIÓN =====
+        const CONFIG = {
+            audioProjects: [
+                {
+                    id: 1,
+                    title: "PROYECTO_ALPHA",
+                    aiAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_01.mp3",
+                    humanAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_01.mp3"
+                },
+                {
+                    id: 2,
+                    title: "PROYECTO_BETA",
+                    aiAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_02.mp3",
+                    humanAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_02.mp3"
+                },
+                {
+                    id: 3,
+                    title: "PROYECTO_GAMMA",
+                    aiAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_03.mp3",
+                    humanAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_03.mp3"
+                },
+                {
+                    id: 4,
+                    title: "PROYECTO_DELTA",
+                    aiAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_04.mp3",
+                    humanAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_04.mp3"
+                },
+                {
+                    id: 5,
+                    title: "PROYECTO_EPSILON",
+                    aiAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/ai_voice_05.mp3",
+                    humanAudioUrl: "https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/audio/human_voice_05.mp3"
+                }
+            ],
+            formspreeUrl: "https://formspree.io/f/TU_FORMSPREE_ID"
+        };
+        
+        // ===== SOUND MANAGER =====
+        const SoundManager = {
+            ctx: null,
+            init() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            },
+            play(type) {
+                this.init();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                if (type === 'click_main') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(1600, this.ctx.currentTime);
+                    gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.03);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.03);
+                } else if (type === 'click_soft') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+                    gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.03);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.03);
+                } else if (type === 'switch') {
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(150, this.ctx.currentTime);
+                    gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.15);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.15);
+                } else if (type === 'success') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(400, this.ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.4);
+                    gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.4);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.4);
+                } else if (type === 'revelation') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(200, this.ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(800, this.ctx.currentTime + 0.8);
+                    gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.8);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.8);
+                }
+            }
+        };
+        
+        // ===== AUDIO PLAYER COMPONENT =====
+        function AudioPlayer({ audioUrl, onPlayComplete, allowRepeat = false, projectId }) {
+            const [isPlaying, setIsPlaying] = useState(false);
+            const [hasPlayed, setHasPlayed] = useState(false);
+            const waveformRef = useRef(null);
+            const wavesurferRef = useRef(null);
+            const containerRef = useRef(null);
+            
+            useEffect(() => {
+                if (containerRef.current && !wavesurferRef.current) {
+                    wavesurferRef.current = WaveSurfer.create({
+                        container: containerRef.current,
+                        waveColor: 'rgba(0, 242, 255, 0.3)',
+                        progressColor: '#00f2ff',
+                        cursorColor: '#ff8c00',
+                        barWidth: 2,
+                        barGap: 2,
+                        height: 60,
+                        responsive: true,
+                        normalize: true,
+                        backend: 'WebAudio'
+                    });
+                    
+                    wavesurferRef.current.load(audioUrl);
+                    
+                    wavesurferRef.current.on('finish', () => {
+                        setIsPlaying(false);
+                        setHasPlayed(true);
+                        if (onPlayComplete) {
+                            onPlayComplete();
+                        }
+                    });
+                    
+                    wavesurferRef.current.on('play', () => {
+                        setIsPlaying(true);
+                    });
+                    
+                    wavesurferRef.current.on('pause', () => {
+                        setIsPlaying(false);
+                    });
+                }
+                
+                return () => {
+                    if (wavesurferRef.current) {
+                        wavesurferRef.current.destroy();
+                    }
+                };
+            }, [audioUrl]);
+            
+            const handlePlayPause = () => {
+                if (wavesurferRef.current) {
+                    SoundManager.play('click_soft');
+                    
+                    if (!allowRepeat && hasPlayed) {
+                        return;
+                    }
+                    
+                    wavesurferRef.current.playPause();
+                }
+            };
+            
+            const canPlay = allowRepeat || !hasPlayed;
+            
+            return (
+                <div className="audio-player">
+                    <div className="flex items-center gap-4 mb-3">
+                        <button
+                            className="play-button"
+                            onClick={handlePlayPause}
+                            disabled={!canPlay}
+                        >
+                            {isPlaying ? (
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+                                    <rect x="6" y="4" width="4" height="16"/>
+                                    <rect x="14" y="4" width="4" height="16"/>
+                                </svg>
+                            ) : (
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            )}
+                        </button>
+                        <div className="flex-1">
+                            <div ref={containerRef} className="waveform-container"></div>
+                        </div>
+                    </div>
+                    {!allowRepeat && hasPlayed && (
+                        <div className="text-xs text-tech-dim uppercase tracking-wider mt-2">
+                            Audio reproducido_sistema bloqueado
+                        </div>
+                    )}
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 1 - HOOK =====
+        function Screen1({ onNext }) {
+            return (
+                <div className="screen-container">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <div className="mb-12">
+                            <span className="text-xs text-tech-accent tracking-[0.4em] opacity-50">
+                                INICIO_PROTOCOLO_EVALUACIÓN
+                            </span>
+                        </div>
+                        
+                        <h1 className="tech-title text-6xl md:text-8xl mb-12">
+                            <span className="block text-white mb-4">¿PUEDES</span>
+                            <span className="block title-accent glitch-text">DISTINGUIR?</span>
+                        </h1>
+                        
+                        <p className="text-xl md:text-2xl text-zinc-400 mb-16 max-w-2xl mx-auto leading-relaxed uppercase tracking-wide">
+                            Voz humana vs voz generada por IA.<br/>
+                            Una prueba que cambiará tu percepción.
+                        </p>
+                        
+                        <button
+                            className="tech-button-primary"
+                            onClick={() => {
+                                SoundManager.play('click_main');
+                                onNext();
+                            }}
+                        >
+                            Comenzar_Prueba
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 2 - EVALUATION =====
+        function Screen2({ onNext }) {
+            const [completedAudios, setCompletedAudios] = useState({});
+            const [userChoices, setUserChoices] = useState({});
+            
+            const handleAudioComplete = (projectId) => {
+                setCompletedAudios(prev => ({ ...prev, [projectId]: true }));
+            };
+            
+            const handleChoiceChange = (projectId, choice) => {
+                SoundManager.play('click_soft');
+                setUserChoices(prev => ({ ...prev, [projectId]: choice }));
+            };
+            
+            const allCompleted = CONFIG.audioProjects.every(p => completedAudios[p.id]);
+            const allChosen = CONFIG.audioProjects.every(p => userChoices[p.id]);
+            const canProceed = allCompleted && allChosen;
+            
+            return (
+                <div className="screen-container">
+                    <div className="max-w-5xl mx-auto w-full">
+                        <div className="mb-8 text-center">
+                            <h2 className="tech-title text-4xl md:text-5xl mb-6 title-accent">
+                                EVALUACIÓN_AUDITIVA
+                            </h2>
+                            <p className="text-sm text-tech-warning uppercase tracking-widest">
+                                ⚠ Cada audio se reproducirá una sola vez. Escucha con atención.
+                            </p>
+                        </div>
+                        
+                        <div className="space-y-8">
+                            {CONFIG.audioProjects.map((project) => (
+                                <div key={project.id} className="tech-box p-6">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <h3 className="text-lg font-bold text-tech-accent tracking-wider">
+                                            {project.title}
+                                        </h3>
+                                        <span className="text-xs text-tech-dim">
+                                            {completedAudios[project.id] ? '✓ COMPLETADO' : 'PENDIENTE'}
+                                        </span>
+                                    </div>
+                                    
+                                    <AudioPlayer
+                                        audioUrl={project.aiAudioUrl}
+                                        onPlayComplete={() => handleAudioComplete(project.id)}
+                                        allowRepeat={false}
+                                        projectId={project.id}
+                                    />
+                                    
+                                    {completedAudios[project.id] && (
+                                        <div className="mt-6 flex gap-8 justify-center">
+                                            <label className="flex items-center gap-3 cursor-pointer group">
+                                                <input
+                                                    type="radio"
+                                                    name={`choice_${project.id}`}
+                                                    value="human"
+                                                    className="radio-tech"
+                                                    onChange={() => handleChoiceChange(project.id, 'human')}
+                                                    checked={userChoices[project.id] === 'human'}
+                                                />
+                                                <span className="text-sm uppercase tracking-wider group-hover:text-tech-accent transition-colors">
+                                                    Voz Humana
+                                                </span>
+                                            </label>
+                                            
+                                            <label className="flex items-center gap-3 cursor-pointer group">
+                                                <input
+                                                    type="radio"
+                                                    name={`choice_${project.id}`}
+                                                    value="ai"
+                                                    className="radio-tech"
+                                                    onChange={() => handleChoiceChange(project.id, 'ai')}
+                                                    checked={userChoices[project.id] === 'ai'}
+                                                />
+                                                <span className="text-sm uppercase tracking-wider group-hover:text-tech-accent transition-colors">
+                                                    Voz Generada IA
+                                                </span>
+                                            </label>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="mt-12 text-center">
+                            <button
+                                className="tech-button-primary"
+                                onClick={() => {
+                                    SoundManager.play('click_main');
+                                    onNext();
+                                }}
+                                disabled={!canProceed}
+                            >
+                                Ver_Resultado
+                            </button>
+                            {!canProceed && (
+                                <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
+                                    Completa todos los audios y selecciones para continuar
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 3 - REVELATION =====
+        function Screen3({ onNext }) {
+            const [showSecondary, setShowSecondary] = useState(false);
+            
+            useEffect(() => {
+                SoundManager.play('revelation');
+                setTimeout(() => {
+                    setShowSecondary(true);
+                }, 1500);
+            }, []);
+            
+            return (
+                <div className="screen-container">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <h1 className="tech-title text-5xl md:text-7xl mb-16 leading-tight">
+                            <span className="block text-white mb-6">
+                                TODAS LAS VOCES QUE ESCUCHASTE
+                            </span>
+                            <span className="block title-accent text-6xl md:text-8xl glitch-text">
+                                FUERON GENERADAS<br/>CON IA
+                            </span>
+                        </h1>
+                        
+                        {showSecondary && (
+                            <div className="fade-enter fade-enter-active">
+                                <p className="text-3xl md:text-4xl text-tech-warning mb-16 uppercase tracking-wide">
+                                    Pero ninguna fue creada desde texto
+                                </p>
+                                
+                                <button
+                                    className="tech-button-outline"
+                                    onClick={() => {
+                                        SoundManager.play('click_main');
+                                        onNext();
+                                    }}
+                                >
+                                    Explicarme
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 4 - EXPLANATION =====
+        function Screen4({ onNext }) {
+            const concepts = [
+                {
+                    number: "01",
+                    title: "ACTOR INTERPRETA",
+                    description: "Un profesional de voz realiza la actuación completa con emoción, timing y matices humanos reales."
+                },
+                {
+                    number: "02",
+                    title: "IA CAMBIA EL TIMBRE",
+                    description: "La tecnología modifica únicamente las características tonales de la voz, manteniendo la interpretación intacta."
+                },
+                {
+                    number: "03",
+                    title: "LA ACTUACIÓN PERMANECE HUMANA",
+                    description: "El resultado final conserva toda la expresividad y naturalidad de la interpretación original del actor."
+                }
+            ];
+            
+            return (
+                <div className="screen-container">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="tech-title text-4xl md:text-6xl title-accent mb-4">
+                                EL PROCESO
+                            </h2>
+                            <p className="text-sm text-tech-dim uppercase tracking-widest">
+                                Cómo funciona la tecnología
+                            </p>
+                        </div>
+                        
+                        <div className="space-y-6 mb-16">
+                            {concepts.map((concept) => (
+                                <div key={concept.number} className="tech-card">
+                                    <div className="flex items-start gap-6">
+                                        <div className="text-5xl font-bold text-tech-accent opacity-30">
+                                            {concept.number}
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-xl font-bold mb-3 text-white uppercase tracking-wide">
+                                                {concept.title}
+                                            </h3>
+                                            <p className="text-zinc-400 leading-relaxed">
+                                                {concept.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="text-center">
+                            <button
+                                className="tech-button-primary"
+                                onClick={() => {
+                                    SoundManager.play('click_main');
+                                    onNext();
+                                }}
+                            >
+                                Continuar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 5 - AUTHORITY =====
+        function Screen5({ onNext }) {
+            const expertise = [
+                "Locución profesional",
+                "Producción audiovisual",
+                "Diseño sonoro",
+                "Dirección vocal"
+            ];
+            
+            return (
+                <div className="screen-container">
+                    <div className="max-w-3xl mx-auto text-center">
+                        <div className="mb-12">
+                            <span className="text-xs text-tech-accent tracking-[0.4em] opacity-50">
+                                CREDENCIALES_SISTEMA
+                            </span>
+                        </div>
+                        
+                        <h2 className="tech-title text-5xl md:text-7xl mb-8 text-white">
+                            TRAYECTORIA<br/>
+                            <span className="title-accent">DESDE 1991</span>
+                        </h2>
+                        
+                        <div className="tech-box p-8 mb-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {expertise.map((skill, index) => (
+                                    <div key={index} className="flex items-center gap-4">
+                                        <div className="w-2 h-2 bg-tech-accent"></div>
+                                        <span className="text-lg uppercase tracking-wide text-zinc-300">
+                                            {skill}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <p className="text-zinc-400 text-lg mb-12 leading-relaxed">
+                            Experiencia profesional aplicada a la producción de voces dirigidas<br/>
+                            específicamente para sistemas de inteligencia artificial.
+                        </p>
+                        
+                        <button
+                            className="tech-button-outline"
+                            onClick={() => {
+                                SoundManager.play('click_main');
+                                onNext();
+                            }}
+                        >
+                            Continuar
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 6 - COMPARISON =====
+        function Screen6({ onNext }) {
+            return (
+                <div className="screen-container">
+                    <div className="max-w-5xl mx-auto w-full">
+                        <div className="mb-8 text-center">
+                            <h2 className="tech-title text-4xl md:text-5xl mb-6 title-accent">
+                                COMPARACIÓN_FINAL
+                            </h2>
+                            <p className="text-lg text-zinc-400 uppercase tracking-wide mb-2">
+                                Ahora escucha las tomas humanas originales
+                            </p>
+                            <p className="text-sm text-tech-dim uppercase tracking-widest">
+                                Reproducción libre - Compara conscientemente
+                            </p>
+                        </div>
+                        
+                        <div className="space-y-8">
+                            {CONFIG.audioProjects.map((project) => (
+                                <div key={project.id} className="tech-box p-6">
+                                    <h3 className="text-lg font-bold text-tech-accent tracking-wider mb-4">
+                                        {project.title} <span className="text-tech-dim text-sm ml-2">/ VOZ HUMANA ORIGINAL</span>
+                                    </h3>
+                                    
+                                    <AudioPlayer
+                                        audioUrl={project.humanAudioUrl}
+                                        allowRepeat={true}
+                                        projectId={`human_${project.id}`}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="mt-12 text-center">
+                            <button
+                                className="tech-button-primary"
+                                onClick={() => {
+                                    SoundManager.play('click_main');
+                                    onNext();
+                                }}
+                            >
+                                Finalizar_Experiencia
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== SCREEN 7 - CTA =====
+        function Screen7() {
+            const [isSubmitting, setIsSubmitting] = useState(false);
+            const [submitStatus, setSubmitStatus] = useState(null);
+            
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                SoundManager.play('click_soft');
+                
+                try {
+                    const formData = new FormData(e.target);
+                    const response = await fetch(CONFIG.formspreeUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        SoundManager.play('success');
+                        setSubmitStatus('success');
+                        e.target.reset();
+                    } else {
+                        setSubmitStatus('error');
+                    }
+                } catch (error) {
+                    setSubmitStatus('error');
+                }
+                
+                setIsSubmitting(false);
+                setTimeout(() => setSubmitStatus(null), 4000);
+            };
+            
+            return (
+                <div className="screen-container">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <div className="mb-12">
+                            <div className="logo-container mb-8">
+                                <img
+                                    src="https://i.postimg.cc/BvBjJLbV/Soluciones_Digitales_Creativas_(1).png"
+                                    alt="Dimensión Interactiva"
+                                />
+                            </div>
+                            
+                            <h1 className="tech-title text-4xl md:text-6xl mb-6">
+                                <span className="block text-white mb-2">PRODUCCIÓN DE</span>
+                                <span className="block title-accent">VOCES HUMANAS</span>
+                                <span className="block text-white">DIRIGIDAS PARA IA</span>
+                            </h1>
+                            
+                            <p className="text-zinc-400 text-lg mb-12">
+                                Dimensión Interactiva
+                            </p>
+                        </div>
+                        
+                        <div className="tech-box p-8 md:p-12 max-w-2xl mx-auto text-left">
+                            <h3 className="text-xl font-bold text-tech-accent uppercase tracking-wide mb-6 text-center">
+                                Establecer_Contacto
+                            </h3>
+                            
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label className="block text-xs uppercase tracking-wider text-tech-dim mb-2">
+                                        Input_Nombre
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        required
+                                        placeholder="Tu nombre"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label className="block text-xs uppercase tracking-wider text-tech-dim mb-2">
+                                        Input_Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        required
+                                        placeholder="tu@email.com"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label className="block text-xs uppercase tracking-wider text-tech-dim mb-2">
+                                        Input_Mensaje
+                                    </label>
+                                    <textarea
+                                        name="message"
+                                        required
+                                        placeholder="Describe tu proyecto..."
+                                    />
+                                </div>
+                                
+                                <button
+                                    type="submit"
+                                    className="tech-button-primary w-full"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? 'Transmitiendo...' : 
+                                     submitStatus === 'success' ? 'Transmisión_Exitosa' :
+                                     submitStatus === 'error' ? 'Error_Reintentar' :
+                                     'Enviar_Transmisión'}
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div className="mt-12">
+                            <p className="text-xs text-tech-dim uppercase tracking-[0.4em]">
+                                Sistema_Operativo / Dimensión_Interactiva / 2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        // ===== MAIN APP =====
+        function App() {
+            const [currentScreen, setCurrentScreen] = useState(1);
+            
+            const nextScreen = () => {
+                SoundManager.play('switch');
+                setCurrentScreen(prev => prev + 1);
+                window.scrollTo(0, 0);
+            };
+            
+            return (
+                <div>
+                    {currentScreen === 1 && <Screen1 onNext={nextScreen} />}
+                    {currentScreen === 2 && <Screen2 onNext={nextScreen} />}
+                    {currentScreen === 3 && <Screen3 onNext={nextScreen} />}
+                    {currentScreen === 4 && <Screen4 onNext={nextScreen} />}
+                    {currentScreen === 5 && <Screen5 onNext={nextScreen} />}
+                    {currentScreen === 6 && <Screen6 onNext={nextScreen} />}
+                    {currentScreen === 7 && <Screen7 />}
+                </div>
+            );
+        }
+        
+        // ===== RENDER =====
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
