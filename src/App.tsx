@@ -20,15 +20,7 @@ export default function App() {
 
   const [hasReachedFinal, setHasReachedFinal] = useState(false);
 
-  const [completedAudios, setCompletedAudios] = useState<Record<number, boolean>>(
-
-    {}
-
-  );
-
   const [userChoices, setUserChoices] = useState<Record<number, Choice>>({});
-
-  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
 
   const [showSecondary, setShowSecondary] = useState(false);
 
@@ -50,26 +42,30 @@ export default function App() {
 
     : "";
 
-  const requestAdminAccess = () => {
-
-    const input = window.prompt("CÃ³digo admin:");
-
+  const enableAdminAccess = () => {
+    const input = window.prompt("Codigo admin:");
     if (!input) return;
-
     if (input === ADMIN.code) {
-
       window.localStorage.setItem("voices_admin", "1");
-
       setIsAdmin(true);
-
       window.alert("Modo admin activado");
-
     } else {
-
-      window.alert("CÃ³digo incorrecto");
-
+      window.alert("Codigo incorrecto");
     }
+  };
 
+  const disableAdminAccess = () => {
+    window.localStorage.removeItem("voices_admin");
+    setIsAdmin(false);
+    window.alert("Modo admin desactivado");
+  };
+
+  const toggleAdminAccess = () => {
+    if (isAdmin) {
+      disableAdminAccess();
+      return;
+    }
+    enableAdminAccess();
   };
 
 
@@ -106,7 +102,7 @@ export default function App() {
 
         event.preventDefault();
 
-        requestAdminAccess();
+        toggleAdminAccess();
 
       }
 
@@ -166,25 +162,6 @@ export default function App() {
 
     });
 
-    if (typeof id === "number" && !isAdmin) {
-
-      setActiveProjectId((prev) => (prev && prev !== id ? prev : id));
-
-    }
-
-  };
-
-
-
-  const handleAudioComplete = (projectId: number) => {
-
-    setCompletedAudios((prev) => ({ ...prev, [projectId]: true }));
-
-    if (userChoices[projectId] && activeProjectId === projectId) {
-
-      setActiveProjectId(null);
-
-    }
 
   };
 
@@ -196,11 +173,7 @@ export default function App() {
 
     setUserChoices((prev) => ({ ...prev, [projectId]: choice }));
 
-    if (completedAudios[projectId] && activeProjectId === projectId) {
-
-      setActiveProjectId(null);
-
-    }
+    
 
   };
 
@@ -216,19 +189,11 @@ export default function App() {
 
   });
 
-
-
-  const completedCount = recognitionProjects.filter(
-
-    (p) => completedAudios[p.id]
-
-  ).length;
-
   const chosenCount = recognitionProjects.filter((p) => userChoices[p.id])
 
     .length;
 
-  const canProceed = isAdmin || (completedCount >= 3 && chosenCount >= 3);
+  const canProceed = isAdmin || chosenCount >= 3;
 
 
 
@@ -324,23 +289,13 @@ export default function App() {
 
       {isAdmin && <div className="admin-indicator">ADMIN_MODE</div>}
 
-      {!isAdmin && (
-
-        <button
-
-          type="button"
-
-          className="admin-trigger"
-
-          onClick={requestAdminAccess}
-
-        >
-
-          ADMIN
-
-        </button>
-
-      )}
+      <button
+        type="button"
+        className="admin-trigger"
+        onClick={toggleAdminAccess}
+      >
+        {isAdmin ? "SALIR_ADMIN" : "ADMIN"}
+      </button>
 
       {hasReachedFinal && currentScreen > 2 && (
 
@@ -461,43 +416,8 @@ export default function App() {
 
               {recognitionProjects.map((project) => {
 
-                const isCompleted = completedAudios[project.id];
-
                 const isChosen = userChoices[project.id];
-
-                const isActive = activeProjectId === project.id;
-
-                const isLocked =
-
-                  !isAdmin &&
-
-                  activeProjectId !== null &&
-
-                  activeProjectId !== project.id;
-
-                const statusLabel = isCompleted && isChosen
-
-                  ? "COMPLETADO"
-
-                  : isActive
-
-                  ? "EN_CURSO"
-
-                  : isLocked
-
-                  ? "BLOQUEADO"
-
-                  : "PENDIENTE";
-
-                const canPlay =
-
-                  isAdmin ||
-
-                  (!isCompleted &&
-
-                    !isChosen &&
-
-                    (activeProjectId === null || isActive));
+                const statusLabel = isChosen ? "SELECCIONADO" : "PENDIENTE";
 
 
 
@@ -524,21 +444,11 @@ export default function App() {
 
 
                     <AudioPlayer
-
                       id={project.id}
-
                       audioUrl={project.aiAudioUrl}
-
-                      onPlayComplete={() => handleAudioComplete(project.id)}
-
-                      allowRepeat={false}
-
+                      allowRepeat={true}
                       onStart={handleStart}
-
                       onRef={setAudioRef}
-
-                      disabled={!canPlay}
-
                     />
 
 
@@ -547,15 +457,7 @@ export default function App() {
 
                       <label
 
-                        className={`flex items-center gap-3 cursor-pointer group ${
-
-                          completedAudios[project.id] || isAdmin
-
-                            ? ""
-
-                            : "opacity-40 cursor-not-allowed"
-
-                        }`}
+                        className="flex items-center gap-3 cursor-pointer group"
 
                       >
 
@@ -577,7 +479,7 @@ export default function App() {
 
                           checked={userChoices[project.id] === "human"}
 
-                          disabled={!completedAudios[project.id] && !isAdmin}
+                          
 
                         />
 
@@ -593,15 +495,7 @@ export default function App() {
 
                       <label
 
-                        className={`flex items-center gap-3 cursor-pointer group ${
-
-                          completedAudios[project.id] || isAdmin
-
-                            ? ""
-
-                            : "opacity-40 cursor-not-allowed"
-
-                        }`}
+                        className="flex items-center gap-3 cursor-pointer group"
 
                       >
 
@@ -619,7 +513,7 @@ export default function App() {
 
                           checked={userChoices[project.id] === "ai"}
 
-                          disabled={!completedAudios[project.id] && !isAdmin}
+                          
 
                         />
 
@@ -632,29 +526,6 @@ export default function App() {
                       </label>
 
                     </div>
-
-
-
-                    {!completedAudios[project.id] && !isAdmin && (
-
-                      <p className="mt-3 text-xs text-tech-dim uppercase tracking-wide text-center">
-
-                        Reproduce el audio completo para habilitar la SELECCION
-
-                      </p>
-
-                    )}
-
-                    {completedAudios[project.id] && !userChoices[project.id] && !isAdmin && (
-
-                      <p className="mt-3 text-xs text-tech-warning uppercase tracking-wide text-center">
-
-                        Marca tu ELECCION para continuar
-
-                      </p>
-
-                    )}
-
                   </div>
 
                 );
@@ -714,13 +585,9 @@ export default function App() {
               )}
 
               {isAdmin && (
-
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
-
-                  MODO_ADMIN_ACTIVO - puedes avanzar sin escuchar audios
-
+                  MODO_ADMIN_ACTIVO - puedes avanzar sin marcar selecciones
                 </p>
-
               )}
 
             </div>
@@ -1264,7 +1131,7 @@ export default function App() {
 
               <div className="logo-container logo-container--xl mb-10">
 
-                <img src={LOGO_URL} alt="DimensiÃ³n Interactiva" />
+                <img src={LOGO_URL} alt="Dimension Interactiva" />
 
               </div>
 
