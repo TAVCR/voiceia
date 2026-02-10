@@ -68,6 +68,21 @@ canvas {
   text-transform: uppercase;
 }
 
+.admin-trigger {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 110;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(0, 242, 255, 0.4);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--tech-accent);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: none;
+}
+
 .back-arrow {
   position: fixed;
   top: 16px;
@@ -168,6 +183,7 @@ canvas {
   line-height: 0.9;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .title-accent {
@@ -291,6 +307,11 @@ canvas {
   padding-top: clamp(4rem, 10vh, 8rem);
 }
 
+.screen5-center,
+.screen5-center * {
+  text-align: center;
+}
+
 .screen-container p,
 .screen-container span,
 .screen-container label,
@@ -308,6 +329,10 @@ canvas {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.nowrap-word {
+  white-space: nowrap;
 }
 
 @keyframes fadeIn {
@@ -495,5 +520,9 @@ textarea {
   .admin-indicator {
     letter-spacing: 0.2em;
     font-size: 0.55rem;
+  }
+
+  .admin-trigger {
+    display: inline-block;
   }
 }

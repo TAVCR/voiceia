@@ -10,6 +10,7 @@ type AudioPlayerProps = {
   id: string | number;
   audioUrl: string;
   allowRepeat?: boolean;
+  disabled?: boolean;
   onPlayComplete?: (id: string | number) => void;
   onStart?: (id: string | number) => void;
   onRef?: (id: string | number, handle: AudioHandle | null) => void;
@@ -19,6 +20,7 @@ export default function AudioPlayer({
   id,
   audioUrl,
   allowRepeat = false,
+  disabled = false,
   onPlayComplete,
   onStart,
   onRef,
@@ -27,6 +29,21 @@ export default function AudioPlayer({
   const [hasPlayed, setHasPlayed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const waveRef = useRef<WaveSurfer | null>(null);
+  const onPlayCompleteRef = useRef(onPlayComplete);
+  const onRefRef = useRef(onRef);
+  const onStartRef = useRef(onStart);
+
+  useEffect(() => {
+    onPlayCompleteRef.current = onPlayComplete;
+  }, [onPlayComplete]);
+
+  useEffect(() => {
+    onRefRef.current = onRef;
+  }, [onRef]);
+
+  useEffect(() => {
+    onStartRef.current = onStart;
+  }, [onStart]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -38,7 +55,7 @@ export default function AudioPlayer({
       completed = true;
       setIsPlaying(false);
       setHasPlayed(true);
-      onPlayComplete?.(id);
+      onPlayCompleteRef.current?.(id);
     };
 
     const wave = WaveSurfer.create({
@@ -51,6 +68,7 @@ export default function AudioPlayer({
       barGap: 2,
       height: 60,
       normalize: true,
+      interact: allowRepeat,
     });
 
     waveRef.current = wave;
@@ -67,7 +85,7 @@ export default function AudioPlayer({
       }
     });
 
-    onRef?.(id, {
+    onRefRef.current?.(id, {
       pause: () => wave.pause(),
       isPlaying: () => wave.isPlaying(),
     });
@@ -75,21 +93,22 @@ export default function AudioPlayer({
     return () => {
       wave.destroy();
       waveRef.current = null;
-      onRef?.(id, null);
+      onRefRef.current?.(id, null);
     };
-  }, [audioUrl, id, onPlayComplete, onRef, allowRepeat]);
+  }, [audioUrl, id, allowRepeat]);
 
   const handlePlayPause = useCallback(() => {
     if (!waveRef.current) return;
+    if (disabled) return;
     if (!allowRepeat && hasPlayed) return;
-    onStart?.(id);
+    onStartRef.current?.(id);
     waveRef.current.playPause();
-  }, [allowRepeat, hasPlayed, id, onStart]);
+  }, [allowRepeat, disabled, hasPlayed, id]);
 
-  const canPlay = allowRepeat || !hasPlayed;
+  const canPlay = !disabled && (allowRepeat || !hasPlayed);
 
   return (
-    <div className="audio-player">
+    <div className={`audio-player ${disabled ? "opacity-50" : ""}`}>
       <div className="flex items-center gap-4 mb-3">
         <button
           className="play-button"

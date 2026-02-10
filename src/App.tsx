@@ -23,6 +23,17 @@ export default function App() {
   const whatsappLink = CONTACT.whatsapp
     ? CONTACT.whatsapp.replace(/\D/g, "")
     : "";
+  const requestAdminAccess = () => {
+    const input = window.prompt("Código admin:");
+    if (!input) return;
+    if (input === ADMIN.code) {
+      window.localStorage.setItem("voices_admin", "1");
+      setIsAdmin(true);
+      window.alert("Modo admin activado");
+    } else {
+      window.alert("Código incorrecto");
+    }
+  };
 
   useEffect(() => {
     const stored = window.localStorage.getItem("voices_admin");
@@ -40,15 +51,7 @@ export default function App() {
     const handleKey = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.shiftKey && event.code === "KeyA") {
         event.preventDefault();
-        const input = window.prompt("Código admin:");
-        if (!input) return;
-        if (input === ADMIN.code) {
-          window.localStorage.setItem("voices_admin", "1");
-          setIsAdmin(true);
-          window.alert("Modo admin activado");
-        } else {
-          window.alert("Código incorrecto");
-        }
+        requestAdminAccess();
       }
     };
 
@@ -101,6 +104,9 @@ export default function App() {
   const chosenCount = recognitionProjects.filter((p) => userChoices[p.id])
     .length;
   const canProceed = isAdmin || (completedCount >= 3 && chosenCount >= 3);
+  const activeIndex = recognitionProjects.findIndex(
+    (p) => !(completedAudios[p.id] && userChoices[p.id])
+  );
 
   useEffect(() => {
     if (currentScreen === 3) {
@@ -148,6 +154,15 @@ export default function App() {
     <div className="relative">
       <div className="scanline" />
       {isAdmin && <div className="admin-indicator">ADMIN_MODE</div>}
+      {!isAdmin && (
+        <button
+          type="button"
+          className="admin-trigger"
+          onClick={requestAdminAccess}
+        >
+          ADMIN
+        </button>
+      )}
       {hasReachedFinal && currentScreen > 2 && (
         <button
           type="button"
@@ -168,11 +183,11 @@ export default function App() {
               </span>
             </div>
 
-            <h1 className="tech-title text-[clamp(2.8rem,8.5vw,9rem)] mb-10 text-balance">
-              <span className="block text-white mb-4">
+            <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] mb-10 text-balance">
+              <span className="block text-white mb-4 nowrap-word">
                 {COPY.screen1.title1}
               </span>
-              <span className="block title-accent glitch-text">
+              <span className="block title-accent glitch-text nowrap-word">
                 {COPY.screen1.title2}
               </span>
             </h1>
@@ -208,77 +223,95 @@ export default function App() {
             </div>
 
             <div className="space-y-8 pb-8 md:pb-12">
-              {recognitionProjects.map((project) => (
-                <div key={project.id} className="tech-box p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-tech-accent tracking-wider">
-                      {project.title}
-                    </h3>
-                    <span className="text-xs text-tech-dim">
-                      {completedAudios[project.id] ? "COMPLETADO" : "PENDIENTE"}
-                    </span>
-                  </div>
+              {recognitionProjects.map((project, index) => {
+                const isCompleted = completedAudios[project.id];
+                const isChosen = userChoices[project.id];
+                const isActive = !isAdmin && activeIndex === index;
+                const isLocked =
+                  !isAdmin && activeIndex !== -1 && index > activeIndex;
+                const statusLabel = isCompleted
+                  ? "COMPLETADO"
+                  : isLocked
+                  ? "BLOQUEADO"
+                  : "PENDIENTE";
+                const canPlay =
+                  isAdmin || (isActive && !isCompleted && !isChosen);
 
-                  <AudioPlayer
-                    id={project.id}
-                    audioUrl={project.aiAudioUrl}
-                    onPlayComplete={() => handleAudioComplete(project.id)}
-                    allowRepeat={false}
-                    onStart={handleStart}
-                    onRef={setAudioRef}
-                  />
-
-                  <div className="mt-6 flex gap-8 justify-center">
-                    <label
-                      className={`flex items-center gap-3 cursor-pointer group ${
-                        completedAudios[project.id] || isAdmin
-                          ? ""
-                          : "opacity-40 cursor-not-allowed"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name={`choice_${project.id}`}
-                        value="human"
-                        className="radio-tech"
-                        onChange={() => handleChoiceChange(project.id, "human")}
-                        checked={userChoices[project.id] === "human"}
-                        disabled={!completedAudios[project.id] && !isAdmin}
-                      />
-                      <span className="text-sm uppercase tracking-wider group-hover:text-tech-accent transition-colors">
-                        {COPY.screen2.optionHuman}
+                return (
+                  <div key={project.id} className="tech-box p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-lg font-bold text-tech-accent tracking-wider">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs text-tech-dim">
+                        {statusLabel}
                       </span>
-                    </label>
+                    </div>
 
-                    <label
-                      className={`flex items-center gap-3 cursor-pointer group ${
-                        completedAudios[project.id] || isAdmin
-                          ? ""
-                          : "opacity-40 cursor-not-allowed"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name={`choice_${project.id}`}
-                        value="ai"
-                        className="radio-tech"
-                        onChange={() => handleChoiceChange(project.id, "ai")}
-                        checked={userChoices[project.id] === "ai"}
-                        disabled={!completedAudios[project.id] && !isAdmin}
-                      />
-                      <span className="text-sm uppercase tracking-wider group-hover:text-tech-accent transition-colors">
-                        {COPY.screen2.optionAI}
-                      </span>
-                    </label>
+                    <AudioPlayer
+                      id={project.id}
+                      audioUrl={project.aiAudioUrl}
+                      onPlayComplete={() => handleAudioComplete(project.id)}
+                      allowRepeat={false}
+                      onStart={handleStart}
+                      onRef={setAudioRef}
+                      disabled={!canPlay}
+                    />
+
+                    <div className="mt-6 flex gap-8 justify-center">
+                      <label
+                        className={`flex items-center gap-3 cursor-pointer group ${
+                          completedAudios[project.id] || isAdmin
+                            ? ""
+                            : "opacity-40 cursor-not-allowed"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name={`choice_${project.id}`}
+                          value="human"
+                          className="radio-tech"
+                          onChange={() =>
+                            handleChoiceChange(project.id, "human")
+                          }
+                          checked={userChoices[project.id] === "human"}
+                          disabled={!completedAudios[project.id] && !isAdmin}
+                        />
+                        <span className="text-sm uppercase tracking-wider group-hover:text-tech-accent transition-colors">
+                          {COPY.screen2.optionHuman}
+                        </span>
+                      </label>
+
+                      <label
+                        className={`flex items-center gap-3 cursor-pointer group ${
+                          completedAudios[project.id] || isAdmin
+                            ? ""
+                            : "opacity-40 cursor-not-allowed"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name={`choice_${project.id}`}
+                          value="ai"
+                          className="radio-tech"
+                          onChange={() => handleChoiceChange(project.id, "ai")}
+                          checked={userChoices[project.id] === "ai"}
+                          disabled={!completedAudios[project.id] && !isAdmin}
+                        />
+                        <span className="text-sm uppercase tracking-wider group-hover:text-tech-accent transition-colors">
+                          {COPY.screen2.optionAI}
+                        </span>
+                      </label>
+                    </div>
+
+                    {!completedAudios[project.id] && !isAdmin && (
+                      <p className="mt-3 text-xs text-tech-dim uppercase tracking-wide text-center">
+                        Reproduce el audio completo para habilitar la selección
+                      </p>
+                    )}
                   </div>
-
-                  {!completedAudios[project.id] && !isAdmin && (
-                    <p className="mt-3 text-xs text-tech-dim uppercase tracking-wide text-center">
-                      Reproduce el audio completo para habilitar la selección
-                    </p>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {canProceed && (
@@ -317,12 +350,12 @@ export default function App() {
 
       {currentScreen === 3 && (
         <section className="screen-container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="tech-title text-[clamp(2.6rem,7vw,6rem)] mb-16 leading-tight">
+          <div className="max-w-4xl mx-auto text-center screen5-center">
+            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight">
               <span className="block text-white mb-6">
                 {COPY.screen3.mainText}
               </span>
-              <span className="block title-accent text-[clamp(3rem,8vw,7rem)] glitch-text whitespace-pre-line">
+              <span className="block title-accent text-[clamp(2.6rem,7.2vw,6.2rem)] glitch-text whitespace-pre-line">
                 {COPY.screen3.accentText}
               </span>
             </h1>
