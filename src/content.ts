@@ -75,7 +75,7 @@ export const COPY = {
       "Completa al menos 3 audios y sus selecciones para continuar",
   },
   screen3: {
-    mainText: "TODAS LAS VOCES QUE ESCUCHASTE",
+    mainText: "TODAS LAS VOCES\nQUE ESCUCHASTE",
     accentText: "FUERON\nGENERADAS\nCON IA",
     secondaryTextIntroPrefix: "Pero",
     secondaryTextIntroEmphasis: "Ninguna",

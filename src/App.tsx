@@ -221,9 +221,9 @@ export default function App() {
         <section className="screen-container">
           <div className="max-w-5xl mx-auto w-full">
             <div className="mb-10 text-center">
-              <h2 className="tech-title text-[clamp(2.1rem,6.2vw,4.5rem)] mb-6 title-accent tracking-[0.12em] text-balance">
-                {COPY.screen2.title}
-              </h2>
+              <h2 className="tech-title text-[clamp(2.1rem,6.2vw,4.5rem)] mb-6 title-accent tracking-[0.12em] text-balance screen2-title">
+                {COPY.screen2.title}
+              </h2>
               <p className="mx-auto max-w-3xl text-[clamp(0.9rem,2.4vw,1.2rem)] text-tech-warning uppercase tracking-widest">
                 {COPY.screen2.warning}
               </p>
@@ -370,18 +370,22 @@ export default function App() {
       {currentScreen === 3 && (
         <section className="screen-container">
           <div className="max-w-4xl mx-auto text-center screen5-center">
-            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight">
-              <span className="block text-white mb-6">
-                {COPY.screen3.mainText}
-              </span>
-              <span className="block title-accent text-[clamp(2.6rem,7.2vw,6.2rem)] glitch-text">
-                {COPY.screen3.accentText.split("\n").map((line) => (
-                  <span key={line} className="block nowrap-word">
-                    {line}
-                  </span>
-                ))}
-              </span>
-            </h1>
+            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title text-balance">
+              <span className="block text-white mb-6 screen3-main">
+                {COPY.screen3.mainText.split("\n").map((line) => (
+                  <span key={line} className="block screen3-line screen3-line--main">
+                    {line}
+                  </span>
+                ))}
+              </span>
+              <span className="block title-accent text-[clamp(2.6rem,7.2vw,6.2rem)] glitch-text screen3-accent">
+                {COPY.screen3.accentText.split("\n").map((line) => (
+                  <span key={line} className="block screen3-line">
+                    {line}
+                  </span>
+                ))}
+              </span>
+            </h1>
 
             {showSecondary && (
               <div className="fade-enter fade-enter-active">
@@ -483,11 +487,12 @@ export default function App() {
               </span>
             </div>
 
-            <h2 className="tech-title text-[clamp(3.2rem,8.5vw,7.5rem)] mb-10 text-white">
-              {COPY.screen5.title1}
-              <br />
-              <span className="title-accent">{COPY.screen5.title2}</span>
-            </h2>
+            <h2 className="tech-title text-[clamp(3.2rem,8.5vw,7.5rem)] mb-10 text-white screen5-title">
+              <span className="screen5-title-line">{COPY.screen5.title1}</span>
+              <span className="title-accent screen5-title-line">
+                {COPY.screen5.title2}
+              </span>
+            </h2>
 
             <div className="tech-box p-10 md:p-12 mb-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 screen5-list">
@@ -547,9 +552,13 @@ export default function App() {
       {currentScreen === 6 && (
         <section className="screen-container">
           <div className="max-w-5xl mx-auto text-center">
-            <h2 className="tech-title text-[clamp(3rem,7.5vw,6rem)] mb-10 title-accent">
-              {COPY.screen6.title}
-            </h2>
+            <h2 className="tech-title text-[clamp(3rem,7.5vw,6rem)] mb-10 title-accent screen6-title">
+              {COPY.screen6.title.split(" ").map((word) => (
+                <span key={word} className="screen6-title-line">
+                  {word}
+                </span>
+              ))}
+            </h2>
             <p className="text-[clamp(1.4rem,3.6vw,2.1rem)] text-zinc-300 uppercase tracking-wide mb-8">
               {COPY.screen6.questionPrefix}{" "}
               <span className="underline-emphasis">
