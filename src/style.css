@@ -101,7 +101,17 @@ canvas {
 }
 
 .contact-offset {
-  margin-top: clamp(4rem, 14vh, 10rem);
+  margin-top: clamp(2rem, 7vh, 5rem);
+}
+
+.contact-links--large a {
+  font-size: clamp(1.2rem, 3.6vw, 2.2rem);
+  letter-spacing: 0.12em;
+  padding: 0.6rem 1.4rem;
+}
+
+.continue-offset {
+  height: 40px;
 }
 
 .alert-emphasis {
@@ -211,7 +221,8 @@ canvas {
 .choice-button {
   min-width: clamp(240px, 45vw, 420px);
   padding: 1.25rem 3.25rem;
-  font-size: 0.85rem;
+  font-size: 0.9rem !important;
+  line-height: 1;
   letter-spacing: 0.32em;
 }
 
@@ -224,6 +235,12 @@ canvas {
   text-align: center;
   pointer-events: auto;
   animation: pulseAction 1.6s ease-in-out infinite;
+}
+
+.continue-button {
+  padding: 1.5rem 4.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.34em;
 }
 
 .center-overlay {

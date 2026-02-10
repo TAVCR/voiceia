@@ -57,7 +57,7 @@ export const CONFIG = {
 
 export const COPY = {
   screen1: {
-    tagline: "INICIO_PROTOCOLO_EVALUACIÓN",
+    tagline: "INICIO PROTOCOLO EVALUACIÓN",
     title1: "¿PUEDES",
     title2: "DISTINGUIR?",
     subtitle:
@@ -65,7 +65,7 @@ export const COPY = {
     buttonText: "Comenzar_Prueba",
   },
   screen2: {
-    title: "EVALUACIÓN_AUDITIVA",
+    title: "EVALUACIÓN AUDITIVA",
     warning:
       "ATENCIÓN: Para avanzar debes elegir 3 audios y escucharlos completos. Cada audio se reproducirá una sola vez. Escucha con atención. No olvides marcar tu elección. Voz humana o IA.",
     optionHuman: "Voz Humana",
@@ -87,7 +87,7 @@ export const COPY = {
   screen4: {
     title: "EL PROCESO",
     subtitle: "¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÓN VOCAL!",
-    benchmarkTitle: "BENCHMARK_ELEVENLABS",
+    benchmarkTitle: "BENCHMARK ELEVENLABS",
     benchmarkBody:
       "Incluso el AI Speech Classifier de ElevenLabs da una probabilidad bajísima de que los audios fueran generados con IA (≈2% a 5%) para la mayoría de los casos.",
     concepts: [
@@ -119,7 +119,7 @@ export const COPY = {
     buttonText: "Continuar",
   },
   screen5: {
-    tagline: "CREDENCIALES_SISTEMA",
+    tagline: "CREDENCIALES SISTEMA",
     title1: "TRAYECTORIA",
     title2: "DESDE 1991",
     expertise: [
@@ -133,7 +133,7 @@ export const COPY = {
     buttonText: "Continuar",
   },
   screen6: {
-    title: "VERSIONES_HUMANAS",
+    title: "VERSIONES HUMANAS",
     questionPrefix: "¿Deseas escuchar",
     questionEmphasis: "algunas",
     questionSuffix: "de las versiones 100% con voces humanas de estos comerciales?",
@@ -142,7 +142,7 @@ export const COPY = {
     noButton: "NO_CONTINUAR",
   },
   screen7: {
-    title: "TOMAS_HUMANAS_ORIGINALES",
+    title: "TOMAS HUMANAS ORIGINALES",
     subtitle: "Audios reales utilizados en campañas comerciales",
     buttonText: "IR_AL_CIERRE",
   },
@@ -151,7 +151,7 @@ export const COPY = {
     title2: "VOCES HUMANAS",
     title3: "DIRIGIDAS PARA IA",
     companyName: "Dimensión Interactiva",
-    formTitle: "Establecer_Contacto",
+    formTitle: "Establecer Contacto",
     formLabels: {
       name: "Input_Nombre",
       email: "Input_Email",
@@ -168,6 +168,6 @@ export const COPY = {
       success: "Transmisión_Exitosa",
       error: "Error_Reintentar",
     },
-    footer: "Sistema_Operativo / Dimensión_Interactiva / 2026",
+    footer: "Sistema Operativo / Dimensión Interactiva / 2026",
   },
 };

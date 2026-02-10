@@ -450,8 +450,9 @@ export default function App() {
               {COPY.screen5.description}
             </p>
 
+            <div className="continue-offset"></div>
             <button
-              className="tech-button-outline"
+              className="tech-button-outline continue-button"
               onClick={() => {
                 sound.clickMain();
                 nextScreen();
@@ -463,7 +464,7 @@ export default function App() {
 
             {(CONTACT.email || CONTACT.whatsapp) && (
               <>
-                <div className="contact-offset flex flex-wrap gap-10 justify-center text-xs tracking-[0.15em] text-white contact-links">
+                <div className="contact-offset flex flex-wrap gap-10 justify-center text-white contact-links contact-links--large">
                   {CONTACT.email && (
                     <a
                     href={`mailto:${CONTACT.email}`}
@@ -489,18 +490,18 @@ export default function App() {
 
       {currentScreen === 6 && (
         <section className="screen-container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="tech-title text-[clamp(2.4rem,6.5vw,4.8rem)] mb-8 title-accent">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="tech-title text-[clamp(3rem,7.5vw,6rem)] mb-10 title-accent">
               {COPY.screen6.title}
             </h2>
-            <p className="text-[clamp(1.1rem,3vw,1.7rem)] text-zinc-300 uppercase tracking-wide mb-6">
+            <p className="text-[clamp(1.4rem,3.6vw,2.1rem)] text-zinc-300 uppercase tracking-wide mb-8">
               {COPY.screen6.questionPrefix}{" "}
               <span className="underline-emphasis">
                 {COPY.screen6.questionEmphasis}
               </span>{" "}
               {COPY.screen6.questionSuffix}
             </p>
-            <p className="text-[clamp(0.9rem,2.3vw,1.1rem)] text-tech-dim uppercase tracking-widest mb-12">
+            <p className="text-[clamp(1rem,2.5vw,1.3rem)] text-tech-dim uppercase tracking-widest mb-14">
               {COPY.screen6.subtitle}
             </p>
 
