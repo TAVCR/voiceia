@@ -61,7 +61,7 @@ export const COPY = {
     title1: "¿PUEDES",
     title2: "DISTINGUIR?",
     subtitle:
-      "Voz humana vs voz generada por IA.\nUna prueba que cambiará tu percepción.",
+      "Voz humana vs voz generada por IA.\nUna prueba que desafía tu capacidad de percepción.",
     buttonText: "Comenzar_Prueba",
   },
   screen2: {
