@@ -8,6 +8,7 @@ type Choice = "human" | "ai";
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState(1);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [hasReachedFinal, setHasReachedFinal] = useState(false);
   const [completedAudios, setCompletedAudios] = useState<Record<number, boolean>>(
     {}
   );
@@ -94,15 +95,21 @@ export default function App() {
     return 0;
   });
 
-  const allCompleted = CONFIG.audioProjects.every((p) => completedAudios[p.id]);
-  const allChosen = CONFIG.audioProjects.every((p) => userChoices[p.id]);
-  const canProceed = isAdmin || (allCompleted && allChosen);
+  const completedCount = recognitionProjects.filter(
+    (p) => completedAudios[p.id]
+  ).length;
+  const chosenCount = recognitionProjects.filter((p) => userChoices[p.id])
+    .length;
+  const canProceed = isAdmin || (completedCount >= 3 && chosenCount >= 3);
 
   useEffect(() => {
     if (currentScreen === 3) {
       sound.revelation();
       const timer = setTimeout(() => setShowSecondary(true), 1500);
       return () => clearTimeout(timer);
+    }
+    if (currentScreen === 8) {
+      setHasReachedFinal(true);
     }
     setShowSecondary(false);
     return undefined;
@@ -141,7 +148,7 @@ export default function App() {
     <div className="relative">
       <div className="scanline" />
       {isAdmin && <div className="admin-indicator">ADMIN_MODE</div>}
-      {currentScreen > 2 && (
+      {hasReachedFinal && currentScreen > 2 && (
         <button
           type="button"
           className="back-arrow"
@@ -161,7 +168,7 @@ export default function App() {
               </span>
             </div>
 
-            <h1 className="tech-title text-[clamp(3.5rem,9vw,9rem)] mb-10">
+            <h1 className="tech-title text-[clamp(2.8rem,8.5vw,9rem)] mb-10 text-balance">
               <span className="block text-white mb-4">
                 {COPY.screen1.title1}
               </span>
@@ -192,7 +199,7 @@ export default function App() {
         <section className="screen-container">
           <div className="max-w-5xl mx-auto w-full">
             <div className="mb-10 text-center">
-              <h2 className="tech-title text-[clamp(2.4rem,6.5vw,4.5rem)] mb-6 title-accent tracking-[0.15em]">
+              <h2 className="tech-title text-[clamp(2.1rem,6.2vw,4.5rem)] mb-6 title-accent tracking-[0.12em] text-balance">
                 {COPY.screen2.title}
               </h2>
               <p className="mx-auto max-w-3xl text-[clamp(0.9rem,2.4vw,1.2rem)] text-tech-warning uppercase tracking-widest">
@@ -275,17 +282,18 @@ export default function App() {
             </div>
 
             <div className="mt-32 pt-20 pb-6 border-t border-white/10 text-center">
-              <button
-                className="tech-button-primary"
-                onClick={() => {
-                  sound.clickMain();
-                  nextScreen();
-                }}
-                disabled={!canProceed}
-                type="button"
-              >
-                {COPY.screen2.buttonText}
-              </button>
+              {canProceed && (
+                <button
+                  className="tech-button-primary"
+                  onClick={() => {
+                    sound.clickMain();
+                    nextScreen();
+                  }}
+                  type="button"
+                >
+                  {COPY.screen2.buttonText}
+                </button>
+              )}
               {!canProceed && !isAdmin && (
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
                   {COPY.screen2.pendingMessage}

@@ -231,9 +231,23 @@ canvas {
   animation: fadeIn 0.8s ease-out;
 }
 
-.screen-container * {
+.screen-container p,
+.screen-container span,
+.screen-container label,
+.screen-container a,
+.screen-container button {
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.tech-title,
+.tech-title * {
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 @keyframes fadeIn {

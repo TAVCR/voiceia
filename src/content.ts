@@ -67,11 +67,12 @@ export const COPY = {
   screen2: {
     title: "EVALUACIÓN_AUDITIVA",
     warning:
-      "ATENCIÓN: Cada audio se reproducirá una sola vez. Escucha con atención.",
+      "ATENCIÓN: Para avanzar debes elegir 3 audios y escucharlos completos. Cada audio se reproducirá una sola vez. Escucha con atención. No olvides marcar tu elección. Voz humana o IA.",
     optionHuman: "Voz Humana",
     optionAI: "Voz Generada IA",
-    buttonText: "Ver_Resultado",
-    pendingMessage: "Completa todos los audios y selecciones para continuar",
+    buttonText: "Ver Resultados",
+    pendingMessage:
+      "Completa al menos 3 audios y sus selecciones para continuar",
   },
   screen3: {
     mainText: "TODAS LAS VOCES QUE ESCUCHASTE",
