@@ -125,6 +125,10 @@ canvas {
   padding: 0.6rem 1.4rem;
 }
 
+.contact-links--fit a {
+  max-width: 100%;
+}
+
 .continue-offset {
   height: 40px;
 }
@@ -312,13 +316,26 @@ canvas {
   text-align: center;
 }
 
+.screen5-center .tech-box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen5-list {
+  justify-items: center;
+}
+
+.screen5-list > div {
+  justify-content: center;
+}
+
 .screen-container p,
 .screen-container span,
 .screen-container label,
 .screen-container a,
 .screen-container button {
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .tech-title,
@@ -514,6 +531,12 @@ textarea {
 
   .contact-links a {
     letter-spacing: 0.04em;
+  }
+
+  .contact-links--fit a {
+    font-size: clamp(0.75rem, 2.8vw, 1rem);
+    letter-spacing: 0.05em;
+    padding: 0.45rem 0.9rem;
   }
 
   .back-arrow,

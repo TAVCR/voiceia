@@ -76,7 +76,7 @@ export const COPY = {
   },
   screen3: {
     mainText: "TODAS LAS VOCES QUE ESCUCHASTE",
-    accentText: "FUERON GENERADAS\nCON IA",
+    accentText: "FUERON\nGENERADAS\nCON IA",
     secondaryTextIntroPrefix: "Pero",
     secondaryTextIntroEmphasis: "Ninguna",
     secondaryTextIntroSuffix: "fue creada desde texto.",
