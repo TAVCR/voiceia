@@ -12,6 +12,7 @@ export const ADMIN = {
 
 export const CONFIG = {
   formspreeUrl: "https://formspree.io/f/mqabjovv",
+  ambientAudioUrl: "",
   audioProjects: [
     {
       id: 1,
@@ -72,6 +73,7 @@ export const COPY = {
     optionAI: "Voz Generada IA",
     buttonText: "Ver Resultados",
     pendingMessage: "Marca 3 selecciones para continuar",
+    selectionCounterLabel: "SELECCIONADAS",
     revisitMessage:
       "RE-EVALUACION_LIBRE: puedes volver a escuchar todos los audios sin restricciones",
   },

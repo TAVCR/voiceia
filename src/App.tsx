@@ -32,6 +32,7 @@ export default function App() {
 
   );
 
+  const ambientRef = useRef<HTMLAudioElement | null>(null);
   const audioRefs = useRef<Record<string | number, AudioHandle | null>>({});
 
   const sound = useUiSound();
@@ -115,6 +116,33 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKey);
 
   }, []);
+
+  useEffect(() => {
+    const ambient = ambientRef.current;
+    if (!ambient || !CONFIG.ambientAudioUrl) return;
+    ambient.volume = 0.25;
+  }, []);
+
+  useEffect(() => {
+    const ambient = ambientRef.current;
+    if (!ambient || !CONFIG.ambientAudioUrl) return;
+
+    if (currentScreen === 1) {
+      const tryPlay = () => {
+        ambient.play().catch(() => {});
+      };
+      const handlePointer = () => {
+        tryPlay();
+        window.removeEventListener("pointerdown", handlePointer);
+      };
+      window.addEventListener("pointerdown", handlePointer);
+      return () => window.removeEventListener("pointerdown", handlePointer);
+    }
+
+    ambient.pause();
+    ambient.currentTime = 0;
+    return undefined;
+  }, [currentScreen]);
 
 
 
@@ -288,6 +316,9 @@ export default function App() {
     <div className="relative">
 
       <div className="scanline" />
+      {CONFIG.ambientAudioUrl && (
+        <audio ref={ambientRef} src={CONFIG.ambientAudioUrl} loop preload="auto" />
+      )}
 
       {isAdmin && <div className="admin-indicator">ADMIN_MODE</div>}
 
@@ -408,6 +439,9 @@ export default function App() {
 
                 {COPY.screen2.warning}
 
+              </p>
+              <p className="mt-3 text-xs text-tech-dim uppercase tracking-[0.3em]">
+                {COPY.screen2.selectionCounterLabel} {Math.min(chosenCount, 3)}/3
               </p>
 
             </div>
