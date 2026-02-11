@@ -416,6 +416,29 @@ export default function App() {
 
             </button>
 
+            {CONFIG.ambientAttribution && (
+              <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em]">
+                Music by{" "}
+                <a
+                  href={CONFIG.ambientAttribution.authorUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-tech-accent/80 hover:text-tech-accent"
+                >
+                  {CONFIG.ambientAttribution.author}
+                </a>{" "}
+                from{" "}
+                <a
+                  href={CONFIG.ambientAttribution.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-tech-accent/80 hover:text-tech-accent"
+                >
+                  {CONFIG.ambientAttribution.source}
+                </a>
+              </p>
+            )}
+
           </div>
 
         </section>

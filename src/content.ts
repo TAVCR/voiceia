@@ -12,7 +12,16 @@ export const ADMIN = {
 
 export const CONFIG = {
   formspreeUrl: "https://formspree.io/f/mqabjovv",
-  ambientAudioUrl: "",
+  ambientAudioUrl:
+    "https://cdn.jsdelivr.net/gh/TAVCR/voiceia@main/public/ambient/mfcc-science-space-technology-music-328258.mp3",
+  ambientAttribution: {
+    author: "Mykola Sosin",
+    authorUrl:
+      "https://pixabay.com/users/mfcc-28627740/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=328258",
+    source: "Pixabay",
+    sourceUrl:
+      "https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=328258",
+  },
   audioProjects: [
     {
       id: 1,
