@@ -104,6 +104,27 @@ canvas {
   transform: translateX(-2px);
 }
 
+.forward-arrow {
+  position: fixed;
+  top: 56px;
+  right: 16px;
+  z-index: 110;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(0, 242, 255, 0.35);
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--tech-accent);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.forward-arrow:hover {
+  box-shadow: 0 0 18px rgba(0, 242, 255, 0.4);
+  transform: translateX(2px);
+}
+
 .contact-links a {
   text-transform: none;
   letter-spacing: 0.08em;
@@ -555,6 +576,7 @@ textarea {
 }
 
   .back-arrow,
+  .forward-arrow,
   .admin-indicator {
     letter-spacing: 0.2em;
     font-size: 0.55rem;

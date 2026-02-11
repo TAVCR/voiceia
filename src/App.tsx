@@ -376,6 +376,16 @@ export default function App() {
         </button>
 
       )}
+      {hasReachedFinal && currentScreen >= 2 && currentScreen < 8 && (
+        <button
+          type="button"
+          className="forward-arrow"
+          onClick={nextScreen}
+          aria-label="Adelante"
+        >
+          ADELANTE
+        </button>
+      )}
 
 
 
