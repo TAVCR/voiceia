@@ -121,6 +121,8 @@ export default function App() {
     const ambient = ambientRef.current;
     if (!ambient || !CONFIG.ambientAudioUrl) return;
     ambient.volume = 0.25;
+    ambient.muted = true;
+    ambient.play().catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -131,10 +133,13 @@ export default function App() {
       let active = true;
       const cleanup = () => {
         window.removeEventListener("pointerdown", handleInteract);
+        window.removeEventListener("touchstart", handleInteract);
+        window.removeEventListener("click", handleInteract);
         window.removeEventListener("keydown", handleInteract);
       };
       const handleInteract = () => {
         if (!active) return;
+        ambient.muted = false;
         const playPromise = ambient.play();
         if (playPromise && typeof playPromise.then === "function") {
           playPromise.then(() => {
@@ -144,6 +149,8 @@ export default function App() {
         }
       };
       window.addEventListener("pointerdown", handleInteract);
+      window.addEventListener("touchstart", handleInteract, { passive: true });
+      window.addEventListener("click", handleInteract);
       window.addEventListener("keydown", handleInteract);
       return () => {
         active = false;
@@ -153,6 +160,7 @@ export default function App() {
 
     ambient.pause();
     ambient.currentTime = 0;
+    ambient.muted = true;
     return undefined;
   }, [currentScreen]);
 
@@ -329,7 +337,7 @@ export default function App() {
 
       <div className="scanline" />
       {CONFIG.ambientAudioUrl && (
-        <audio ref={ambientRef} src={CONFIG.ambientAudioUrl} loop preload="auto" />
+        <audio ref={ambientRef} src={CONFIG.ambientAudioUrl} loop preload="auto" playsInline />
       )}
 
       {isAdmin && <div className="admin-indicator">ADMIN_MODE</div>}
