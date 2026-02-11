@@ -1276,6 +1276,9 @@ export default function App() {
                 {COPY.screen8.formTitle}
 
               </h3>
+              <p className="text-xs text-tech-dim uppercase tracking-[0.2em] text-center mb-8">
+                {COPY.screen8.formSubtitle}
+              </p>
 
 
 

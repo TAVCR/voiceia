@@ -163,7 +163,8 @@ export const COPY = {
     title2: "VOCES HUMANAS",
     title3: "DIRIGIDAS PARA IA",
     companyName: "Dimensión Interactiva",
-    formTitle: "Establecer Contacto",
+    formTitle: "INICIAR_CONTACTO",
+    formSubtitle: "Agenda una demostración / propuesta en 24h",
     formLabels: {
       name: "Input_Nombre",
       email: "Input_Email",
