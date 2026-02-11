@@ -31,6 +31,7 @@ export default function App() {
     null
 
   );
+  const [ambientActive, setAmbientActive] = useState(false);
 
   const ambientRef = useRef<HTMLAudioElement | null>(null);
   const audioRefs = useRef<Record<string | number, AudioHandle | null>>({});
@@ -67,6 +68,18 @@ export default function App() {
       return;
     }
     enableAdminAccess();
+  };
+
+  const startAmbient = () => {
+    const ambient = ambientRef.current;
+    if (!ambient || !CONFIG.ambientAudioUrl) return;
+    ambient.muted = false;
+    const playPromise = ambient.play();
+    if (playPromise && typeof playPromise.then === "function") {
+      playPromise.then(() => setAmbientActive(true)).catch(() => {});
+    } else {
+      setAmbientActive(true);
+    }
   };
 
 
@@ -139,14 +152,7 @@ export default function App() {
       };
       const handleInteract = () => {
         if (!active) return;
-        ambient.muted = false;
-        const playPromise = ambient.play();
-        if (playPromise && typeof playPromise.then === "function") {
-          playPromise.then(() => {
-            if (!active) return;
-            cleanup();
-          }).catch(() => {});
-        }
+        startAmbient();
       };
       window.addEventListener("pointerdown", handleInteract);
       window.addEventListener("touchstart", handleInteract, { passive: true });
@@ -161,6 +167,7 @@ export default function App() {
     ambient.pause();
     ambient.currentTime = 0;
     ambient.muted = true;
+    setAmbientActive(false);
     return undefined;
   }, [currentScreen]);
 
@@ -456,6 +463,21 @@ export default function App() {
                 >
                   {CONFIG.ambientAttribution.source}
                 </a>
+              </p>
+            )}
+
+            {CONFIG.ambientAudioUrl && !ambientActive && (
+              <button
+                type="button"
+                className="tech-button-outline ambient-toggle"
+                onClick={startAmbient}
+              >
+                ACTIVAR_AMBIENTE
+              </button>
+            )}
+            {CONFIG.ambientAudioUrl && ambientActive && (
+              <p className="mt-3 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em]">
+                AMBIENTE_ACTIVO
               </p>
             )}
 

@@ -246,6 +246,13 @@ canvas {
   letter-spacing: 0.32em;
 }
 
+.ambient-toggle {
+  margin-top: 0.9rem;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+}
+
 .center-action {
   position: fixed;
   top: 50%;
