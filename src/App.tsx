@@ -466,19 +466,15 @@ export default function App() {
               </p>
             )}
 
-            {CONFIG.ambientAudioUrl && !ambientActive && (
+            {CONFIG.ambientAudioUrl && (
               <button
                 type="button"
                 className="tech-button-outline ambient-toggle"
                 onClick={startAmbient}
+                disabled={ambientActive}
               >
-                ACTIVAR_AMBIENTE
+                {ambientActive ? "AMBIENTE_ACTIVO" : "ACTIVAR_AMBIENTE"}
               </button>
-            )}
-            {CONFIG.ambientAudioUrl && ambientActive && (
-              <p className="mt-3 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em]">
-                AMBIENTE_ACTIVO
-              </p>
             )}
 
           </div>

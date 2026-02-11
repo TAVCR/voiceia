@@ -248,9 +248,15 @@ canvas {
 
 .ambient-toggle {
   margin-top: 0.9rem;
-  padding: 0.55rem 1.2rem;
-  font-size: 0.55rem;
-  letter-spacing: 0.35em;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  opacity: 0.9;
+}
+
+.ambient-toggle:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .center-action {
