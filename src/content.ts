@@ -72,6 +72,8 @@ export const COPY = {
     optionAI: "Voz Generada IA",
     buttonText: "Ver Resultados",
     pendingMessage: "Marca 3 selecciones para continuar",
+    revisitMessage:
+      "RE-EVALUACION_LIBRE: puedes volver a escuchar todos los audios sin restricciones",
   },
   screen3: {
     mainText: "TODAS LAS VOCES\nQUE ESCUCHASTE",

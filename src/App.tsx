@@ -194,6 +194,8 @@ export default function App() {
     .length;
 
   const canProceed = isAdmin || chosenCount >= 3;
+  const showResultsPrompt = canProceed && !hasReachedFinal;
+  const showRevisitMode = hasReachedFinal;
 
 
 
@@ -536,7 +538,7 @@ export default function App() {
 
 
 
-            {canProceed && (
+            {showResultsPrompt && (
 
               <>
 
@@ -574,7 +576,7 @@ export default function App() {
 
             <div className="mt-32 pt-20 pb-6 border-t border-white/10 text-center">
 
-              {!canProceed && !isAdmin && (
+              {!showResultsPrompt && !isAdmin && !showRevisitMode && (
 
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
 
@@ -584,6 +586,11 @@ export default function App() {
 
               )}
 
+              {showRevisitMode && (
+                <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
+                  {COPY.screen2.revisitMessage}
+                </p>
+              )}
               {isAdmin && (
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
                   MODO_ADMIN_ACTIVO - puedes avanzar sin marcar selecciones
