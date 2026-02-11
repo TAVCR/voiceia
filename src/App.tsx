@@ -128,15 +128,27 @@ export default function App() {
     if (!ambient || !CONFIG.ambientAudioUrl) return;
 
     if (currentScreen === 1) {
-      const tryPlay = () => {
-        ambient.play().catch(() => {});
+      let active = true;
+      const cleanup = () => {
+        window.removeEventListener("pointerdown", handleInteract);
+        window.removeEventListener("keydown", handleInteract);
       };
-      const handlePointer = () => {
-        tryPlay();
-        window.removeEventListener("pointerdown", handlePointer);
+      const handleInteract = () => {
+        if (!active) return;
+        const playPromise = ambient.play();
+        if (playPromise && typeof playPromise.then === "function") {
+          playPromise.then(() => {
+            if (!active) return;
+            cleanup();
+          }).catch(() => {});
+        }
       };
-      window.addEventListener("pointerdown", handlePointer);
-      return () => window.removeEventListener("pointerdown", handlePointer);
+      window.addEventListener("pointerdown", handleInteract);
+      window.addEventListener("keydown", handleInteract);
+      return () => {
+        active = false;
+        cleanup();
+      };
     }
 
     ambient.pause();
