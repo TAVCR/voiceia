@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 
 import AudioPlayer, { type AudioHandle } from "./components/AudioPlayer";
 
@@ -1078,7 +1078,7 @@ export default function App() {
 
             <div className="mb-10 text-center">
 
-              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] mb-6 title-accent">
+              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] mb-6 title-accent screen7-title">
 
                 {COPY.screen7.title}
 
@@ -1397,4 +1397,5 @@ export default function App() {
   );
 
 }
+
 
