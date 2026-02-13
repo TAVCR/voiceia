@@ -386,25 +386,28 @@ export default function App() {
             </button>
 
             {CONFIG.ambientAttribution && (
-              <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em]">
-                Music by{" "}
-                <a
-                  href={CONFIG.ambientAttribution.authorUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-tech-accent/80 hover:text-tech-accent"
-                >
-                  {CONFIG.ambientAttribution.author}
-                </a>{" "}
-                from{" "}
-                <a
-                  href={CONFIG.ambientAttribution.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-tech-accent/80 hover:text-tech-accent"
-                >
-                  {CONFIG.ambientAttribution.source}
-                </a>
+              <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em] attribution-stack">
+                <span className="attribution-line">
+                  Music by{" "}
+                  <a
+                    href={CONFIG.ambientAttribution.authorUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-tech-accent/80 hover:text-tech-accent"
+                  >
+                    {CONFIG.ambientAttribution.author}
+                  </a>
+                </span>
+                <span className="attribution-line attribution-line--source">
+                  <a
+                    href={CONFIG.ambientAttribution.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-tech-accent/80 hover:text-tech-accent"
+                  >
+                    {CONFIG.ambientAttribution.source}
+                  </a>
+                </span>
               </p>
             )}
 
@@ -643,7 +646,7 @@ export default function App() {
               <div className="logo-wordmark screen3-logo-wordmark">{LOGO_WORDMARK}</div>
             )}
 
-            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-70">
+            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-91">
               <span className="block text-white mb-6 screen3-main">
                 {COPY.screen3.mainText.split("\n").map((line) => (
                   <span key={line} className="block screen3-line screen3-line--main">
@@ -737,7 +740,7 @@ export default function App() {
 
             <div className="text-center mb-16">
 
-              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] title-accent mb-4 screen4-title title-factor-70">
+              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] title-accent mb-4 screen4-title title-factor-91">
 
                 {COPY.screen4.title}
 
@@ -861,7 +864,7 @@ export default function App() {
 
 
 
-            <h2 className="tech-title text-[clamp(3.2rem,8.5vw,7.5rem)] mb-10 text-white screen5-title title-factor-70">
+            <h2 className="tech-title text-[clamp(3.2rem,8.5vw,7.5rem)] mb-10 text-white screen5-title title-factor-91">
               <span className="screen5-title-line">{COPY.screen5.title1}</span>
               <span className="title-accent screen5-title-line">
                 {COPY.screen5.title2}

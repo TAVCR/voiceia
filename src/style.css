@@ -849,9 +849,9 @@ textarea {
   margin-right: auto;
 }
 
-/* Single source of truth for requested heading reduction/centering */
-.title-factor-70 {
-  transform: scale(0.7);
+/* Single source of truth for heading scaling/centering */
+.title-factor-70,
+.title-factor-91 {
   transform-origin: center top;
   width: 100%;
   text-align: center !important;
@@ -859,9 +859,19 @@ textarea {
   margin-right: auto;
 }
 
+.title-factor-70 {
+  transform: scale(0.7);
+}
+
+.title-factor-91 {
+  transform: scale(0.91);
+}
+
 .title-factor-70.screen3-title,
 .title-factor-70.screen5-title,
-.title-factor-70.screen6-title {
+.title-factor-70.screen6-title,
+.title-factor-91.screen3-title,
+.title-factor-91.screen5-title {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -871,10 +881,57 @@ textarea {
 .title-factor-70 .screen3-line--main,
 .title-factor-70 .screen3-line--accent,
 .title-factor-70 .screen5-title-line,
-.title-factor-70 .screen6-title-line {
+.title-factor-70 .screen6-title-line,
+.title-factor-91 .screen3-line,
+.title-factor-91 .screen3-line--main,
+.title-factor-91 .screen3-line--accent,
+.title-factor-91 .screen5-title-line {
   display: block !important;
   width: auto !important;
   text-align: center !important;
   margin-left: auto;
   margin-right: auto;
+}
+
+.screen6-title.title-factor-70 {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen6-title.title-factor-70 .screen6-title-line {
+  display: block !important;
+  width: auto !important;
+  text-align: center !important;
+}
+
+.screen8-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen8-title-line {
+  display: inline-block !important;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.attribution-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.attribution-line {
+  display: block;
+}
+
+.attribution-line--source {
+  padding-left: 9ch;
 }
