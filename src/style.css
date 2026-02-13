@@ -764,3 +764,80 @@ textarea {
     white-space: nowrap;
   }
 }
+
+/* Final heading normalization: force same scale/centering across desktop+mobile */
+.screen1-title {
+  font-size: clamp(1.54rem, 5.95vw, 6.3rem) !important;
+  text-align: center !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen1-title .nowrap-word {
+  display: block;
+  width: 100%;
+  text-align: center !important;
+}
+
+.screen2-title {
+  font-size: clamp(1.47rem, 4.34vw, 3.15rem) !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen3-title {
+  font-size: clamp(1.68rem, 4.62vw, 3.92rem) !important;
+  text-align: center !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen3-main {
+  font-size: clamp(1.68rem, 4.62vw, 3.92rem) !important;
+  text-align: center !important;
+}
+
+.screen3-accent {
+  font-size: clamp(1.82rem, 5.04vw, 4.34rem) !important;
+  text-align: center !important;
+}
+
+.screen3-line,
+.screen3-line--main,
+.screen3-line--accent {
+  width: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center !important;
+}
+
+.screen5-title {
+  font-size: clamp(2.24rem, 5.95vw, 5.25rem) !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen6-title {
+  font-size: clamp(2.1rem, 5.25vw, 4.2rem) !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen7-title {
+  font-size: clamp(1.54rem, 4.2vw, 3.15rem) !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen8-title {
+  font-size: clamp(1.44rem, 4.48vw, 2.77rem) !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}

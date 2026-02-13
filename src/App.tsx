@@ -338,7 +338,7 @@ export default function App() {
 
 
 
-            <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] mb-10 text-balance">
+            <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] mb-10 text-balance screen1-title">
 
               <span className="block text-white mb-4 nowrap-word">
 
