@@ -643,7 +643,7 @@ export default function App() {
               <div className="logo-wordmark screen3-logo-wordmark">{LOGO_WORDMARK}</div>
             )}
 
-            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title">
+            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-70">
               <span className="block text-white mb-6 screen3-main">
                 {COPY.screen3.mainText.split("\n").map((line) => (
                   <span key={line} className="block screen3-line screen3-line--main">
@@ -737,7 +737,7 @@ export default function App() {
 
             <div className="text-center mb-16">
 
-              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] title-accent mb-4 screen4-title">
+              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] title-accent mb-4 screen4-title title-factor-70">
 
                 {COPY.screen4.title}
 
@@ -861,7 +861,7 @@ export default function App() {
 
 
 
-            <h2 className="tech-title text-[clamp(3.2rem,8.5vw,7.5rem)] mb-10 text-white screen5-title">
+            <h2 className="tech-title text-[clamp(3.2rem,8.5vw,7.5rem)] mb-10 text-white screen5-title title-factor-70">
               <span className="screen5-title-line">{COPY.screen5.title1}</span>
               <span className="title-accent screen5-title-line">
                 {COPY.screen5.title2}
@@ -985,7 +985,7 @@ export default function App() {
 
           <div className="max-w-5xl mx-auto text-center">
 
-            <h2 className="tech-title text-[clamp(3rem,7.5vw,6rem)] mb-10 title-accent screen6-title">
+            <h2 className="tech-title text-[clamp(3rem,7.5vw,6rem)] mb-10 title-accent screen6-title title-factor-70">
               {COPY.screen6.title.split(" ").map((word) => (
                 <span key={word} className="screen6-title-line">
                   {word}
