@@ -1,4 +1,4 @@
-﻿export const LOGO_URL = "/logo-aivoxcr-cropped.png?v=2";
+﻿export const LOGO_URL = `${import.meta.env.BASE_URL}logo-aivoxcr-cropped.png?v=3`;
 
 export const LOGO_WORDMARK = "AIVOXCR.COM";
 
@@ -182,6 +182,7 @@ export const COPY = {
     footer: "Sistema Operativo / AIVOXCR.COM / 2026",
   },
 };
+
 
 
 
