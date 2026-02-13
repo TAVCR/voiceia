@@ -737,7 +737,7 @@ export default function App() {
 
             <div className="text-center mb-16">
 
-              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] title-accent mb-4">
+              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] title-accent mb-4 screen4-title">
 
                 {COPY.screen4.title}
 
@@ -1397,5 +1397,6 @@ export default function App() {
   );
 
 }
+
 
 
