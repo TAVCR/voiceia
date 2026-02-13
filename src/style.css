@@ -923,9 +923,12 @@ textarea {
 }
 
 .attribution-stack {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .attribution-line {
