@@ -1,9 +1,9 @@
-﻿export const LOGO_URL = "/logo-voxiacr-cropped.png?v=1";
+﻿export const LOGO_URL = "/logo-aivoxcr-cropped.png?v=1";
 
-export const LOGO_WORDMARK = "VOXIACR.COM";
+export const LOGO_WORDMARK = "AIVOXCR.COM";
 
 export const CONTACT = {
-  email: "voiceiacr@gmail.com",
+  email: "aivoxcr@gmail.com",
   whatsapp: "+506 85020909",
 };
 
@@ -160,7 +160,7 @@ export const COPY = {
     title2: "VOCAL",
     title3: "POTENCIADA",
     title4: "POR IA",
-    companyName: "VOXIACR.COM",
+    companyName: "AIVOXCR.COM",
     formTitle: "INICIAR_CONTACTO",
     formSubtitle: "Agenda una demostración / propuesta en 24h",
     formLabels: {
@@ -179,9 +179,10 @@ export const COPY = {
       success: "Transmisión_Exitosa",
       error: "Error_Reintentar",
     },
-    footer: "Sistema Operativo / VOXIACR.COM / 2026",
+    footer: "Sistema Operativo / AIVOXCR.COM / 2026",
   },
 };
+
 
 
 
