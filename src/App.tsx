@@ -4,7 +4,7 @@ import AudioPlayer, { type AudioHandle } from "./components/AudioPlayer";
 
 import useUiSound from "./hooks/useUiSound";
 
-import { ADMIN, CONFIG, CONTACT, COPY, LOGO_URL } from "./content";
+import { CONFIG, CONTACT, COPY, LOGO_URL, LOGO_WORDMARK } from "./content";
 
 
 
@@ -15,8 +15,6 @@ type Choice = "human" | "ai";
 export default function App() {
 
   const [currentScreen, setCurrentScreen] = useState(1);
-
-  const [isAdmin, setIsAdmin] = useState(false);
 
   const [hasReachedFinal, setHasReachedFinal] = useState(false);
 
@@ -31,7 +29,6 @@ export default function App() {
     null
 
   );
-  const [ambientActive, setAmbientActive] = useState(false);
 
   const ambientRef = useRef<HTMLAudioElement | null>(null);
   const audioRefs = useRef<Record<string | number, AudioHandle | null>>({});
@@ -44,131 +41,32 @@ export default function App() {
 
     : "";
 
-  const enableAdminAccess = () => {
-    const input = window.prompt("Codigo admin:");
-    if (!input) return;
-    if (input === ADMIN.code) {
-      window.localStorage.setItem("voices_admin", "1");
-      setIsAdmin(true);
-      window.alert("Modo admin activado");
-    } else {
-      window.alert("Codigo incorrecto");
-    }
-  };
-
-  const disableAdminAccess = () => {
-    window.localStorage.removeItem("voices_admin");
-    setIsAdmin(false);
-    window.alert("Modo admin desactivado");
-  };
-
-  const toggleAdminAccess = () => {
-    if (isAdmin) {
-      disableAdminAccess();
-      return;
-    }
-    enableAdminAccess();
-  };
-
   const startAmbient = () => {
     const ambient = ambientRef.current;
     if (!ambient || !CONFIG.ambientAudioUrl) return;
     ambient.muted = false;
     const playPromise = ambient.play();
     if (playPromise && typeof playPromise.then === "function") {
-      playPromise.then(() => setAmbientActive(true)).catch(() => {});
-    } else {
-      setAmbientActive(true);
+      playPromise.catch(() => {});
     }
   };
 
 
 
   useEffect(() => {
-
-    const stored = window.localStorage.getItem("voices_admin");
-
-    if (stored === "1") {
-
-      setIsAdmin(true);
-
-    }
-
-
-
-    const params = new URLSearchParams(window.location.search);
-
-    const adminParam = params.get("admin");
-
-    if (adminParam && adminParam === ADMIN.code) {
-
-      window.localStorage.setItem("voices_admin", "1");
-
-      setIsAdmin(true);
-
-    }
-
-
-
-    const handleKey = (event: KeyboardEvent) => {
-
-      if (event.ctrlKey && event.shiftKey && event.code === "KeyA") {
-
-        event.preventDefault();
-
-        toggleAdminAccess();
-
-      }
-
-    };
-
-
-
-    window.addEventListener("keydown", handleKey);
-
-    return () => window.removeEventListener("keydown", handleKey);
-
-  }, []);
-
-  useEffect(() => {
     const ambient = ambientRef.current;
     if (!ambient || !CONFIG.ambientAudioUrl) return;
     ambient.volume = 0.25;
     ambient.muted = true;
-    ambient.play().catch(() => {});
+    ambient.pause();
+    ambient.currentTime = 0;
   }, []);
 
   useEffect(() => {
-    const ambient = ambientRef.current;
-    if (!ambient || !CONFIG.ambientAudioUrl) return;
-
-    if (currentScreen === 1) {
-      let active = true;
-      const cleanup = () => {
-        window.removeEventListener("pointerdown", handleInteract);
-        window.removeEventListener("touchstart", handleInteract);
-        window.removeEventListener("click", handleInteract);
-        window.removeEventListener("keydown", handleInteract);
-      };
-      const handleInteract = () => {
-        if (!active) return;
-        startAmbient();
-      };
-      window.addEventListener("pointerdown", handleInteract);
-      window.addEventListener("touchstart", handleInteract, { passive: true });
-      window.addEventListener("click", handleInteract);
-      window.addEventListener("keydown", handleInteract);
-      return () => {
-        active = false;
-        cleanup();
-      };
+    if (!CONFIG.ambientAudioUrl) return;
+    if (currentScreen >= 3 && currentScreen <= 8) {
+      startAmbient();
     }
-
-    ambient.pause();
-    ambient.currentTime = 0;
-    ambient.muted = true;
-    setAmbientActive(false);
-    return undefined;
   }, [currentScreen]);
 
 
@@ -217,6 +115,12 @@ export default function App() {
 
     });
 
+    const ambient = ambientRef.current;
+    if (ambient) {
+      ambient.pause();
+      ambient.muted = true;
+    }
+
 
   };
 
@@ -248,7 +152,7 @@ export default function App() {
 
     .length;
 
-  const canProceed = isAdmin || chosenCount >= 3;
+  const canProceed = chosenCount >= 3;
   const showResultsPrompt = canProceed && !hasReachedFinal;
   const showRevisitMode = hasReachedFinal;
 
@@ -260,7 +164,7 @@ export default function App() {
 
       sound.revelation();
 
-      const timer = setTimeout(() => setShowSecondary(true), 1500);
+      const timer = setTimeout(() => setShowSecondary(true), 2200);
 
       return () => clearTimeout(timer);
 
@@ -336,6 +240,31 @@ export default function App() {
 
   };
 
+  const handleExperienceEnd = () => {
+    sound.shutdown();
+
+    Object.values(audioRefs.current).forEach((handle) => {
+      handle?.pause();
+    });
+
+    const ambient = ambientRef.current;
+    if (ambient) {
+      ambient.pause();
+      ambient.currentTime = 0;
+      ambient.muted = true;
+    }
+
+    window.setTimeout(() => {
+      setUserChoices({});
+      setShowSecondary(false);
+      setSubmitStatus(null);
+      setIsSubmitting(false);
+      setHasReachedFinal(false);
+      setCurrentScreen(1);
+      window.scrollTo(0, 0);
+    }, 520);
+  };
+
 
 
   return (
@@ -346,16 +275,6 @@ export default function App() {
       {CONFIG.ambientAudioUrl && (
         <audio ref={ambientRef} src={CONFIG.ambientAudioUrl} loop preload="auto" playsInline />
       )}
-
-      {isAdmin && <div className="admin-indicator">ADMIN_MODE</div>}
-
-      <button
-        type="button"
-        className="admin-trigger"
-        onClick={toggleAdminAccess}
-      >
-        {isAdmin ? "SALIR_ADMIN" : "ADMIN"}
-      </button>
 
       {hasReachedFinal && currentScreen > 2 && (
 
@@ -384,6 +303,18 @@ export default function App() {
           aria-label="Adelante"
         >
           ADELANTE
+        </button>
+      )}
+
+      {currentScreen === 8 && (
+        <button
+          type="button"
+          className="back-arrow poweroff-corner"
+          onClick={handleExperienceEnd}
+          aria-label="Fin de la experiencia"
+          title="Fin de la experiencia"
+        >
+          FIN
         </button>
       )}
 
@@ -440,6 +371,7 @@ export default function App() {
               onClick={() => {
 
                 sound.clickMain();
+                startAmbient();
 
                 nextScreen();
 
@@ -476,15 +408,10 @@ export default function App() {
               </p>
             )}
 
-            {CONFIG.ambientAudioUrl && (
-              <button
-                type="button"
-                className="tech-button-outline ambient-toggle"
-                onClick={startAmbient}
-                disabled={ambientActive}
-              >
-                {ambientActive ? "AMBIENTE_ACTIVO" : "ACTIVAR_AMBIENTE"}
-              </button>
+            {LOGO_URL ? (
+              <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen1-logo" />
+            ) : (
+              <div className="logo-wordmark screen1-logo-wordmark">{LOGO_WORDMARK}</div>
             )}
 
           </div>
@@ -681,7 +608,7 @@ export default function App() {
 
             <div className="mt-32 pt-20 pb-6 border-t border-white/10 text-center">
 
-              {!showResultsPrompt && !isAdmin && !showRevisitMode && (
+              {!showResultsPrompt && !showRevisitMode && (
 
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
 
@@ -694,11 +621,6 @@ export default function App() {
               {showRevisitMode && (
                 <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
                   {COPY.screen2.revisitMessage}
-                </p>
-              )}
-              {isAdmin && (
-                <p className="text-xs text-tech-dim mt-4 uppercase tracking-wide">
-                  MODO_ADMIN_ACTIVO - puedes avanzar sin marcar selecciones
                 </p>
               )}
 
@@ -715,6 +637,11 @@ export default function App() {
       {currentScreen === 3 && (
         <section className="screen-container screen-center">
           <div className="max-w-4xl mx-auto text-center">
+            {LOGO_URL ? (
+              <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen3-logo" />
+            ) : (
+              <div className="logo-wordmark screen3-logo-wordmark">{LOGO_WORDMARK}</div>
+            )}
 
             <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title">
               <span className="block text-white mb-6 screen3-main">
@@ -924,11 +851,11 @@ export default function App() {
 
             <div className="mb-12">
 
-              <span className="text-[clamp(1rem,2.4vw,1.3rem)] text-tech-accent tracking-[0.45em] opacity-70">
-
-                {COPY.screen5.tagline}
-
-              </span>
+              {LOGO_URL ? (
+                <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen5-logo" />
+              ) : (
+                <div className="logo-wordmark screen5-logo-wordmark">{LOGO_WORDMARK}</div>
+              )}
 
             </div>
 
@@ -1241,29 +1168,39 @@ export default function App() {
 
             <div className="mb-12">
 
-              <div className="logo-container logo-container--xl mb-10">
+              <div className="mb-10">
 
-                <img src={LOGO_URL} alt="Dimension Interactiva" />
+                {LOGO_URL ? (
+                  <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen8-logo" />
+                ) : (
+                  <div className="logo-wordmark screen8-logo-wordmark">{LOGO_WORDMARK}</div>
+                )}
 
               </div>
 
 
 
-              <h1 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] mb-6">
+              <h1 className="tech-title screen8-title mb-6">
 
-                <span className="block text-white mb-2">
+                <span className="block text-white mb-2 screen8-title-line">
 
                   {COPY.screen8.title1}
 
                 </span>
 
-                <span className="block title-accent">
+                <span className="block text-white mb-2 screen8-title-line">
 
                   {COPY.screen8.title2}
 
                 </span>
 
-                <span className="block text-white">{COPY.screen8.title3}</span>
+                <span className="block title-accent mb-2 screen8-title-line">
+                  {COPY.screen8.title3}
+                </span>
+
+                <span className="block text-white screen8-title-line">
+                  {COPY.screen8.title4}
+                </span>
 
               </h1>
 

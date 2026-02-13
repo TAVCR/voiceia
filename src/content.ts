@@ -1,13 +1,10 @@
-﻿export const LOGO_URL =
-  "https://i.postimg.cc/BvBjJLbV/Soluciones_Digitales_Creativas_(1).png";
+﻿export const LOGO_URL = "/logo-voxiacr-cropped.png?v=1";
+
+export const LOGO_WORDMARK = "VOXIACR.COM";
 
 export const CONTACT = {
-  email: "dimension.interactiva@gmail.com",
+  email: "voiceiacr@gmail.com",
   whatsapp: "+506 85020909",
-};
-
-export const ADMIN = {
-  code: "DI-2026",
 };
 
 export const CONFIG = {
@@ -141,7 +138,7 @@ export const COPY = {
       "Dirección vocal",
     ],
     description:
-      "Donde el talento humano encuentra la innovación: Creamos voces dirigidas combinando la emoción del actor con la versatilidad de la síntesis por IA.",
+      "Donde el talento humano encuentra la innovación: No es menos actuación. Es control total del personaje.",
     buttonText: "Continuar",
   },
   screen6: {
@@ -159,10 +156,11 @@ export const COPY = {
     buttonText: "IR_AL_CIERRE",
   },
   screen8: {
-    title1: "PRODUCCIÓN DE",
-    title2: "VOCES HUMANAS",
-    title3: "DIRIGIDAS PARA IA",
-    companyName: "Dimensión Interactiva",
+    title1: "INTERPRETACIÓN",
+    title2: "VOCAL",
+    title3: "POTENCIADA",
+    title4: "POR IA",
+    companyName: "VOXIACR.COM",
     formTitle: "INICIAR_CONTACTO",
     formSubtitle: "Agenda una demostración / propuesta en 24h",
     formLabels: {
@@ -181,6 +179,13 @@ export const COPY = {
       success: "Transmisión_Exitosa",
       error: "Error_Reintentar",
     },
-    footer: "Sistema Operativo / Dimensión Interactiva / 2026",
+    footer: "Sistema Operativo / VOXIACR.COM / 2026",
   },
 };
+
+
+
+
+
+
+

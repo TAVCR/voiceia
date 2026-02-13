@@ -71,6 +71,36 @@ export default function useUiSound() {
     [ensureContext]
   );
 
+  const shutdown = useCallback(() => {
+    const ctx = ensureContext();
+    const now = ctx.currentTime;
+
+    // Descending "power off" beep.
+    const oscA = ctx.createOscillator();
+    const gainA = ctx.createGain();
+    oscA.type = "square";
+    oscA.frequency.setValueAtTime(920, now);
+    oscA.frequency.exponentialRampToValueAtTime(180, now + 0.28);
+    gainA.gain.setValueAtTime(0.055, now);
+    gainA.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+    oscA.connect(gainA);
+    gainA.connect(ctx.destination);
+    oscA.start(now);
+    oscA.stop(now + 0.28);
+
+    const oscB = ctx.createOscillator();
+    const gainB = ctx.createGain();
+    oscB.type = "triangle";
+    oscB.frequency.setValueAtTime(170, now + 0.3);
+    oscB.frequency.exponentialRampToValueAtTime(95, now + 0.52);
+    gainB.gain.setValueAtTime(0.03, now + 0.3);
+    gainB.gain.exponentialRampToValueAtTime(0.001, now + 0.52);
+    oscB.connect(gainB);
+    gainB.connect(ctx.destination);
+    oscB.start(now + 0.3);
+    oscB.stop(now + 0.52);
+  }, [ensureContext]);
+
   return {
     hover: () => playTone("hover"),
     clickMain: () => playTone("clickMain"),
@@ -78,5 +108,6 @@ export default function useUiSound() {
     switchScreen: () => playTone("switchScreen"),
     success: () => playTone("success"),
     revelation: () => playTone("revelation"),
+    shutdown,
   };
 }
