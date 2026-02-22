@@ -1,6 +1,20 @@
 ﻿<!doctype html>
 <html lang="es">
   <head>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1432955778486112');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AIVOXCR | Interpretación Vocal Potenciada por IA</title>
@@ -95,8 +109,28 @@
     />
   </head>
   <body>
+    <!-- Meta Pixel (noscript) -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1432955778486112&ev=PageView&noscript=1"/>
+    </noscript>
     <div id="app"></div>
     <noscript>Esta experiencia requiere JavaScript para funcionar correctamente.</noscript>
+    <!-- WhatsApp Click Tracking (Meta: Contact) -->
+    <script>
+      document.addEventListener("click", function (e) {
+        const link = e.target.closest("a");
+        if (!link) return;
+
+        const url = link.href || "";
+        if (url.includes("api.whatsapp.com") || url.includes("wa.me")) {
+          if (typeof fbq === "function") {
+            fbq("track", "Contact");
+            console.log("Meta Pixel: Contact (WhatsApp click) enviado");
+          }
+        }
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
