@@ -69,10 +69,7 @@ export const COPY = {
     title2: "DISTINGUIR?",
     introLines: [
       "Las voces generadas por IA ya forman parte de nuestro día a día.",
-      "Algunos las adoptan. Otros las cuestionan. Pero ignorarlas ya no es una opción.",
-      "La verdadera pregunta no es si reemplazan algo... sino cómo se integran.",
-      "¿Y si existiera una alternativa que combine lo mejor de ambos mundos?",
-      "Actuación 100% humana, potenciada con tecnología para expandir su alcance.",
+      "¿Y si en lugar de debatir si nos reemplazarán, las integráramos?",
       "En Aivoxcr.com buscamos reconciliar el talento real con la innovación.",
       "¿Te atreves a descubrir si puedes distinguir entre lo completamente humano y lo humano potenciado?",
     ],
