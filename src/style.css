@@ -737,6 +737,15 @@ textarea {
     font-size: clamp(1.2rem, 5.28vw, 1.392rem);
   }
 
+  .screen5-contact-links a {
+    width: min(100%, 360px);
+    min-width: 0;
+    font-size: clamp(1rem, 4.4vw, 1.16rem);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    padding: 0.8rem 1rem;
+  }
+
   .tech-button-primary,
   .tech-button-outline,
   .choice-button {

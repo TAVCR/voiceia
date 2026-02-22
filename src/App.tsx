@@ -969,7 +969,7 @@ export default function App() {
 
               <>
 
-                <div className="contact-offset flex flex-wrap gap-10 justify-center text-white contact-links contact-links--large contact-links--fit">
+                <div className="contact-offset flex flex-wrap gap-10 justify-center text-white contact-links contact-links--large contact-links--fit screen5-contact-links">
 
                   {CONTACT.email && (
 
