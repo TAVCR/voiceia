@@ -788,6 +788,24 @@ textarea {
     font-size: clamp(1.2rem, 5.28vw, 1.392rem);
   }
 
+  .screen1-contact-links a,
+  .screen5-contact-links.contact-links--fit a,
+  .screen8-contact-links.contact-links--fit a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .screen1-contact-links .whatsapp-link,
+  .screen5-contact-links .whatsapp-link,
+  .screen8-contact-links .whatsapp-link {
+    letter-spacing: 0.01em;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
   .back-arrow,
   .forward-arrow {
     letter-spacing: 0.2em;
