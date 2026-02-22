@@ -408,6 +408,36 @@ canvas {
   margin-top: 1rem;
 }
 
+.screen1-intro {
+  max-width: min(92vw, 980px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(1.1rem, 2.2vw, 2rem);
+  text-align: left;
+}
+
+.screen1-intro-line {
+  margin: 0;
+  color: #c9d0db;
+  font-size: clamp(0.92rem, 1.85vw, 1.2rem);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.screen1-intro-line + .screen1-intro-line {
+  margin-top: 0.85rem;
+}
+
+.screen1-intro-line--question {
+  color: var(--tech-accent);
+  text-shadow: 0 0 18px rgba(0, 242, 255, 0.28);
+}
+
+.screen1-contact-links a {
+  font-size: clamp(0.62rem, 1.35vw, 0.85rem);
+  letter-spacing: 0.08em;
+}
+
 .screen3-logo {
   display: block;
   height: clamp(91px, 14vw, 175px);
@@ -653,6 +683,10 @@ textarea {
   .tech-title {
     line-height: 1;
     letter-spacing: -0.01em;
+  }
+
+  .screen1-intro {
+    text-align: left;
   }
 
   .tech-button-primary,

@@ -356,11 +356,20 @@ export default function App() {
 
 
 
-            <p className="text-[clamp(1rem,2.2vw,1.6rem)] text-zinc-400 mb-14 max-w-3xl mx-auto leading-relaxed uppercase tracking-wide whitespace-pre-line">
-
-              {COPY.screen1.subtitle}
-
-            </p>
+            <div className="tech-box screen1-intro mb-12 md:mb-14">
+              {COPY.screen1.introLines.map((line, index) => (
+                <p
+                  key={line}
+                  className={`screen1-intro-line ${
+                    index === COPY.screen1.introLines.length - 1
+                      ? "screen1-intro-line--question"
+                      : ""
+                  }`}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
 
 
 
@@ -415,6 +424,27 @@ export default function App() {
               <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen1-logo" />
             ) : (
               <div className="logo-wordmark screen1-logo-wordmark">{LOGO_WORDMARK}</div>
+            )}
+
+            {(CONTACT.email || CONTACT.whatsapp) && (
+              <div className="mt-8 flex flex-wrap gap-4 justify-center text-xs tracking-[0.15em] text-white contact-links contact-links--fit screen1-contact-links">
+                {CONTACT.email && (
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    className="border border-white/60 px-4 py-2 text-white"
+                  >
+                    {CONTACT.email}
+                  </a>
+                )}
+                {CONTACT.whatsapp && (
+                  <a
+                    href={`https://wa.me/${whatsappLink}`}
+                    className="border border-white/60 px-4 py-2 text-white whatsapp-link"
+                  >
+                    WhatsApp {CONTACT.whatsapp}
+                  </a>
+                )}
+              </div>
             )}
 
           </div>

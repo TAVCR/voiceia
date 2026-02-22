@@ -67,9 +67,16 @@ export const COPY = {
     tagline: "INICIO PROTOCOLO EVALUACIÓN",
     title1: "¿PUEDES",
     title2: "DISTINGUIR?",
-    subtitle:
-      "Voz humana vs voz generada por IA.\nUna prueba que desafía tu capacidad de percepción.",
-    buttonText: "Comenzar_Prueba",
+    introLines: [
+      "Las voces generadas por IA ya forman parte de nuestro día a día.",
+      "Algunos las adoptan. Otros las cuestionan. Pero ignorarlas ya no es una opción.",
+      "La verdadera pregunta no es si reemplazan algo... sino cómo se integran.",
+      "¿Y si existiera una alternativa que combine lo mejor de ambos mundos?",
+      "Actuación 100% humana, potenciada con tecnología para expandir su alcance.",
+      "En Aivoxcr.com buscamos reconciliar el talento real con la innovación.",
+      "¿Te atreves a descubrir si puedes distinguir entre lo completamente humano y lo humano potenciado?",
+    ],
+    buttonText: "Haz el test.",
   },
   screen2: {
     title: "EVALUACIÓN AUDITIVA",
