@@ -1386,7 +1386,7 @@ export default function App() {
 
 
             {(CONTACT.email || CONTACT.whatsapp) && (
-              <div className="mt-6 flex flex-wrap gap-10 justify-center text-xs tracking-[0.15em] text-white contact-links contact-links--fit">
+              <div className="mt-6 flex flex-wrap gap-10 justify-center text-xs tracking-[0.15em] text-white contact-links contact-links--fit screen8-contact-links">
 
                 {CONTACT.email && (
 
