@@ -727,8 +727,9 @@ textarea {
   .screen1-contact-links a {
     width: min(100%, 360px);
     min-width: 0;
-    font-size: clamp(0.78rem, 3.3vw, 1rem);
-    letter-spacing: 0.04em;
+    font-size: clamp(0.88rem, 3.8vw, 1.08rem);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
     padding: 0.75rem 1rem;
   }
 
