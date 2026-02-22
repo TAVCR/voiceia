@@ -775,6 +775,19 @@ textarea {
     max-width: 100%;
 }
 
+  .screen5-contact-links.contact-links--fit a,
+  .screen8-contact-links.contact-links--fit a {
+    font-size: clamp(1rem, 4.4vw, 1.16rem);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    padding: 0.8rem 1rem;
+  }
+
+  .screen5-contact-links.contact-links--fit a.screen1-contact-email,
+  .screen8-contact-links.contact-links--fit a.screen1-contact-email {
+    font-size: clamp(1.2rem, 5.28vw, 1.392rem);
+  }
+
   .back-arrow,
   .forward-arrow {
     letter-spacing: 0.2em;
