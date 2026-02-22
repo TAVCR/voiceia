@@ -436,7 +436,7 @@ export default function App() {
                 {CONTACT.email && (
                   <a
                     href={`mailto:${CONTACT.email}`}
-                    className="border border-white/60 px-4 py-2 text-white"
+                    className="border border-white/60 px-4 py-2 text-white screen1-contact-email"
                   >
                     {CONTACT.email}
                   </a>

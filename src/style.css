@@ -733,6 +733,10 @@ textarea {
     padding: 0.8rem 1rem;
   }
 
+  .screen1-contact-links .screen1-contact-email {
+    font-size: clamp(1.2rem, 5.28vw, 1.392rem);
+  }
+
   .tech-button-primary,
   .tech-button-outline,
   .choice-button {
