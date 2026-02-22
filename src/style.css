@@ -11,6 +11,11 @@
   color-scheme: dark;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 * {
   box-sizing: border-box;
   min-width: 0;
@@ -774,6 +779,13 @@ textarea {
     padding: 0.4rem 0.85rem;
     max-width: 100%;
 }
+
+  .screen1-contact-links .whatsapp-link,
+  .screen5-contact-links .whatsapp-link,
+  .screen8-contact-links .whatsapp-link {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 
   .screen5-contact-links.contact-links--fit a,
   .screen8-contact-links.contact-links--fit a {
