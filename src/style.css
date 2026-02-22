@@ -426,6 +426,10 @@ canvas {
   text-align: left;
 }
 
+.screen1-equal-gap {
+  margin-bottom: clamp(2rem, 4.2vh, 3rem);
+}
+
 .screen1-intro-line {
   margin: 0;
   color: #c9d0db;
@@ -456,7 +460,7 @@ canvas {
 }
 
 .screen1-cta {
-  margin-top: 0.2rem;
+  margin-top: 0;
 }
 
 .screen3-logo {

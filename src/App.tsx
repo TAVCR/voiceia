@@ -349,7 +349,7 @@ export default function App() {
 
 
 
-            <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] mb-10 text-balance screen1-title">
+            <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] text-balance screen1-title screen1-equal-gap">
 
               <span className="block text-white mb-4 nowrap-word">
 
@@ -367,7 +367,7 @@ export default function App() {
 
 
 
-            <div className="tech-box screen1-intro mb-16 md:mb-20">
+            <div className="tech-box screen1-intro screen1-equal-gap">
               {COPY.screen1.introLines.map((line, index) => (
                 <p
                   key={line}
