@@ -325,8 +325,19 @@ export default function App() {
         <section className="screen-container">
 
           <div className="max-w-6xl mx-auto text-center">
+            {LOGO_URL ? (
+              <img
+                src={LOGO_URL}
+                alt={LOGO_WORDMARK}
+                className="screen1-logo screen1-logo--entry"
+              />
+            ) : (
+              <div className="logo-wordmark screen1-logo-wordmark screen1-logo-wordmark--entry">
+                {LOGO_WORDMARK}
+              </div>
+            )}
 
-            <div className="mb-10 md:mb-14">
+            <div className="mb-8 md:mb-10">
 
               <span className="text-xs text-tech-accent tracking-[0.4em] opacity-50">
 
@@ -356,7 +367,7 @@ export default function App() {
 
 
 
-            <div className="tech-box screen1-intro mb-12 md:mb-14">
+            <div className="tech-box screen1-intro mb-16 md:mb-20">
               {COPY.screen1.introLines.map((line, index) => (
                 <p
                   key={line}
@@ -375,7 +386,7 @@ export default function App() {
 
             <button
 
-              className="tech-button-primary"
+              className="tech-button-primary screen1-cta"
 
               onClick={() => {
 
@@ -420,14 +431,8 @@ export default function App() {
               </p>
             )}
 
-            {LOGO_URL ? (
-              <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen1-logo" />
-            ) : (
-              <div className="logo-wordmark screen1-logo-wordmark">{LOGO_WORDMARK}</div>
-            )}
-
             {(CONTACT.email || CONTACT.whatsapp) && (
-              <div className="mt-8 flex flex-wrap gap-4 justify-center text-xs tracking-[0.15em] text-white contact-links contact-links--fit screen1-contact-links">
+              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center text-xs tracking-[0.15em] text-white contact-links screen1-contact-links">
                 {CONTACT.email && (
                   <a
                     href={`mailto:${CONTACT.email}`}

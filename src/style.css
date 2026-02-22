@@ -402,10 +402,20 @@ canvas {
   object-fit: contain;
 }
 
+.screen1-logo--entry {
+  height: clamp(100px, 14.2vw, 180px);
+  margin: 0 auto clamp(1rem, 2.6vh, 1.8rem);
+}
+
 .screen1-logo-wordmark {
   font-size: clamp(1.2rem, 3.2vw, 2.2rem);
   letter-spacing: 0.18em;
   margin-top: 1rem;
+}
+
+.screen1-logo-wordmark--entry {
+  margin-top: 0;
+  margin-bottom: clamp(1rem, 2.6vh, 1.8rem);
 }
 
 .screen1-intro {
@@ -434,8 +444,19 @@ canvas {
 }
 
 .screen1-contact-links a {
-  font-size: clamp(0.62rem, 1.35vw, 0.85rem);
+  font-size: clamp(0.74rem, 1.6vw, 0.98rem);
   letter-spacing: 0.08em;
+  padding: 0.7rem 1.3rem;
+  min-width: clamp(220px, 27vw, 300px);
+  text-align: center;
+}
+
+.screen1-contact-links {
+  gap: clamp(0.8rem, 2.2vw, 1.4rem);
+}
+
+.screen1-cta {
+  margin-top: 0.2rem;
 }
 
 .screen3-logo {
@@ -687,6 +708,24 @@ textarea {
 
   .screen1-intro {
     text-align: left;
+  }
+
+  .screen1-logo--entry {
+    height: clamp(92px, 28vw, 142px);
+    margin-bottom: 0.9rem;
+  }
+
+  .screen1-contact-links {
+    width: 100%;
+    gap: 0.85rem;
+  }
+
+  .screen1-contact-links a {
+    width: min(100%, 360px);
+    min-width: 0;
+    font-size: clamp(0.78rem, 3.3vw, 1rem);
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1rem;
   }
 
   .tech-button-primary,
