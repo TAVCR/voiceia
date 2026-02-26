@@ -4,7 +4,14 @@ import AudioPlayer, { type AudioHandle } from "./components/AudioPlayer";
 
 import useUiSound from "./hooks/useUiSound";
 
-import { CONFIG, CONTACT, COPY, LOGO_URL, LOGO_WORDMARK } from "./content";
+import {
+  CONFIG,
+  CONTACT,
+  COPY,
+  LOGO_URL,
+  LOGO_WORDMARK,
+  PRICING_STRATEGY,
+} from "./content";
 
 
 
@@ -29,6 +36,7 @@ export default function App() {
     null
 
   );
+  const [showPricingTab, setShowPricingTab] = useState(false);
 
   const ambientRef = useRef<HTMLAudioElement | null>(null);
   const audioRefs = useRef<Record<string | number, AudioHandle | null>>({});
@@ -40,6 +48,15 @@ export default function App() {
     ? CONTACT.whatsapp.replace(/\D/g, "")
 
     : "";
+  const seoLinks = [
+    { href: "/voces-humanas-potenciadas-ia.html", label: "Voces humanas + IA" },
+    { href: "/voces-ia-potenciadas-por-humanos.html", label: "IA + humanos" },
+    { href: "/voces-ia-que-hablan-como-humanos.html", label: "Naturalidad vocal" },
+    { href: "/ventajas-produccion-vocal-ia.html", label: "Ventajas del servicio" },
+    { href: "/asi-lo-hacemos-proceso-vocal-ia.html", label: "Así lo hacemos" },
+  ];
+  const pricingTabLabel = "Estrategia de precios";
+  const LAST_SCREEN = 7;
 
   const startAmbient = () => {
     const ambient = ambientRef.current;
@@ -49,6 +66,16 @@ export default function App() {
     if (playPromise && typeof playPromise.then === "function") {
       playPromise.catch(() => {});
     }
+  };
+
+  const openPricingTab = () => {
+    sound.clickSoft();
+    setShowPricingTab(true);
+  };
+
+  const closePricingTab = () => {
+    sound.clickSoft();
+    setShowPricingTab(false);
   };
 
 
@@ -64,7 +91,7 @@ export default function App() {
 
   useEffect(() => {
     if (!CONFIG.ambientAudioUrl) return;
-    if (currentScreen >= 3 && currentScreen <= 8) {
+    if (currentScreen >= 3 && currentScreen <= LAST_SCREEN) {
       startAmbient();
     }
   }, [currentScreen]);
@@ -75,7 +102,7 @@ export default function App() {
 
     sound.switchScreen();
 
-    setCurrentScreen((prev) => Math.min(prev + 1, 8));
+    setCurrentScreen((prev) => Math.min(prev + 1, LAST_SCREEN));
 
     window.scrollTo(0, 0);
 
@@ -170,7 +197,7 @@ export default function App() {
 
     }
 
-    if (currentScreen === 8) {
+    if (currentScreen === LAST_SCREEN) {
 
       setHasReachedFinal(true);
 
@@ -181,6 +208,17 @@ export default function App() {
     return undefined;
 
   }, [currentScreen, sound]);
+
+  useEffect(() => {
+    if (!showPricingTab) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowPricingTab(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [showPricingTab]);
 
 
 
@@ -257,6 +295,7 @@ export default function App() {
     window.setTimeout(() => {
       setUserChoices({});
       setShowSecondary(false);
+      setShowPricingTab(false);
       setSubmitStatus(null);
       setIsSubmitting(false);
       setHasReachedFinal(false);
@@ -295,7 +334,7 @@ export default function App() {
         </button>
 
       )}
-      {hasReachedFinal && currentScreen >= 2 && currentScreen < 8 && (
+      {hasReachedFinal && currentScreen >= 2 && currentScreen < LAST_SCREEN && (
         <button
           type="button"
           className="forward-arrow"
@@ -306,7 +345,7 @@ export default function App() {
         </button>
       )}
 
-      {currentScreen === 8 && (
+      {currentScreen === LAST_SCREEN && (
         <button
           type="button"
           className="back-arrow poweroff-corner"
@@ -316,6 +355,210 @@ export default function App() {
         >
           FIN
         </button>
+      )}
+
+      {showPricingTab && (
+        <div
+          className="pricing-tab-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={pricingTabLabel}
+          onClick={(event) => {
+            if (event.currentTarget === event.target) {
+              setShowPricingTab(false);
+            }
+          }}
+        >
+          <div className="pricing-tab-panel">
+            <div className="pricing-tab-header">
+              <div>
+                <p className="pricing-tab-meta">{PRICING_STRATEGY.meta}</p>
+                <h2 className="pricing-tab-title">{PRICING_STRATEGY.title}</h2>
+                <p className="pricing-tab-subtitle">{PRICING_STRATEGY.subtitle}</p>
+              </div>
+              <button
+                type="button"
+                className="pricing-tab-close"
+                onClick={closePricingTab}
+              >
+                Cerrar
+              </button>
+            </div>
+
+            <div className="pricing-tab-content">
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">Propuesta de valor</h3>
+                <p className="pricing-tab-copy">{PRICING_STRATEGY.valueProposition}</p>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">{PRICING_STRATEGY.baseRates.title}</h3>
+                <p className="pricing-tab-note">{PRICING_STRATEGY.baseRates.note}</p>
+                <div className="pricing-tab-table-wrap">
+                  <table className="pricing-tab-table">
+                    <thead>
+                      <tr>
+                        {PRICING_STRATEGY.baseRates.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_STRATEGY.baseRates.rows.map((row) => (
+                        <tr key={row.join("_")}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={`${cell}_${cellIndex}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">
+                  {PRICING_STRATEGY.multipleCharacters.title}
+                </h3>
+                <p className="pricing-tab-note">{PRICING_STRATEGY.multipleCharacters.note}</p>
+                <div className="pricing-tab-table-wrap">
+                  <table className="pricing-tab-table">
+                    <thead>
+                      <tr>
+                        {PRICING_STRATEGY.multipleCharacters.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_STRATEGY.multipleCharacters.rows.map((row) => (
+                        <tr key={row.join("_")}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={`${cell}_${cellIndex}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="pricing-tab-note">{PRICING_STRATEGY.multipleCharacters.discounts}</p>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">{PRICING_STRATEGY.complexity.title}</h3>
+                <div className="pricing-tab-table-wrap">
+                  <table className="pricing-tab-table">
+                    <thead>
+                      <tr>
+                        {PRICING_STRATEGY.complexity.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_STRATEGY.complexity.rows.map((row) => (
+                        <tr key={row.join("_")}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={`${cell}_${cellIndex}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">{PRICING_STRATEGY.postProduction.title}</h3>
+                <div className="pricing-tab-table-wrap">
+                  <table className="pricing-tab-table">
+                    <thead>
+                      <tr>
+                        {PRICING_STRATEGY.postProduction.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_STRATEGY.postProduction.rows.map((row) => (
+                        <tr key={row.join("_")}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={`${cell}_${cellIndex}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="pricing-tab-note">{PRICING_STRATEGY.postProduction.note}</p>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">{PRICING_STRATEGY.tts.title}</h3>
+                <p className="pricing-tab-copy">{PRICING_STRATEGY.tts.description}</p>
+                <p className="pricing-tab-highlight">{PRICING_STRATEGY.tts.rate}</p>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">{PRICING_STRATEGY.monthlyPlans.title}</h3>
+                <div className="pricing-tab-table-wrap">
+                  <table className="pricing-tab-table">
+                    <thead>
+                      <tr>
+                        {PRICING_STRATEGY.monthlyPlans.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_STRATEGY.monthlyPlans.rows.map((row) => (
+                        <tr key={row.join("_")}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={`${cell}_${cellIndex}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">{PRICING_STRATEGY.revisions.title}</h3>
+                <div className="pricing-tab-table-wrap">
+                  <table className="pricing-tab-table">
+                    <thead>
+                      <tr>
+                        {PRICING_STRATEGY.revisions.columns.map((column) => (
+                          <th key={column}>{column}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_STRATEGY.revisions.rows.map((row) => (
+                        <tr key={row.join("_")}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={`${cell}_${cellIndex}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="pricing-tab-note">{PRICING_STRATEGY.revisions.note}</p>
+              </section>
+
+              <section className="tech-box pricing-tab-block">
+                <h3 className="pricing-tab-section-title">7. Condiciones Generales</h3>
+                <ul className="pricing-tab-list">
+                  {PRICING_STRATEGY.conditions.map((condition) => (
+                    <li key={condition}>{condition}</li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
       )}
 
 
@@ -431,26 +674,18 @@ export default function App() {
               </p>
             )}
 
-            {(CONTACT.email || CONTACT.whatsapp) && (
-              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center text-xs tracking-[0.15em] text-white contact-links screen1-contact-links">
-                {CONTACT.email && (
-                  <a
-                    href={`mailto:${CONTACT.email}`}
-                    className="border border-white/60 px-4 py-2 text-white screen1-contact-email"
-                  >
-                    {CONTACT.email}
+            <div className="screen1-seo-links-wrap">
+              <p className="screen1-seo-links-title">
+                Si prefieres conocer el servicio antes del test:
+              </p>
+              <div className="screen1-seo-links">
+                {seoLinks.map((link) => (
+                  <a key={link.href} href={link.href} className="screen1-seo-link">
+                    {link.label}
                   </a>
-                )}
-                {CONTACT.whatsapp && (
-                  <a
-                    href={`https://wa.me/${whatsappLink}`}
-                    className="border border-white/60 px-4 py-2 text-white whatsapp-link"
-                  >
-                    WhatsApp {CONTACT.whatsapp}
-                  </a>
-                )}
+                ))}
               </div>
-            )}
+            </div>
 
           </div>
 
@@ -768,6 +1003,54 @@ export default function App() {
 
 
       {currentScreen === 4 && (
+        <section className="screen-container">
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="text-center mb-12">
+              <h2 className="tech-title text-[clamp(2rem,5.4vw,4.2rem)] title-accent mb-4">
+                {COPY.screen4Showcase.title}
+              </h2>
+              <p className="text-[clamp(0.95rem,2.2vw,1.2rem)] text-tech-dim uppercase tracking-[0.16em]">
+                {COPY.screen4Showcase.subtitle}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {CONFIG.showcaseAudios.map((sample) => (
+                <article key={sample.id} className="tech-box p-6">
+                  <h3 className="text-[clamp(1.05rem,2.3vw,1.35rem)] font-bold text-tech-accent tracking-[0.08em] uppercase mb-4">
+                    {sample.title}
+                  </h3>
+                  <p className="text-[clamp(0.9rem,1.95vw,1.05rem)] text-zinc-300 leading-relaxed mb-6">
+                    {sample.description}
+                  </p>
+                  <AudioPlayer
+                    id={`showcase_${sample.id}`}
+                    audioUrl={sample.audioUrl}
+                    allowRepeat={true}
+                    onStart={handleStart}
+                    onRef={setAudioRef}
+                  />
+                </article>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <button
+                className="tech-button-primary"
+                onClick={() => {
+                  sound.clickMain();
+                  nextScreen();
+                }}
+                type="button"
+              >
+                {COPY.screen4Showcase.buttonText}
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {currentScreen === 5 && (
 
         <section className="screen-container">
 
@@ -881,7 +1164,7 @@ export default function App() {
 
 
 
-      {currentScreen === 5 && (
+      {currentScreen === 6 && (
 
         <section className="screen-container screen-container--stacked">
 
@@ -1015,190 +1298,7 @@ export default function App() {
 
       )}
 
-
-
-      {currentScreen === 6 && (
-
-        <section className="screen-container screen-center">
-
-          <div className="max-w-5xl mx-auto text-center">
-
-            <h2 className="tech-title text-[clamp(3rem,7.5vw,6rem)] mb-10 title-accent screen6-title title-factor-70">
-              {COPY.screen6.title.split(" ").map((word) => (
-                <span key={word} className="screen6-title-line">
-                  {word}
-                </span>
-              ))}
-            </h2>
-            <p className="text-[clamp(1.4rem,3.6vw,2.1rem)] text-zinc-300 uppercase tracking-wide mb-8">
-
-              {COPY.screen6.questionPrefix}{" "}
-
-              <span className="underline-emphasis">
-
-                {COPY.screen6.questionEmphasis}
-
-              </span>{" "}
-
-              {COPY.screen6.questionSuffix}
-
-            </p>
-
-            <p className="text-[clamp(1rem,2.5vw,1.3rem)] text-tech-dim uppercase tracking-widest mb-14">
-
-              {COPY.screen6.subtitle}
-
-            </p>
-
-
-
-            <div className="flex flex-col md:flex-row gap-6 justify-center">
-
-              <button
-
-                className="tech-button-primary choice-button w-full md:w-auto"
-
-                onClick={() => {
-
-                  sound.clickMain();
-
-                  nextScreen();
-
-                }}
-
-                type="button"
-
-              >
-
-                {COPY.screen6.yesButton}
-
-              </button>
-
-              <button
-
-                className="tech-button-outline choice-button w-full md:w-auto"
-
-                onClick={() => {
-
-                  sound.clickMain();
-
-                  sound.switchScreen();
-
-                  setCurrentScreen(8);
-
-                  window.scrollTo(0, 0);
-
-                }}
-
-                type="button"
-
-              >
-
-                {COPY.screen6.noButton}
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      )}
-
-
-
       {currentScreen === 7 && (
-
-        <section className="screen-container">
-
-          <div className="max-w-5xl mx-auto w-full">
-
-            <div className="mb-10 text-center">
-
-              <h2 className="tech-title text-[clamp(2.2rem,6vw,4.5rem)] mb-6 title-accent screen7-title">
-
-                {COPY.screen7.title}
-
-              </h2>
-
-              <p className="text-[clamp(1rem,2.6vw,1.5rem)] text-zinc-400 uppercase tracking-wide">
-
-                {COPY.screen7.subtitle}
-
-              </p>
-
-            </div>
-
-
-
-            <div className="space-y-8">
-
-              {CONFIG.audioProjects.filter((project) => project.humanAudioUrl).map((project) => (
-
-                <div key={project.id} className="tech-box p-6">
-
-                  <h3 className="text-[clamp(1.1rem,2.6vw,1.6rem)] font-bold text-tech-accent tracking-wider mb-6 uppercase">
-
-                    {project.title}
-
-                  </h3>
-
-                  <AudioPlayer
-
-                    id={`human_${project.id}`}
-
-                    audioUrl={project.humanAudioUrl}
-
-                    allowRepeat={true}
-
-                    onStart={handleStart}
-
-                    onRef={setAudioRef}
-
-                  />
-
-                </div>
-
-              ))}
-
-            </div>
-
-
-
-            <div className="mt-14 text-center">
-
-              <button
-
-                className="tech-button-primary"
-
-                onClick={() => {
-
-                  sound.clickMain();
-
-                  nextScreen();
-
-                }}
-
-                type="button"
-
-              >
-
-                {COPY.screen7.buttonText}
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      )}
-
-
-
-      {currentScreen === 8 && (
 
         <section className="screen-container screen-center">
 
@@ -1381,6 +1481,30 @@ export default function App() {
 
               </p>
 
+              <div className="screen8-seo-links-wrap">
+                <p className="screen8-seo-links-title">Recursos ampliados:</p>
+                <div className="screen8-seo-links">
+                {seoLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="screen8-seo-link"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <div className="screen8-seo-pricing-row">
+                  <button
+                    type="button"
+                    className="screen8-seo-link screen8-seo-link--pricing"
+                    onClick={openPricingTab}
+                  >
+                    {pricingTabLabel}
+                  </button>
+                </div>
+                </div>
+              </div>
+
             </div>
 
 
@@ -1424,6 +1548,23 @@ export default function App() {
 
             )}
 
+            <section className="screen8-disclaimer tech-box">
+              <h3 className="screen8-disclaimer-title">
+                {COPY.screen8.legalDisclaimer.title}
+              </h3>
+              <p className="screen8-disclaimer-intro">
+                {COPY.screen8.legalDisclaimer.intro}
+              </p>
+              <ul className="screen8-disclaimer-list">
+                {COPY.screen8.legalDisclaimer.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              <p className="screen8-disclaimer-source">
+                {COPY.screen8.legalDisclaimer.source}
+              </p>
+            </section>
+
           </div>
 
         </section>
@@ -1435,6 +1576,3 @@ export default function App() {
   );
 
 }
-
-
-
