@@ -1,0 +1,240 @@
+:root {
+  --tech-accent: #00f2ff;
+  --tech-base: #050505;
+  --tech-border: rgba(255, 255, 255, 0.12);
+  --tech-dim: #868686;
+  --tech-light: #f3fcff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--tech-base);
+  color: #d9dde3;
+  font-family: "IBM Plex Mono", monospace;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+a {
+  color: inherit;
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 242, 255, 0.08);
+  pointer-events: none;
+  z-index: 20;
+  animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100vh;
+  }
+}
+
+.page-shell {
+  width: min(1100px, 94vw);
+  margin: 0 auto;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.3rem 0;
+}
+
+.brand {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  color: var(--tech-light);
+}
+
+.brand span {
+  color: var(--tech-accent);
+}
+
+.back-link {
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tech-accent);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  padding: 0.55rem 0.85rem;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero {
+  padding: clamp(2.4rem, 8vw, 5.8rem) 0 clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.eyebrow {
+  color: var(--tech-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.page-title {
+  margin: 1rem 0 1.15rem;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.6rem, 4.9vw, 3.7rem);
+  color: #ffffff;
+}
+
+.page-title .accent {
+  color: var(--tech-accent);
+  text-shadow: 0 0 26px rgba(0, 242, 255, 0.35);
+}
+
+.lead {
+  margin: 0;
+  max-width: 76ch;
+  font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+  line-height: 1.8;
+  color: #c2c8d0;
+}
+
+.card-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tech-card {
+  background: rgba(0, 0, 0, 0.78);
+  border: 1px solid var(--tech-border);
+  padding: 1.25rem 1.15rem;
+  position: relative;
+}
+
+.tech-card::before,
+.tech-card::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--tech-accent);
+  box-shadow: 0 0 8px var(--tech-accent);
+}
+
+.tech-card::before {
+  top: 0;
+  left: 0;
+}
+
+.tech-card::after {
+  bottom: 0;
+  right: 0;
+}
+
+.tech-card h2 {
+  margin: 0 0 0.7rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f6f9ff;
+}
+
+.tech-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #b6bec8;
+}
+
+.quote-block {
+  margin-top: 1rem;
+  background: rgba(0, 242, 255, 0.08);
+  border: 1px solid rgba(0, 242, 255, 0.25);
+  padding: 1rem 1.1rem;
+  color: #d6fdff;
+  line-height: 1.7;
+}
+
+.cta-box {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.cta-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-transform: none;
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  color: #ffffff;
+  font-size: clamp(0.74rem, 1.7vw, 0.9rem);
+  letter-spacing: 0.05em;
+  padding: 0.7rem 1.1rem;
+  min-width: 230px;
+}
+
+.subnav {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  padding-top: 1rem;
+  display: flex;
+  gap: 0.45rem 1rem;
+  flex-wrap: wrap;
+}
+
+.subnav a {
+  color: #98a6b5;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.subnav a:hover {
+  color: var(--tech-accent);
+}
+
+.foot {
+  margin: 2.1rem 0 2.6rem;
+  color: var(--tech-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

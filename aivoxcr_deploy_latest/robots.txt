@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://tavcr.github.io/voiceia/sitemap.xml
