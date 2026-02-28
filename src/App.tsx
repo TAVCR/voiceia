@@ -681,14 +681,15 @@ export default function App() {
             </div>
 
             <div className="screen1-nav-actions">
-              <WhatsAppCTA
-                label={COPY.screen1.buttonText}
-                location="hero_primary"
-                message={whatsappPrefillMessage}
-                number={CONTACT.whatsapp}
-                variant="primary"
-              />
-              <button type="button" className="tech-button-outline" onClick={() => goToSection("demos")}>{COPY.screen1.secondaryButtonText}</button>
+              <a
+                href={`${basePath}/asi-lo-hacemos-proceso-vocal-ia.html`}
+                className="tech-button-outline screen1-hero-link"
+              >
+                ASÍ LO HACEMOS
+              </a>
+              <button type="button" className="tech-button-outline" onClick={() => goToSection("demos")}>
+                {COPY.screen1.secondaryButtonText}
+              </button>
             </div>
             <p className="screen1-paypal-line">{COPY.screen1.paypalLine}</p>
 

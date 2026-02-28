@@ -570,7 +570,9 @@ canvas {
 
 .screen1-nav-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
   justify-content: center;
   gap: 0.8rem;
   margin: 0 auto clamp(1.1rem, 3vh, 1.8rem);
@@ -579,6 +581,10 @@ canvas {
 .screen1-nav-actions .whatsapp-cta,
 .screen1-nav-actions .tech-button-outline {
   min-width: min(290px, 84vw);
+}
+
+.screen1-hero-link {
+  text-decoration: none;
 }
 
 .screen1-nav-actions .whatsapp-cta {
