@@ -49,11 +49,6 @@ export default function App() {
 
   const sound = useUiSound();
 
-  const whatsappLink = CONTACT.whatsapp
-
-    ? CONTACT.whatsapp.replace(/\D/g, "")
-
-    : "";
   const whatsappPrefillMessage = WHATSAPP_PREFILL_MESSAGE;
   const seoLinksScreen1 = [
     { href: "/voces-humanas-potenciadas-ia.html", label: "Voces humanas + IA" },
@@ -727,7 +722,10 @@ export default function App() {
             </div>
 
             <div className="test-teaser tech-box" aria-label="Acceso al test">
-              <p className="test-teaser__title">{CONVERSION_COPY.miniHero.title}</p>
+              <h3 className="tech-title test-teaser__hero">
+                <span className="block text-white">LA VOZ SE DISEÑA.</span>
+                <span className="block title-accent glitch-text">COMPRUÉBALO.</span>
+              </h3>
               {CONVERSION_COPY.miniHero.lines.map((line) => (
                 <p key={line} className="test-teaser__line">
                   {line}
@@ -1149,15 +1147,6 @@ export default function App() {
               >
                 {COPY.screen4Showcase.buttonText}
               </button>
-              <div className="inline-whatsapp-cta-wrap">
-                <WhatsAppCTA
-                  label="Solicitar demo por WhatsApp"
-                  location="proceso_showcase_end"
-                  message={whatsappPrefillMessage}
-                  number={CONTACT.whatsapp}
-                  variant="secondary"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -1361,7 +1350,7 @@ export default function App() {
 
 
 
-            {(CONTACT.email || CONTACT.whatsapp) && (
+            {CONTACT.email && (
 
               <>
 
@@ -1378,22 +1367,6 @@ export default function App() {
                   >
 
                     {CONTACT.email}
-
-                  </a>
-
-                )}
-
-                {CONTACT.whatsapp && (
-
-                  <a
-
-                    href={`https://wa.me/${whatsappLink}`}
-
-                    className="border border-white/60 px-4 py-2 text-white whatsapp-link"
-
-                  >
-
-                    WhatsApp {CONTACT.whatsapp}
 
                   </a>
 
@@ -1620,19 +1593,7 @@ export default function App() {
 
             </div>
 
-            <div className="inline-whatsapp-cta-wrap">
-              <WhatsAppCTA
-                label="Solicitar demo por WhatsApp"
-                location="footer_cta"
-                message={whatsappPrefillMessage}
-                number={CONTACT.whatsapp}
-                variant="secondary"
-              />
-            </div>
-
-
-
-            {(CONTACT.email || CONTACT.whatsapp) && (
+            {CONTACT.email && (
               <div className="mt-6 flex flex-wrap gap-10 justify-center text-xs tracking-[0.15em] text-white contact-links contact-links--fit screen8-contact-links">
 
                 {CONTACT.email && (
@@ -1646,22 +1607,6 @@ export default function App() {
                   >
 
                     {CONTACT.email}
-
-                  </a>
-
-                )}
-
-                {CONTACT.whatsapp && (
-
-                  <a
-
-                    href={`https://wa.me/${whatsappLink}`}
-
-                    className="border border-white/60 px-4 py-2 text-white whatsapp-link"
-
-                  >
-
-                    WhatsApp {CONTACT.whatsapp}
 
                   </a>
 

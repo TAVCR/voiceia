@@ -53,10 +53,10 @@ export const TEST_AUDIO_SOURCES: TestAudioSource[] = [
   },
 ];
 
-export const DEMO_AUDIO_SOURCES: DemoAudioSource[] = TEST_AUDIO_SOURCES.map(
-  (audio, index) => ({
+export const DEMO_AUDIO_SOURCES: DemoAudioSource[] = TEST_AUDIO_SOURCES.filter(
+  (audio) => [1, 2, 4, 5].includes(audio.id)
+).map((audio, index) => ({
     id: `demo_${audio.id}`,
     title: `Demo ${index + 1}`,
     audioUrl: audio.aiAudioUrl,
-  })
-);
+  }));

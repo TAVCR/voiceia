@@ -62,7 +62,7 @@ export const COPY = {
     introLines: [
       "Las marcas suelen adaptarse a voces disponibles.",
       "Nosotros dise\u00F1amos la voz que tu campa\u00F1a necesita.",
-      "Actuaci\u00F3n real + tecnolog\u00EDa avanzada.",
+      "Actuación real + tecnología IA avanzada.",
       "Resultado: audio final profesional sin procesos adicionales.",
     ],
     buttonText: "SOLICITAR DEMO PERSONALIZADA POR WHATSAPP",
