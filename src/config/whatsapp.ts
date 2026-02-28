@@ -1,5 +1,5 @@
 ﻿export const WHATSAPP_PREFILL_MESSAGE =
-  "Hola, vengo desde AIVOXCR. Me interesa una demo personalizada para mi marca. Mi proyecto es: ____ | Duración: ____ | Uso: ____ | País: ____";
+  "Hola, vengo desde AIVOXCR. Estoy cotizando producción de voz para una campaña digital.";
 
 export const sanitizeWhatsAppNumber = (value: string) => value.replace(/\D/g, "");
 
