@@ -48,12 +48,14 @@ export default function App() {
     ? CONTACT.whatsapp.replace(/\D/g, "")
 
     : "";
-  const seoLinks = [
+  const seoLinksScreen1 = [
     { href: "/voces-humanas-potenciadas-ia.html", label: "Voces humanas + IA" },
-    { href: "/voces-ia-potenciadas-por-humanos.html", label: "IA + humanos" },
-    { href: "/voces-ia-que-hablan-como-humanos.html", label: "Naturalidad vocal" },
     { href: "/ventajas-produccion-vocal-ia.html", label: "Ventajas del servicio" },
     { href: "/asi-lo-hacemos-proceso-vocal-ia.html", label: "Así lo hacemos" },
+  ];
+  const seoLinksScreen8 = [
+    { href: "/voces-ia-potenciadas-por-humanos.html", label: "IA + humanos" },
+    { href: "/voces-ia-que-hablan-como-humanos.html", label: "Naturalidad vocal" },
   ];
   const pricingTabLabel = "Estrategia de precios";
   const LAST_SCREEN = 7;
@@ -679,8 +681,16 @@ export default function App() {
                 Si prefieres conocer el servicio antes del test:
               </p>
               <div className="screen1-seo-links">
-                {seoLinks.map((link) => (
-                  <a key={link.href} href={link.href} className="screen1-seo-link">
+                {seoLinksScreen1.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`screen1-seo-link ${
+                      link.href === "/asi-lo-hacemos-proceso-vocal-ia.html"
+                        ? "screen1-seo-link--showcase"
+                        : ""
+                    }`}
+                  >
                     {link.label}
                   </a>
                 ))}
@@ -1484,7 +1494,7 @@ export default function App() {
               <div className="screen8-seo-links-wrap">
                 <p className="screen8-seo-links-title">Recursos ampliados:</p>
                 <div className="screen8-seo-links">
-                {seoLinks.map((link) => (
+                {seoLinksScreen8.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
