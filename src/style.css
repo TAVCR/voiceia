@@ -521,8 +521,9 @@ canvas {
 
 .screen1-hero-line {
   margin-bottom: clamp(0.7rem, 2.2vh, 1.45rem);
-  font-size: 0.93em;
+  font-size: 0.7em;
   line-height: 1.02;
+  white-space: nowrap;
 }
 
 .screen1-hero-line-accent {
@@ -1814,6 +1815,12 @@ textarea {
   .screen1-title .nowrap-word {
     white-space: normal !important;
     text-wrap: balance;
+  }
+
+  .screen1-hero-line {
+    font-size: 0.62em !important;
+    white-space: nowrap !important;
+    text-wrap: nowrap;
   }
 
   .sticky-whatsapp {
