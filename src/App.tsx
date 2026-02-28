@@ -49,15 +49,16 @@ export default function App() {
 
   const sound = useUiSound();
 
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
   const whatsappPrefillMessage = WHATSAPP_PREFILL_MESSAGE;
   const seoLinksScreen1 = [
-    { href: "/voces-humanas-potenciadas-ia.html", label: "Voces humanas + IA" },
-    { href: "/ventajas-produccion-vocal-ia.html", label: "Ventajas del servicio" },
-    { href: "/asi-lo-hacemos-proceso-vocal-ia.html", label: "As\u00ED lo hacemos" },
+    { href: `${basePath}/voces-humanas-potenciadas-ia.html`, label: "Voces humanas + IA" },
+    { href: `${basePath}/ventajas-produccion-vocal-ia.html`, label: "Ventajas del servicio" },
+    { href: `${basePath}/asi-lo-hacemos-proceso-vocal-ia.html`, label: "As\u00ED lo hacemos" },
   ];
   const seoLinksScreen8 = [
-    { href: "/voces-ia-potenciadas-por-humanos.html", label: "IA + humanos" },
-    { href: "/voces-ia-que-hablan-como-humanos.html", label: "Naturalidad vocal" },
+    { href: `${basePath}/voces-ia-potenciadas-por-humanos.html`, label: "IA + humanos" },
+    { href: `${basePath}/voces-ia-que-hablan-como-humanos.html`, label: "Naturalidad vocal" },
   ];
   const pricingTabLabel = "Estrategia de precios";
   const LAST_SCREEN = 7;

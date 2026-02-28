@@ -46,8 +46,11 @@ export default function DemosSection({
       </div>
 
       <div className="demos-grid">
-        {demos.map((demo) => (
-          <article key={demo.id} className="demos-card">
+        {demos.map((demo, index) => (
+          <article
+            key={demo.id}
+            className={`demos-card ${index === 3 ? "demos-card--desktop-col2" : ""}`.trim()}
+          >
             <h3 className="demos-card__title">{demo.title}</h3>
             <AudioPlayer
               id={demo.id}
