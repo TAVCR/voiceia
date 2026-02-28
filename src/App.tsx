@@ -712,8 +712,8 @@ export default function App() {
 
             <div className="test-teaser tech-box" aria-label="Acceso al test">
               <h3 className="tech-title test-teaser__hero">
-                <span className="block text-white">{"LA VOZ SE DISE\u00D1A."}</span>
-                <span className="block title-accent glitch-text">{"COMPRU\u00C9BALO."}</span>
+                <span className="block text-white">{"LA VOZ SE DISE\u00D1A"}</span>
+                <span className="block title-accent glitch-text">{"COMPRU\u00C9BALO"}</span>
               </h3>
               {CONVERSION_COPY.miniHero.lines.map((line) => (
                 <p key={line} className="test-teaser__line">
