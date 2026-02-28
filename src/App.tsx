@@ -687,9 +687,13 @@ export default function App() {
               >
                 ASÍ LO HACEMOS
               </a>
-              <button type="button" className="tech-button-outline" onClick={() => goToSection("demos")}>
-                {COPY.screen1.secondaryButtonText}
-              </button>
+              <WhatsAppCTA
+                label="SOLICITAR DEMO PERSONALIZADO POR WHATSAPP"
+                location="hero_secondary"
+                message={whatsappPrefillMessage}
+                number={CONTACT.whatsapp}
+                variant="secondary"
+              />
             </div>
             <p className="screen1-paypal-line">{COPY.screen1.paypalLine}</p>
 
