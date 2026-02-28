@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Canonical host: force www -> apex domain
+RewriteCond %{HTTP_HOST} ^www\.aivoxcr\.com$ [NC]
+RewriteRule ^ https://aivoxcr.com%{REQUEST_URI} [R=301,L,NE]
+
+# Canonical path: remove index.html from URLs
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html?[\s?] [NC]
+RewriteRule ^(.*/)?index\.html?$ https://aivoxcr.com/$1 [R=301,L,NE]

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+      (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1432955778486112');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Así lo hacemos: Proceso vocal real de transformación con IA | AIVOXCR</title>
+    <meta
+      name="description"
+      content="Página interactiva con el proceso real de AIVOXCR: voz original, conversión de género con IA, producto final y comparación TTS."
+    />
+    <meta
+      name="keywords"
+      content="así lo hacemos, proceso vocal IA, voz original, conversión de voz, TTS, AIVOXCR"
+    />
+    <link rel="canonical" href="https://aivoxcr.com/asi-lo-hacemos-proceso-vocal-ia.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Así lo hacemos: Proceso vocal real de transformación con IA | AIVOXCR" />
+    <meta
+      property="og:description"
+      content="Escucha las cuatro etapas del flujo real de AIVOXCR y evalúa por ti mismo la diferencia frente a TTS."
+    />
+    <meta property="og:url" content="https://aivoxcr.com/asi-lo-hacemos-proceso-vocal-ia.html" />
+    <meta property="og:image" content="https://aivoxcr.com/logo-aivoxcr-cropped.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Así lo hacemos: Proceso vocal real de transformación con IA | AIVOXCR" />
+    <meta
+      name="twitter:description"
+      content="Demostración interactiva del proceso real: voz original, conversión de timbre, mix final y referencia TTS."
+    />
+    <meta name="twitter:image" content="https://aivoxcr.com/logo-aivoxcr-cropped.png" />
+    <link rel="icon" type="image/png" href="/logo-aivoxcr-cropped.png" />
+    <link rel="apple-touch-icon" href="/logo-aivoxcr-cropped.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Orbitron:wght@600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/seo-pages.css" />
+    <style>
+      .showcase-title {
+        margin: 0 0 0.85rem;
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(2rem, 5.4vw, 4.2rem);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--tech-accent);
+      }
+
+      .showcase-subtitle {
+        margin: 0;
+        font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+        color: #a8b4c4;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .showcase-grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .showcase-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .showcase-card p {
+        flex: 1;
+      }
+
+      .audio-player {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 1rem;
+        border-radius: 4px;
+        width: 100%;
+        margin-top: 0.85rem;
+      }
+
+      .audio-player-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .waveform-wrap {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .waveform-container {
+        margin: 1rem 0;
+        opacity: 0.8;
+        min-height: 60px;
+      }
+
+      .waveform-container canvas {
+        width: 100% !important;
+      }
+
+      .play-button {
+        width: 50px;
+        height: 50px;
+        background: var(--tech-accent);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        flex: 0 0 auto;
+        padding: 0;
+      }
+
+      .play-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 242, 255, 0.6);
+      }
+
+      .play-button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      .play-button svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+        pointer-events: none;
+      }
+
+      .showcase-legal {
+        margin-top: 1.4rem;
+      }
+
+      @media (max-width: 860px) {
+        .showcase-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1432955778486112&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
+    <div class="scanline"></div>
+
+    <header class="page-shell top-nav">
+      <a class="brand" href="/"><span>AIVOX</span>CR</a>
+      <a class="back-link" href="/">Volver al inicio</a>
+    </header>
+
+    <main class="page-shell hero">
+      <div style="text-align:center;">
+        <h1 class="showcase-title">ASÍ LO HACEMOS</h1>
+        <p class="showcase-subtitle">PROCESO REAL DE TRANSFORMACIÓN VOCAL</p>
+      </div>
+
+      <section class="showcase-grid" aria-label="Demostración interactiva del proceso">
+        <article class="tech-card showcase-card">
+          <h2>VOZ ORIGINAL</h2>
+          <p>Esta es la voz original del artista. Una captura pura, sin postproducción ni efectos.</p>
+          <div class="audio-player" data-audio="/kiwi-showcase/voz-original.mp3">
+            <div class="audio-player-row">
+              <button class="play-button" type="button" aria-label="Reproducir"></button>
+              <div class="waveform-wrap">
+                <div class="waveform-container"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tech-card showcase-card">
+          <h2>CONVERSIÓN DE GÉNERO (AI)</h2>
+          <p>
+            Voz transformada a género femenino. Observa cómo se mantiene fielmente la intención, el ritmo y la emoción de la toma original.
+          </p>
+          <div class="audio-player" data-audio="/kiwi-showcase/conversion-genero-ai.wav">
+            <div class="audio-player-row">
+              <button class="play-button" type="button" aria-label="Reproducir"></button>
+              <div class="waveform-wrap">
+                <div class="waveform-container"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tech-card showcase-card">
+          <h2>PRODUCTO FINAL (MIX & MASTER)</h2>
+          <p>
+            Comercial completo para radio. Aquí puedes escuchar la voz integrada con música y masterización profesional.
+          </p>
+          <div class="audio-player" data-audio="/kiwi-showcase/producto-final-mix-master.mp3">
+            <div class="audio-player-row">
+              <button class="play-button" type="button" aria-label="Reproducir"></button>
+              <div class="waveform-wrap">
+                <div class="waveform-container"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tech-card showcase-card">
+          <h2>GENERACIÓN POR TEXTO (TTS)</h2>
+          <p>
+            Referencia de voz femenina generada 100% mediante IA (Text-to-Speech) con modelos comerciales de alta gama.
+            Presentada sin mezcla para apreciar la calidad natural del modelo. Saca tus propias conclusiones.
+          </p>
+          <div class="audio-player" data-audio="/kiwi-showcase/tts-referencia.mp3">
+            <div class="audio-player-row">
+              <button class="play-button" type="button" aria-label="Reproducir"></button>
+              <div class="waveform-wrap">
+                <div class="waveform-container"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="legal-mini showcase-legal" aria-label="Aviso legal">
+        <h2>Aviso Legal: Cuidado con los servicios de IA de voz que proliferan en redes sociales</h2>
+        <p>
+          Gran parte de las aplicaciones de clonación de voz que se anuncian masivamente operan bajo prácticas engañosas:
+        </p>
+        <ul>
+          <li>
+            Tecnología enmascarada (Posible estafa): Te cobran por usar modelos de código abierto que en realidad son gratuitos en internet.
+          </li>
+          <li>
+            Demos falsas: Frecuentemente usan audios grabados por actores humanos reales en su publicidad para fingir una perfección que su IA no tiene.
+          </li>
+          <li>
+            Trampas de cobro: Te obligan a pagar por adelantado sin ofrecer un período de prueba gratuito, haciendo casi imposible obtener un reembolso al descubrir su verdadera calidad.
+          </li>
+        </ul>
+        <p class="source">(Fuente sobre el riesgo de oportunistas en IA: Portal tecnológico Sinologic, enero de 2026).</p>
+      </section>
+
+      <section class="cta-box" aria-label="Canales de contacto">
+        <a class="cta-link" href="mailto:aivoxcr@gmail.com">aivoxcr@gmail.com</a>
+        <a class="cta-link" href="https://wa.me/50685020909">WhatsApp +506 85020909</a>
+      </section>
+
+      <nav class="subnav" aria-label="Más contenidos">
+        <a href="/voces-humanas-potenciadas-ia.html">Voces humanas + IA</a>
+        <a href="/voces-ia-potenciadas-por-humanos.html">IA + humanos</a>
+        <a href="/voces-ia-que-hablan-como-humanos.html">Naturalidad vocal</a>
+        <a href="/ventajas-produccion-vocal-ia.html">Ventajas del servicio</a>
+      </nav>
+
+      <p class="foot">AIVOXCR / proceso vocal real con IA / Costa Rica</p>
+    </main>
+
+    <script src="https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.min.js"></script>
+    <script>
+      (function () {
+        const WaveSurferCtor = window.WaveSurfer;
+        if (!WaveSurferCtor) return;
+
+        const PLAY_ICON =
+          '<svg viewBox="0 0 24 24" fill="black" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>';
+        const PAUSE_ICON =
+          '<svg viewBox="0 0 24 24" fill="black" aria-hidden="true"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+
+        const players = [];
+
+        function setButtonState(button, isPlaying) {
+          button.innerHTML = isPlaying ? PAUSE_ICON : PLAY_ICON;
+          button.setAttribute("aria-label", isPlaying ? "Pausar" : "Reproducir");
+        }
+
+        function stopOthers(currentWave) {
+          players.forEach(({ wave, button }) => {
+            if (wave !== currentWave && wave.isPlaying()) {
+              wave.pause();
+              setButtonState(button, false);
+            }
+          });
+        }
+
+        document.querySelectorAll(".audio-player").forEach((playerEl) => {
+          const src = playerEl.getAttribute("data-audio");
+          if (!src) return;
+
+          const button = playerEl.querySelector(".play-button");
+          const waveform = playerEl.querySelector(".waveform-container");
+          if (!button || !waveform) return;
+
+          setButtonState(button, false);
+
+          const wave = WaveSurferCtor.create({
+            container: waveform,
+            url: src,
+            waveColor: "rgba(0, 242, 255, 0.3)",
+            progressColor: "#00f2ff",
+            cursorColor: "#ff8c00",
+            barWidth: 2,
+            barGap: 2,
+            height: 60,
+            normalize: true,
+            interact: true
+          });
+
+          button.addEventListener("click", () => {
+            if (wave.isPlaying()) {
+              wave.pause();
+            } else {
+              stopOthers(wave);
+              wave.play();
+            }
+          });
+
+          wave.on("play", () => setButtonState(button, true));
+          wave.on("pause", () => setButtonState(button, false));
+          wave.on("finish", () => setButtonState(button, false));
+
+          players.push({ wave, button });
+        });
+
+        document.addEventListener("click", function (e) {
+          const link = e.target.closest("a");
+          if (!link) return;
+          const url = link.href || "";
+          if (url.includes("api.whatsapp.com") || url.includes("wa.me")) {
+            if (typeof fbq === "function") fbq("track", "Contact");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
