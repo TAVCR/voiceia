@@ -521,10 +521,14 @@ canvas {
 
 .screen1-hero-line {
   margin-bottom: clamp(0.7rem, 2.2vh, 1.45rem);
+  font-size: 0.93em;
+  line-height: 1.02;
 }
 
 .screen1-hero-line-accent {
   margin-top: 0;
+  font-size: 1.04em;
+  line-height: 0.98;
 }
 
 .screen1-paypal-line {
