@@ -64,7 +64,7 @@ export const COPY = {
       "Las marcas sol\u00EDan adaptarse a voces disponibles.",
       "Ahora, nosotros dise\u00F1amos la voz que tu campa\u00F1a necesita.",
       "Actuaci\u00F3n real + tecnolog\u00EDa IA avanzada.",
-      "Resultado: audio final profesional sin procesos adicionales.",
+      "Resultado: Audio final profesional sin procesos adicionales.",
     ],
     buttonText: "SOLICITAR DEMO PERSONALIZADA POR WHATSAPP",
     secondaryButtonText: "ESCUCHAR DEMOS",
@@ -80,7 +80,7 @@ export const COPY = {
     pendingMessage: "Marca 3 selecciones para continuar",
     selectionCounterLabel: "SELECCIONADAS",
     revisitMessage:
-      "RE-EVALUACI\u00D3N_LIBRE: puedes volver a escuchar todos los audios sin restricciones",
+      "RE-EVALUACI\u00D3N_LIBRE: Puedes volver a escuchar todos los audios sin restricciones",
   },
   screen3: {
     mainText:
@@ -222,11 +222,11 @@ export const PRICING_STRATEGY = {
   title: "ESTRATEGIA DE TARIFAS PROFESIONALES",
   subtitle: "Locución Humana Híbrida & Postproducción Audiovisual",
   valueProposition:
-    "AIVOXCR no compite por precio bajo. La ventaja competitiva es la eficiencia operativa: un actor profesional interpreta múltiples roles con cambio de timbre asistido por IA, reduciendo costos de casting y coordinación sin perder calidad humana.",
+    "AIVOXCR no compite por precio bajo. La ventaja competitiva es la eficiencia operativa: Un actor profesional interpreta múltiples roles con cambio de timbre asistido por IA, reduciendo costos de casting y coordinación sin perder calidad humana.",
   baseRates: {
     title: "1. Tarifas Base de Locución Comercial",
     note:
-      "Precios en USD por país de difusión. Licencia de uso por 1 año (IVR: licencia perpetua). En TV, radio y pauta digital la tarifa aplica por cada país de difusión.",
+      "Precios en USD por país de difusión. Licencia de uso por 1 año (IVR: Licencia perpetua). En TV, radio y pauta digital la tarifa aplica por cada país de difusión.",
     columns: [
       "Medio",
       "Duración",
@@ -334,7 +334,7 @@ export const PRICING_STRATEGY = {
       ["Postproducción", "$75 / ronda", "3-5 días hábiles"],
     ],
     note:
-      "Primera revisión incluida. Cambios estructurales de copy se cotizan como proyecto nuevo. Urgencias (<48h): recargo del 50%.",
+      "Primera revisión incluida. Cambios estructurales de copy se cotizan como proyecto nuevo. Urgencias (<48h): Recargo del 50%.",
   },
   conditions: [
     "Precios en USD, sin impuestos locales.",
