@@ -1,14 +1,11 @@
 ﻿import type { DemoAudioSource } from "../data/audioSources";
 import type { AudioHandle } from "./AudioPlayer";
 import AudioPlayer from "./AudioPlayer";
-import WhatsAppCTA from "./WhatsAppCTA";
 
 type DemosSectionProps = {
   demos: DemoAudioSource[];
   onStart: (id: string | number) => void;
   onRef: (id: string | number, handle: AudioHandle | null) => void;
-  whatsappNumber: string;
-  whatsappMessage: string;
   onGoExamples: () => void;
   copy: {
     demos: {
@@ -32,8 +29,6 @@ export default function DemosSection({
   demos,
   onStart,
   onRef,
-  whatsappNumber,
-  whatsappMessage,
   onGoExamples,
   copy,
 }: DemosSectionProps) {
@@ -65,13 +60,6 @@ export default function DemosSection({
       </div>
 
       <div className="demos-cta">
-        <WhatsAppCTA
-          label="SOLICITAR DEMO PERSONALIZADA POR WHATSAPP"
-          location="demos_section"
-          message={whatsappMessage}
-          number={whatsappNumber}
-          variant="primary"
-        />
         <p className="demos-cta__support">{copy.demos.support}</p>
       </div>
 
@@ -83,14 +71,7 @@ export default function DemosSection({
         <p className="promo-card__subtext">{copy.promo.subtext}</p>
         <p className="promo-card__note">{copy.promo.note}</p>
         <div className="promo-card__actions">
-          <WhatsAppCTA
-            label="Cotizar por WhatsApp"
-            location="promo_top"
-            message={whatsappMessage}
-            number={whatsappNumber}
-            variant="primary"
-          />
-          <button type="button" className="whatsapp-cta whatsapp-cta--ghost" onClick={onGoExamples}>
+          <button type="button" className="tech-button-outline" onClick={onGoExamples}>
             VER EJEMPLOS
           </button>
         </div>

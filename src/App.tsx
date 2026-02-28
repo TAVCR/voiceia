@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import AudioPlayer, { type AudioHandle } from "./components/AudioPlayer";
 import DemosSection from "./components/DemosSection";
-import WhatsAppCTA, { StickyWhatsAppButton } from "./components/WhatsAppCTA";
+import { StickyWhatsAppButton } from "./components/WhatsAppCTA";
 
 import useUiSound from "./hooks/useUiSound";
 
@@ -444,15 +444,7 @@ export default function App() {
             </div>
 
             <div className="pricing-tab-content">
-              <div className="pricing-tab-cta" id="precios">
-                <WhatsAppCTA
-                  label="Solicitar demo por WhatsApp"
-                  location="pricing_modal_top"
-                  message={whatsappPrefillMessage}
-                  number={CONTACT.whatsapp}
-                  variant="secondary"
-                />
-              </div>
+              <div className="pricing-tab-cta" id="precios" />
               <section className="tech-box pricing-tab-block">
                 <h3 className="pricing-tab-section-title">Propuesta de valor</h3>
                 <p className="pricing-tab-copy">{PRICING_STRATEGY.valueProposition}</p>
@@ -687,13 +679,6 @@ export default function App() {
               >
                 {"AS\u00CD LO HACEMOS"}
               </a>
-              <WhatsAppCTA
-                label="SOLICITAR DEMO PERSONALIZADO POR WHATSAPP"
-                location="hero_secondary"
-                message={whatsappPrefillMessage}
-                number={CONTACT.whatsapp}
-                variant="secondary"
-              />
             </div>
             <p className="screen1-paypal-line">{COPY.screen1.paypalLine}</p>
 
@@ -720,8 +705,6 @@ export default function App() {
                 demos={DEMO_AUDIO_SOURCES}
                 onStart={handleStart}
                 onRef={setAudioRef}
-                whatsappNumber={CONTACT.whatsapp}
-                whatsappMessage={whatsappPrefillMessage}
                 onGoExamples={() => goToSection("demos")}
                 copy={CONVERSION_COPY}
               />
