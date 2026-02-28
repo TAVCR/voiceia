@@ -1795,6 +1795,10 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  .test-teaser__line {
+    text-align: left;
+  }
+
   .screen1-title {
     font-size: clamp(1.18rem, 7.2vw, 1.9rem) !important;
     line-height: 1.06 !important;
