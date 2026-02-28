@@ -1155,7 +1155,7 @@ export default function App() {
 
               </h2>
 
-              <p className="text-[clamp(1.1rem,2.6vw,1.5rem)] text-tech-dim uppercase tracking-widest">
+              <p className="text-[clamp(1.1rem,2.6vw,1.5rem)] text-tech-dim uppercase tracking-widest screen4-subtitle">
 
                 {COPY.screen4.subtitle}
 

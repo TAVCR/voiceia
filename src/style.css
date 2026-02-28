@@ -1800,6 +1800,30 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  .screen3-title {
+    font-size: clamp(0.98rem, 3.5vw, 1.36rem) !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .screen3-main {
+    font-size: clamp(0.96rem, 3.35vw, 1.28rem) !important;
+  }
+
+  .screen3-accent {
+    font-size: clamp(1.02rem, 3.55vw, 1.42rem) !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .screen4-title {
+    font-size: clamp(1.24rem, 5vw, 1.82rem) !important;
+  }
+
+  .screen4-subtitle {
+    font-size: clamp(0.7rem, 2.65vw, 0.94rem) !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.45;
+  }
+
   .test-teaser__line {
     text-align: left;
   }

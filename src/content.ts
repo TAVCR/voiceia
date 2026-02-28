@@ -27,21 +27,21 @@ export const CONFIG = {
       id: "original",
       title: "VOZ ORIGINAL",
       description:
-        "Esta es la voz original del artista. Una captura pura, sin postproducciÃ³n ni efectos.",
+        "Esta es la voz original del artista. Una captura pura, sin postproducción ni efectos.",
       audioUrl: `${import.meta.env.BASE_URL}kiwi-showcase/voz-original.mp3`,
     },
     {
       id: "conversion",
-      title: "CONVERSIÃ“N DE GÃ‰NERO (AI)",
+      title: "CONVERSIÓN DE GÉNERO (AI)",
       description:
-        "Voz transformada a gÃ©nero femenino. Observa cÃ³mo se mantiene fielmente la intenciÃ³n, el ritmo y la emociÃ³n de la toma original.",
+        "Voz transformada a género femenino. Observa cómo se mantiene fielmente la intención, el ritmo y la emoción de la toma original.",
       audioUrl: `${import.meta.env.BASE_URL}kiwi-showcase/conversion-genero-ai.wav`,
     },
     {
       id: "final",
       title: "PRODUCTO FINAL (MIX & MASTER)",
       description:
-        "Comercial completo para radio. AquÃ­ puedes escuchar la voz integrada con mÃºsica y masterizaciÃ³n profesional.",
+        "Comercial completo para radio. Aquí puedes escuchar la voz integrada con música y masterización profesional.",
       audioUrl: `${import.meta.env.BASE_URL}kiwi-showcase/producto-final-mix-master.mp3`,
     },
     {
@@ -56,7 +56,7 @@ export const CONFIG = {
 
 export const COPY = {
   screen1: {
-    tagline: "INICIO PROTOCOLO EVALUACIÃ“N",
+    tagline: "INICIO PROTOCOLO EVALUACIÓN",
     title1: "LA VOZ YA NO SE ELIGE",
     title2: "SE DISE\u00D1A",
     introLines: [
@@ -94,41 +94,41 @@ export const COPY = {
     buttonText: "Mostrarme",
   },
   screen4Showcase: {
-    title: "ASÃ LO HACEMOS",
-    subtitle: "PROCESO REAL DE TRANSFORMACIÃ“N VOCAL",
+    title: "ASÍ LO HACEMOS",
+    subtitle: "PROCESO REAL DE TRANSFORMACIÓN VOCAL",
     buttonText: "Continuar",
   },
   screen4: {
     title: "EL PROCESO",
     subtitle:
-      "Â¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÃ“N VOCAL! LA VOZ YA NO SE ELIGE, SE DISEÃ‘A.",
+      "¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÓN VOCAL! LA VOZ YA NO SE ELIGE, SE DISEÑA.",
     benchmarkTitle: "BENCHMARK ELEVENLABS",
     benchmarkBody:
-      "Incluso el AI Speech Classifier de ElevenLabs da una probabilidad bajÃ­sima de que los audios fueran generados con IA (â‰ˆ2% a 5%) para la mayorÃ­a de los casos.",
+      "Incluso el AI Speech Classifier de ElevenLabs da una probabilidad bajísima de que los audios fueran generados con IA (≈2% a 5%) para la mayoría de los casos.",
     concepts: [
       {
         number: "01",
         title: "ACTOR INTERPRETA",
         description:
-          "Un profesional de la voz realiza la actuaciÃ³n completa con emociÃ³n, timing, prosodia y matices humanos reales.",
+          "Un profesional de la voz realiza la actuación completa con emoción, timing, prosodia y matices humanos reales.",
       },
       {
         number: "02",
         title: "IA CAMBIA EL TIMBRE",
         description:
-          "La tecnologÃ­a modifica Ãºnicamente las caracterÃ­sticas tonales de la voz, manteniendo la interpretaciÃ³n intacta, le pone \"otra piel\".",
+          "La tecnología modifica únicamente las características tonales de la voz, manteniendo la interpretación intacta, le pone \"otra piel\".",
       },
       {
         number: "03",
-        title: "MUSICALIZACIÃ“N EN LABORATORIO",
+        title: "MUSICALIZACIÓN EN LABORATORIO",
         description:
-          "La musicalizaciÃ³n, tambiÃ©n realizada en nuestro laboratorio, agregÃ³ mÃºsica y efectos especiales, lo que hace que el sonido final sea todavÃ­a mÃ¡s refinado y menos distinguible para el oÃ­do no entrenado.",
+          "La musicalización, también realizada en nuestro laboratorio, agregó música y efectos especiales, lo que hace que el sonido final sea todavía más refinado y menos distinguible para el oído no entrenado.",
       },
       {
         number: "04",
-        title: "LA ACTUACIÃ“N PERMANECE HUMANA",
+        title: "LA ACTUACIÓN PERMANECE HUMANA",
         description:
-          "El resultado final conserva toda la expresividad y naturalidad de la interpretaciÃ³n original del actor. Â¡El paradigma cambiÃ³!",
+          "El resultado final conserva toda la expresividad y naturalidad de la interpretación original del actor. ¡El paradigma cambió!",
       },
     ],
     buttonText: "Continuar",
@@ -138,23 +138,23 @@ export const COPY = {
     title1: "TRAYECTORIA",
     title2: "DESDE 1991",
     expertise: [
-      "LocuciÃ³n profesional",
-      "ProducciÃ³n audiovisual",
-      "DiseÃ±o sonoro",
-      "DirecciÃ³n vocal",
+      "Locución profesional",
+      "Producción audiovisual",
+      "Diseño sonoro",
+      "Dirección vocal",
     ],
     description:
-      "Donde el talento humano encuentra la innovaciÃ³n: No es menos actuaciÃ³n. Es control total del personaje.",
+      "Donde el talento humano encuentra la innovación: No es menos actuación. Es control total del personaje.",
     buttonText: "Continuar",
   },
   screen8: {
-    title1: "INTERPRETACIÃ“N",
+    title1: "INTERPRETACIÓN",
     title2: "VOCAL",
     title3: "POTENCIADA",
     title4: "POR IA",
     companyName: "AIVOXCR.COM",
     formTitle: "INICIAR_CONTACTO",
-    formSubtitle: "Agenda una demostraciÃ³n / propuesta en 24h",
+    formSubtitle: "Agenda una demostración / propuesta en 24h",
     formLabels: {
       name: "Input_Nombre",
       email: "Input_Email",
@@ -165,10 +165,10 @@ export const COPY = {
       email: "tu@email.com",
       message: "Describe tu proyecto...",
     },
-    buttonText: "Enviar_TransmisiÃ³n",
+    buttonText: "Enviar_Transmisión",
     buttonStates: {
       sending: "Transmitiendo...",
-      success: "TransmisiÃ³n_Exitosa",
+      success: "Transmisión_Exitosa",
       error: "Error_Reintentar",
     },
     footer: "Sistema Operativo / AIVOXCR.COM / 2026",
@@ -176,66 +176,66 @@ export const COPY = {
       title:
         "Aviso Legal: Cuidado con los servicios de IA de voz que proliferan en redes sociales",
       intro:
-        "Gran parte de las aplicaciones de clonaciÃ³n de voz que se anuncian masivamente operan bajo prÃ¡cticas engaÃ±osas:",
+        "Gran parte de las aplicaciones de clonación de voz que se anuncian masivamente operan bajo prácticas engañosas:",
       points: [
-        "TecnologÃ­a enmascarada (Posible estafa): Te cobran por usar modelos de cÃ³digo abierto que en realidad son gratuitos en internet.",
-        "Demos falsas: Frecuentemente usan audios grabados por actores humanos reales en su publicidad para fingir una perfecciÃ³n que su IA no tiene.",
-        "Trampas de cobro: Te obligan a pagar por adelantado sin ofrecer un perÃ­odo de prueba gratuito, haciendo casi imposible obtener un reembolso al descubrir su verdadera calidad.",
+        "Tecnología enmascarada (Posible estafa): Te cobran por usar modelos de código abierto que en realidad son gratuitos en internet.",
+        "Demos falsas: Frecuentemente usan audios grabados por actores humanos reales en su publicidad para fingir una perfección que su IA no tiene.",
+        "Trampas de cobro: Te obligan a pagar por adelantado sin ofrecer un período de prueba gratuito, haciendo casi imposible obtener un reembolso al descubrir su verdadera calidad.",
       ],
       source:
-        "(Fuente sobre el riesgo de oportunistas en IA: Portal tecnolÃ³gico Sinologic, enero de 2026).",
+        "(Fuente sobre el riesgo de oportunistas en IA: Portal tecnológico Sinologic, enero de 2026).",
     },
   },
 };
 
 export const CONVERSION_COPY = {
   demos: {
-    title: "ðŸŽ™ï¸ Escucha demos reales",
+    title: "🎙️ Escucha demos reales",
     subtitle:
-      "LocuciÃ³n profesional con actuaciÃ³n real. ProducciÃ³n incluida. Calidad lista para pauta.",
-    support: "Â¿Quieres una versiÃ³n adaptada a tu marca?",
+      "Locución profesional con actuación real. Producción incluida. Calidad lista para pauta.",
+    support: "¿Quieres una versión adaptada a tu marca?",
     disclaimer:
-      "Algunas piezas son demostrativas o recreadas para mostrar rangos de timbre. La actuaciÃ³n base es real.",
+      "Algunas piezas son demostrativas o recreadas para mostrar rangos de timbre. La actuación base es real.",
   },
   promo: {
-    strapline: "DiseÃ±o vocal continuo para marcas en crecimiento.",
+    strapline: "Diseño vocal continuo para marcas en crecimiento.",
     badge: "BONUS",
     title: "Desde $225 USD",
-    line: "+ DiseÃ±o de audio incluido (segÃºn disponibilidad)",
-    subtext: "Incluye locuciÃ³n + mezcla/mÃ¡ster + SFX (si aplica). Hasta 30s por pieza.",
-    note: "MÃºsica con licencia puede tener costo adicional.",
+    line: "+ Diseño de audio incluido (según disponibilidad)",
+    subtext: "Incluye locución + mezcla/máster + SFX (si aplica). Hasta 30s por pieza.",
+    note: "Música con licencia puede tener costo adicional.",
   },
   miniHero: {
-    title: "La voz se diseÃ±a. CompruÃ©balo.",
+    title: "La voz se diseña. Compruébalo.",
     lines: [
       "Estamos ante un cambio de paradigma.",
       "Escucha piezas producidas profesionalmente",
-      "y decide: Â¿Humano o IA?",
-      "DespuÃ©s te revelamos el proceso.",
+      "y decide: ¿Humano o IA?",
+      "Después te revelamos el proceso.",
     ],
     button: "HACER EL TEST",
   },
 };
 
 export const PRICING_STRATEGY = {
-  meta: "aivoxcr.com Â· 2025-2026 Â· EdiciÃ³n revisada",
+  meta: "aivoxcr.com · 2025-2026 · Edición revisada",
   title: "ESTRATEGIA DE TARIFAS PROFESIONALES",
-  subtitle: "LocuciÃ³n Humana HÃ­brida & PostproducciÃ³n Audiovisual",
+  subtitle: "Locución Humana Híbrida & Postproducción Audiovisual",
   valueProposition:
-    "AIVOXCR no compite por precio bajo. La ventaja competitiva es la eficiencia operativa: Un actor profesional interpreta mÃºltiples roles con cambio de timbre asistido por IA, reduciendo costos de casting y coordinaciÃ³n sin perder calidad humana.",
+    "AIVOXCR no compite por precio bajo. La ventaja competitiva es la eficiencia operativa: Un actor profesional interpreta múltiples roles con cambio de timbre asistido por IA, reduciendo costos de casting y coordinación sin perder calidad humana.",
   baseRates: {
-    title: "1. Tarifas Base de LocuciÃ³n Comercial",
+    title: "1. Tarifas Base de Locución Comercial",
     note:
-      "Precios en USD por paÃ­s de difusiÃ³n. Licencia de uso por 1 aÃ±o (IVR: Licencia perpetua). En TV, radio y pauta digital la tarifa aplica por cada paÃ­s de difusiÃ³n.",
+      "Precios en USD por país de difusión. Licencia de uso por 1 año (IVR: Licencia perpetua). En TV, radio y pauta digital la tarifa aplica por cada país de difusión.",
     columns: [
       "Medio",
-      "DuraciÃ³n",
+      "Duración",
       "Latam",
       "EE.UU.",
-      "RenovaciÃ³n anual",
+      "Renovación anual",
     ],
     rows: [
-      ["TelevisiÃ³n nacional", "30 seg", "$225", "$450", "30%"],
+      ["Televisión nacional", "30 seg", "$225", "$450", "30%"],
       ["Redes sociales (pauta)", "30 seg", "$225", "$450", "30%"],
       ["Radio nacional", "30 seg", "$190", "$350", "30%"],
       ["Corporativo / web", "Hasta 2 min", "$350", "$600", "30%"],
@@ -243,7 +243,7 @@ export const PRICING_STRATEGY = {
     ],
   },
   multipleCharacters: {
-    title: "2. Personajes MÃºltiples (EconomÃ­a de Escala)",
+    title: "2. Personajes Múltiples (Economía de Escala)",
     note:
       "Desglose para spots de 30 segundos en Latam (TV / RRSS). Para EE.UU., aplicar x2 sobre tarifa Latam.",
     columns: [
@@ -264,31 +264,31 @@ export const PRICING_STRATEGY = {
       "Voz 2: -30% | Voz 3: -50% | Voz 4: -70% sobre tarifa base de $225.",
   },
   complexity: {
-    title: "Multiplicador por Complejidad de InterpretaciÃ³n",
-    columns: ["Tipo", "DescripciÃ³n", "Multiplicador", "Ejemplo Latam"],
+    title: "Multiplicador por Complejidad de Interpretación",
+    columns: ["Tipo", "Descripción", "Multiplicador", "Ejemplo Latam"],
     rows: [
       [
         "Narrador neutro",
-        "Voz guÃ­a corporativa sin alta carga emocional",
+        "Voz guía corporativa sin alta carga emocional",
         "x1.0",
         "$225",
       ],
-      ["Personaje emocional", "ActuaciÃ³n con emociÃ³n y diÃ¡logos", "x1.25", "$281"],
-      ["Personaje complejo", "MÃºltiples registros y arco dramÃ¡tico", "x1.5", "$338"],
+      ["Personaje emocional", "Actuación con emoción y diálogos", "x1.25", "$281"],
+      ["Personaje complejo", "Múltiples registros y arco dramático", "x1.5", "$338"],
     ],
   },
   postProduction: {
-    title: "3. PostproducciÃ³n y Pulido de Audio",
+    title: "3. Postproducción y Pulido de Audio",
     columns: ["Servicio", "Tarifa base", "Tarifa compleja"],
     rows: [
-      ["RestauraciÃ³n de audio", "$10 / min", "$20 / min"],
-      ["Mezcla mÃ¡ster comercial", "$125 / pieza", "-"],
-      ["DiseÃ±o sonoro (SFX + mÃºsica)", "$100 / spot", "-"],
-      ["EdiciÃ³n RRSS (Reels / TikTok)", "$250 / pieza", "-"],
-      ["DiseÃ±o sonoro por hora", "$100 / hora", "-"],
+      ["Restauración de audio", "$10 / min", "$20 / min"],
+      ["Mezcla máster comercial", "$125 / pieza", "-"],
+      ["Diseño sonoro (SFX + música)", "$100 / spot", "-"],
+      ["Edición RRSS (Reels / TikTok)", "$250 / pieza", "-"],
+      ["Diseño sonoro por hora", "$100 / hora", "-"],
     ],
     note:
-      "Pistas musicales se cotizan aparte segÃºn selecciÃ³n del cliente. El ingeniero valida si restauraciÃ³n aplica tarifa base o compleja.",
+      "Pistas musicales se cotizan aparte según selección del cliente. El ingeniero valida si restauración aplica tarifa base o compleja.",
   },
   tts: {
     title: "4. TTS Curado (Solo Alto Volumen)",
@@ -302,49 +302,50 @@ export const PRICING_STRATEGY = {
     rows: [
       [
         "Starter",
-        "1 voz + mezcla mÃ¡ster (hasta 60 seg)",
+        "1 voz + mezcla máster (hasta 60 seg)",
         "4",
         "2 por video",
         "$800",
       ],
       [
         "Growth",
-        "1 voz + mezcla + ediciÃ³n RRSS (hasta 90 seg)",
+        "1 voz + mezcla + edición RRSS (hasta 90 seg)",
         "8",
         "2 por video",
         "$1,800",
       ],
       [
         "Enterprise",
-        "Hasta 2 voces + mezcla + ediciÃ³n + diseÃ±o sonoro",
+        "Hasta 2 voces + mezcla + edición + diseño sonoro",
         "15+",
         "3 por video",
-        "CotizaciÃ³n",
+        "Cotización",
       ],
     ],
   },
   revisions: {
     title: "6. Revisiones y Tiempos de Entrega",
-    columns: ["Proyecto", "RevisiÃ³n adicional", "Entrega estimada"],
+    columns: ["Proyecto", "Revisión adicional", "Entrega estimada"],
     rows: [
-      ["Spot comercial (TV/Radio)", "$50 / ronda", "3-5 dÃ­as hÃ¡biles"],
-      ["Redes sociales / digital", "$50 / ronda", "2-4 dÃ­as hÃ¡biles"],
-      ["Corporativo / web", "$50 / ronda", "3-5 dÃ­as hÃ¡biles"],
-      ["IVR / centralitas", "$35 / ronda", "2-3 dÃ­as hÃ¡biles"],
-      ["PostproducciÃ³n", "$75 / ronda", "3-5 dÃ­as hÃ¡biles"],
+      ["Spot comercial (TV/Radio)", "$50 / ronda", "3-5 días hábiles"],
+      ["Redes sociales / digital", "$50 / ronda", "2-4 días hábiles"],
+      ["Corporativo / web", "$50 / ronda", "3-5 días hábiles"],
+      ["IVR / centralitas", "$35 / ronda", "2-3 días hábiles"],
+      ["Postproducción", "$75 / ronda", "3-5 días hábiles"],
     ],
     note:
-      "Primera revisiÃ³n incluida. Cambios estructurales de copy se cotizan como proyecto nuevo. Urgencias (<48h): Recargo del 50%.",
+      "Primera revisión incluida. Cambios estructurales de copy se cotizan como proyecto nuevo. Urgencias (<48h): Recargo del 50%.",
   },
   conditions: [
     "Precios en USD, sin impuestos locales.",
-    "La licencia cubre medio y territorio cotizados; usos extra requieren extensiÃ³n.",
-    "RenovaciÃ³n anual: 30% del precio original antes del vencimiento.",
-    "Cambios de copy despuÃ©s de grabar generan nueva cotizaciÃ³n.",
+    "La licencia cubre medio y territorio cotizados; usos extra requieren extensión.",
+    "Renovación anual: 30% del precio original antes del vencimiento.",
+    "Cambios de copy después de grabar generan nueva cotización.",
     "Proyectos de $500+ requieren 50% de anticipo.",
     "AIVOXCR puede incluir el proyecto en portafolio salvo NDA firmado.",
   ],
 };
+
 
 
 
