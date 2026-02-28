@@ -60,9 +60,10 @@ export const COPY = {
     title1: "LA VOZ YA NO SE ELIGE.",
     title2: "SE DISE\u00D1A.",
     introLines: [
-      "Las marcas suelen adaptarse a voces disponibles.",
-      "Nosotros dise\u00F1amos la voz que tu campa\u00F1a necesita.",
-      "Actuación real + tecnología IA avanzada.",
+      "\u00A1HAY UN CAMBIO REAL DE PARADIGMA!",
+      "Las marcas sol\u00EDan adaptarse a voces disponibles.",
+      "Ahora, nosotros dise\u00F1amos la voz que tu campa\u00F1a necesita.",
+      "Actuaci\u00F3n real + tecnolog\u00EDa IA avanzada.",
       "Resultado: audio final profesional sin procesos adicionales.",
     ],
     buttonText: "SOLICITAR DEMO PERSONALIZADA POR WHATSAPP",
