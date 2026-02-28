@@ -728,30 +728,6 @@ export default function App() {
                 onGoProceso={() => goToSection("proceso")}
               />
             </div>
-
-
-
-            <button
-
-              className="tech-button-primary screen1-cta"
-
-              onClick={() => {
-
-                sound.clickMain();
-                startAmbient();
-
-                nextScreen();
-
-              }}
-
-              type="button"
-
-            >
-
-              {COPY.screen1.buttonText}
-
-            </button>
-
             {CONFIG.ambientAttribution && (
               <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em] attribution-stack">
                 <span className="attribution-line">
