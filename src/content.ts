@@ -1,4 +1,6 @@
-﻿export const LOGO_URL = `${import.meta.env.BASE_URL}logo-aivoxcr-cropped.png?v=3`;
+import { TEST_AUDIO_SOURCES } from "./data/audioSources";
+
+export const LOGO_URL = `${import.meta.env.BASE_URL}logo-aivoxcr-cropped.png?v=3`;
 
 export const LOGO_WORDMARK = "AIVOXCR.COM";
 
@@ -19,47 +21,7 @@ export const CONFIG = {
     sourceUrl:
       "https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=328258",
   },
-  audioProjects: [
-    {
-      id: 1,
-      title: "KIWIGLOWCR",
-      aiAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@c1a16f1716aa540a8d268d1f7c3359da0d192fbe/audios/KIWIGLOWCR%20EXPLICATIVO%20RADIO.mp3",
-      humanAudioUrl: "",
-    },
-    {
-      id: 2,
-      title: "EV2CR",
-      aiAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/EV2CR%20VERSION%20IA.mp3",
-      humanAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/EV2CR%20VERSION%20ORIGINAL.mp3",
-    },
-    {
-      id: 3,
-      title: "OPTICAS VISION",
-      aiAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/OPTICAS%20VISION%20VERSION%20IA.mp3",
-      humanAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/OPTICAS%20VISION%20VERSION%20ORIGINAL.mp3",
-    },
-    {
-      id: 4,
-      title: "PILOTOS TERRORISTAS",
-      aiAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/PILOTOS%20TERRORISTAS%20IA.mp3",
-      humanAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/PILOTOS%20TERRORISTAS%20ORIGINAL.mp3",
-    },
-    {
-      id: 5,
-      title: "PROMERICA BILLETERA",
-      aiAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/PROMERICA%20BILLETERA%20IA.mp3",
-      humanAudioUrl:
-        "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/PROMERICA%20BILLETERA%20ORIGINAL.mp3",
-    },
-  ],
+  audioProjects: TEST_AUDIO_SOURCES,
   showcaseAudios: [
     {
       id: "original",

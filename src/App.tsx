@@ -1,6 +1,8 @@
-﻿import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import AudioPlayer, { type AudioHandle } from "./components/AudioPlayer";
+import DemosSection from "./components/DemosSection";
+import WhatsAppCTA, { StickyWhatsAppButton } from "./components/WhatsAppCTA";
 
 import useUiSound from "./hooks/useUiSound";
 
@@ -12,6 +14,8 @@ import {
   LOGO_WORDMARK,
   PRICING_STRATEGY,
 } from "./content";
+import { WHATSAPP_PREFILL_MESSAGE } from "./config/whatsapp";
+import { DEMO_AUDIO_SOURCES } from "./data/audioSources";
 
 
 
@@ -40,6 +44,7 @@ export default function App() {
 
   const ambientRef = useRef<HTMLAudioElement | null>(null);
   const audioRefs = useRef<Record<string | number, AudioHandle | null>>({});
+  const demosRef = useRef<HTMLDivElement | null>(null);
 
   const sound = useUiSound();
 
@@ -48,6 +53,7 @@ export default function App() {
     ? CONTACT.whatsapp.replace(/\D/g, "")
 
     : "";
+  const whatsappPrefillMessage = WHATSAPP_PREFILL_MESSAGE;
   const seoLinksScreen1 = [
     { href: "/voces-humanas-potenciadas-ia.html", label: "Voces humanas + IA" },
     { href: "/ventajas-produccion-vocal-ia.html", label: "Ventajas del servicio" },
@@ -59,6 +65,53 @@ export default function App() {
   ];
   const pricingTabLabel = "Estrategia de precios";
   const LAST_SCREEN = 7;
+
+  const goToSection = (
+    target: "demos" | "test" | "proceso" | "contacto" | "precios"
+  ) => {
+    if (target === "demos") {
+      if (currentScreen !== 1) {
+        setCurrentScreen(1);
+        window.setTimeout(() => {
+          demosRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 120);
+      } else {
+        demosRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      return;
+    }
+
+    if (target === "test") {
+      if (currentScreen === 1) {
+        sound.clickMain();
+        startAmbient();
+      } else {
+        sound.clickSoft();
+      }
+      setCurrentScreen(2);
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    if (target === "proceso") {
+      sound.clickSoft();
+      setCurrentScreen(5);
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    if (target === "contacto") {
+      sound.clickSoft();
+      setCurrentScreen(LAST_SCREEN);
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    sound.clickSoft();
+    setCurrentScreen(LAST_SCREEN);
+    setShowPricingTab(true);
+    window.scrollTo(0, 0);
+  };
 
   const startAmbient = () => {
     const ambient = ambientRef.current;
@@ -313,6 +366,12 @@ export default function App() {
     <div className="relative">
 
       <div className="scanline" />
+      {CONTACT.whatsapp && (
+        <StickyWhatsAppButton
+          number={CONTACT.whatsapp}
+          message={whatsappPrefillMessage}
+        />
+      )}
       {CONFIG.ambientAudioUrl && (
         <audio ref={ambientRef} src={CONFIG.ambientAudioUrl} loop preload="auto" playsInline />
       )}
@@ -388,6 +447,15 @@ export default function App() {
             </div>
 
             <div className="pricing-tab-content">
+              <div className="pricing-tab-cta" id="precios">
+                <WhatsAppCTA
+                  label="Hablar ahora"
+                  location="pricing_modal_top"
+                  message={whatsappPrefillMessage}
+                  number={CONTACT.whatsapp}
+                  variant="secondary"
+                />
+              </div>
               <section className="tech-box pricing-tab-block">
                 <h3 className="pricing-tab-section-title">Propuesta de valor</h3>
                 <p className="pricing-tab-copy">{PRICING_STRATEGY.valueProposition}</p>
@@ -567,7 +635,7 @@ export default function App() {
 
       {currentScreen === 1 && (
 
-        <section className="screen-container">
+        <section className="screen-container" id="inicio">
 
           <div className="max-w-6xl mx-auto text-center">
             {LOGO_URL ? (
@@ -625,6 +693,52 @@ export default function App() {
                   {line}
                 </p>
               ))}
+            </div>
+
+            <div className="screen1-nav-actions">
+              <button
+                type="button"
+                className="tech-button-primary"
+                onClick={() => goToSection("demos")}
+              >
+                Escuchar demos
+              </button>
+              <button
+                type="button"
+                className="tech-button-outline"
+                onClick={() => goToSection("test")}
+              >
+                Hacer el test
+              </button>
+            </div>
+
+            <div className="screen1-anchor-nav" aria-label="Navegación rápida">
+              <a href="#demos" onClick={(e) => { e.preventDefault(); goToSection("demos"); }}>
+                #demos
+              </a>
+              <a href="#test" onClick={(e) => { e.preventDefault(); goToSection("test"); }}>
+                #test
+              </a>
+              <a href="#proceso" onClick={(e) => { e.preventDefault(); goToSection("proceso"); }}>
+                #proceso
+              </a>
+              <a href="#contacto" onClick={(e) => { e.preventDefault(); goToSection("contacto"); }}>
+                #contacto
+              </a>
+              <a href="#precios" onClick={(e) => { e.preventDefault(); goToSection("precios"); }}>
+                #precios
+              </a>
+            </div>
+
+            <div ref={demosRef}>
+              <DemosSection
+                demos={DEMO_AUDIO_SOURCES}
+                onStart={handleStart}
+                onRef={setAudioRef}
+                whatsappNumber={CONTACT.whatsapp}
+                whatsappMessage={whatsappPrefillMessage}
+                onGoProceso={() => goToSection("proceso")}
+              />
             </div>
 
 
@@ -707,7 +821,7 @@ export default function App() {
 
       {currentScreen === 2 && (
 
-        <section className="screen-container">
+        <section className="screen-container" id="test">
 
           <div className="max-w-5xl mx-auto w-full">
 
@@ -1055,6 +1169,15 @@ export default function App() {
               >
                 {COPY.screen4Showcase.buttonText}
               </button>
+              <div className="inline-whatsapp-cta-wrap">
+                <WhatsAppCTA
+                  label="Solicitar demo por WhatsApp"
+                  location="proceso_showcase_end"
+                  message={whatsappPrefillMessage}
+                  number={CONTACT.whatsapp}
+                  variant="secondary"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -1062,7 +1185,7 @@ export default function App() {
 
       {currentScreen === 5 && (
 
-        <section className="screen-container">
+        <section className="screen-container" id="proceso">
 
           <div className="max-w-4xl mx-auto">
 
@@ -1310,7 +1433,7 @@ export default function App() {
 
       {currentScreen === 7 && (
 
-        <section className="screen-container screen-center">
+        <section className="screen-container screen-center" id="contacto">
 
           <div className="max-w-4xl mx-auto text-center">
 

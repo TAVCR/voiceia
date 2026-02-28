@@ -11,6 +11,7 @@ type AudioPlayerProps = {
   audioUrl: string;
   allowRepeat?: boolean;
   disabled?: boolean;
+  showMeta?: boolean;
   onPlayComplete?: (id: string | number) => void;
   onStart?: (id: string | number) => void;
   onRef?: (id: string | number, handle: AudioHandle | null) => void;
@@ -21,14 +22,20 @@ export default function AudioPlayer({
   audioUrl,
   allowRepeat = false,
   disabled = false,
+  showMeta = false,
   onPlayComplete,
   onStart,
   onRef,
 }: AudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const waveRef = useRef<WaveSurfer | null>(null);
+  const pendingPlayRef = useRef(false);
   const onPlayCompleteRef = useRef(onPlayComplete);
   const onRefRef = useRef(onRef);
   const onStartRef = useRef(onStart);
@@ -60,7 +67,6 @@ export default function AudioPlayer({
 
     const wave = WaveSurfer.create({
       container,
-      url: audioUrl,
       waveColor: "rgba(0, 242, 255, 0.3)",
       progressColor: "#00f2ff",
       cursorColor: "#ff8c00",
@@ -73,11 +79,27 @@ export default function AudioPlayer({
 
     waveRef.current = wave;
 
+    wave.on("ready", () => {
+      setDuration(wave.getDuration() || 0);
+      setIsLoading(false);
+      setHasLoaded(true);
+      if (pendingPlayRef.current) {
+        pendingPlayRef.current = false;
+        wave.play();
+      }
+    });
+
     wave.on("finish", markCompleted);
+    wave.on("error", () => {
+      setIsLoading(false);
+      pendingPlayRef.current = false;
+    });
 
     wave.on("play", () => setIsPlaying(true));
     wave.on("pause", () => setIsPlaying(false));
+    wave.on("decode", (decodedDuration) => setDuration(decodedDuration || 0));
     wave.on("timeupdate", (time) => {
+      setCurrentTime(time);
       const duration = wave.getDuration();
       if (!duration) return;
       if (!allowRepeat && !completed && time >= duration - 0.15) {
@@ -101,11 +123,30 @@ export default function AudioPlayer({
     if (!waveRef.current) return;
     if (disabled) return;
     if (!allowRepeat && hasPlayed) return;
+    if (isLoading) return;
+
     onStartRef.current?.(id);
+
+    if (!hasLoaded) {
+      pendingPlayRef.current = true;
+      setIsLoading(true);
+      waveRef.current.load(audioUrl);
+      return;
+    }
+
     waveRef.current.playPause();
-  }, [allowRepeat, disabled, hasPlayed, id]);
+  }, [allowRepeat, audioUrl, disabled, hasLoaded, hasPlayed, id, isLoading]);
 
   const canPlay = !disabled && (allowRepeat || !hasPlayed);
+  const statusLabel = isLoading ? "Cargando audio..." : "Listo";
+
+  const formatTime = (value: number) => {
+    if (!Number.isFinite(value) || value <= 0) return "0:00";
+    const totalSeconds = Math.floor(value);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${String(seconds).padStart(2, "0")}`;
+  };
 
   return (
     <div className={`audio-player ${disabled ? "opacity-50" : ""}`}>
@@ -113,8 +154,9 @@ export default function AudioPlayer({
         <button
           className="play-button"
           onClick={handlePlayPause}
-          disabled={!canPlay}
+          disabled={!canPlay || isLoading}
           type="button"
+          aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}
         >
           {isPlaying ? (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
@@ -131,6 +173,12 @@ export default function AudioPlayer({
           <div ref={containerRef} className="waveform-container" />
         </div>
       </div>
+      {showMeta && (
+        <div className="audio-player-meta" aria-live="polite">
+          <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
+          <span>{statusLabel}</span>
+        </div>
+      )}
       {!allowRepeat && hasPlayed && (
         <div className="text-xs text-tech-dim uppercase tracking-wider mt-2">
           Audio reproducido_sistema bloqueado
