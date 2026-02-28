@@ -58,33 +58,38 @@ export const COPY = {
   screen1: {
     tagline: "INICIO PROTOCOLO EVALUACIÓN",
     title1: "LA VOZ NO SE ELIGE.",
-    title2: "SE DISEÑA.",
+    title2: "SE DISE\u00D1A.",
     introLines: [
-      "Actuación profesional + producción incluida.",
-      "Entrega rápida. Audio listo para pauta.",
+      "Las marcas suelen adaptarse a voces disponibles.",
+      "Nosotros dise\u00F1amos la voz que tu campa\u00F1a necesita.",
+      "Actuaci\u00F3n real + tecnolog\u00EDa avanzada.",
+      "Resultado: audio final profesional sin procesos adicionales.",
     ],
-    buttonText: "Solicitar demo por WhatsApp",
+    buttonText: "SOLICITAR DEMO PERSONALIZADA POR WHATSAPP",
+    secondaryButtonText: "ESCUCHAR DEMOS",
+    paypalLine: "Pago internacional disponible (PayPal).",
   },
   screen2: {
-    title: "EVALUACIÓN AUDITIVA",
+    title: "EVALUACI\u00D3N AUDITIVA",
     warning:
-      "ATENCIÓN: Para avanzar debes marcar 3 selecciones. Puedes escuchar los audios las veces que quieras. No olvides marcar tu elección: Voz humana o IA.",
+      "Elige si cre\u00E9s que cada pieza es VOZ HUMANA o VOZ GENERADA IA. Debes marcar al menos 3 para continuar.",
     optionHuman: "Voz Humana",
     optionAI: "Voz Generada IA",
     buttonText: "Ver Resultados",
     pendingMessage: "Marca 3 selecciones para continuar",
     selectionCounterLabel: "SELECCIONADAS",
     revisitMessage:
-      "RE-EVALUACIÓN_LIBRE: puedes volver a escuchar todos los audios sin restricciones",
+      "RE-EVALUACI\u00D3N_LIBRE: puedes volver a escuchar todos los audios sin restricciones",
   },
   screen3: {
-    mainText: "TODAS LAS VOCES\nQUE ESCUCHASTE",
-    accentText: "FUERON\nGENERADAS\nCON IA",
+    mainText:
+      "TODAS LAS VOCES QUE ESCUCHASTE\nTUVIERON IA EN ALGUNA PARTE DEL PROCESO.",
+    accentText: "PERO NINGUNA FUE CREADA\nDESDE CERO POR TEXTO.",
     secondaryTextIntroPrefix: "Pero",
-    secondaryTextIntroEmphasis: "Ninguna",
-    secondaryTextIntroSuffix: "fue creada desde texto.",
-    secondaryTextLine: "Este no es el futuro:",
-    secondaryTextEmphasis: "¡ES EL PRESENTE!",
+    secondaryTextIntroEmphasis: "la actuaci\u00F3n base",
+    secondaryTextIntroSuffix: "se mantiene humana y dirigida.",
+    secondaryTextLine: "La voz no se elige:",
+    secondaryTextEmphasis: "SE DISE\u00D1A.",
     buttonText: "Mostrarme",
   },
   screen4Showcase: {
@@ -179,6 +184,35 @@ export const COPY = {
       source:
         "(Fuente sobre el riesgo de oportunistas en IA: Portal tecnológico Sinologic, enero de 2026).",
     },
+  },
+};
+
+export const CONVERSION_COPY = {
+  demos: {
+    title: "🎙️ Escucha demos reales",
+    subtitle:
+      "Locución profesional con actuación real. Producción incluida. Calidad lista para pauta.",
+    support: "¿Quieres una versión adaptada a tu marca?",
+    disclaimer:
+      "Algunas piezas son demostrativas o recreadas para mostrar rangos de timbre. La actuación base es real.",
+  },
+  promo: {
+    strapline: "Diseño vocal continuo para marcas en crecimiento.",
+    badge: "BONUS",
+    title: "Desde $225 USD",
+    line: "+ Diseño de audio incluido (según disponibilidad)",
+    subtext: "Incluye locución + mezcla/máster + SFX (si aplica). Hasta 30s por pieza.",
+    note: "Música con licencia puede tener costo adicional.",
+  },
+  miniHero: {
+    title: "La voz se diseña. Compruébalo.",
+    lines: [
+      "Estamos ante un cambio de paradigma.",
+      "Escucha piezas producidas profesionalmente",
+      "y decide: ¿Humano o IA?",
+      "Después te revelamos el proceso.",
+    ],
+    button: "HACER EL TEST",
   },
 };
 

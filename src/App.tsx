@@ -7,6 +7,7 @@ import WhatsAppCTA, { StickyWhatsAppButton } from "./components/WhatsAppCTA";
 import useUiSound from "./hooks/useUiSound";
 
 import {
+  CONVERSION_COPY,
   CONFIG,
   CONTACT,
   COPY,
@@ -57,7 +58,7 @@ export default function App() {
   const seoLinksScreen1 = [
     { href: "/voces-humanas-potenciadas-ia.html", label: "Voces humanas + IA" },
     { href: "/ventajas-produccion-vocal-ia.html", label: "Ventajas del servicio" },
-    { href: "/asi-lo-hacemos-proceso-vocal-ia.html", label: "Así lo hacemos" },
+    { href: "/asi-lo-hacemos-proceso-vocal-ia.html", label: "As\u00ED lo hacemos" },
   ];
   const seoLinksScreen8 = [
     { href: "/voces-ia-potenciadas-por-humanos.html", label: "IA + humanos" },
@@ -652,13 +653,13 @@ export default function App() {
 
             <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] text-balance screen1-title screen1-equal-gap">
 
-              <span className="block text-white mb-4 nowrap-word">
+              <span className="block text-white nowrap-word screen1-hero-line">
 
                 {COPY.screen1.title1}
 
               </span>
 
-              <span className="block title-accent glitch-text nowrap-word">
+              <span className="block title-accent glitch-text nowrap-word screen1-hero-line-accent">
 
                 {COPY.screen1.title2}
 
@@ -691,12 +692,11 @@ export default function App() {
                 number={CONTACT.whatsapp}
                 variant="primary"
               />
-              <button type="button" className="tech-button-outline" onClick={() => goToSection("demos")}>
-                Escuchar demos
-              </button>
+              <button type="button" className="tech-button-outline" onClick={() => goToSection("demos")}>{COPY.screen1.secondaryButtonText}</button>
             </div>
+            <p className="screen1-paypal-line">{COPY.screen1.paypalLine}</p>
 
-            <div className="screen1-anchor-nav" aria-label="Navegación rápida">
+            <div className="screen1-anchor-nav" aria-label="Navegaci\u00F3n r\u00E1pida">
               <a href="#demos" onClick={(e) => { e.preventDefault(); goToSection("demos"); }}>
                 #demos
               </a>
@@ -721,18 +721,24 @@ export default function App() {
                 onRef={setAudioRef}
                 whatsappNumber={CONTACT.whatsapp}
                 whatsappMessage={whatsappPrefillMessage}
-                onGoExamples={() => goToSection("test")}
+                onGoExamples={() => goToSection("demos")}
+                copy={CONVERSION_COPY}
               />
             </div>
 
             <div className="test-teaser tech-box" aria-label="Acceso al test">
-              <p className="test-teaser__title">¿Quieres experimentar cómo funciona?</p>
+              <p className="test-teaser__title">{CONVERSION_COPY.miniHero.title}</p>
+              {CONVERSION_COPY.miniHero.lines.map((line) => (
+                <p key={line} className="test-teaser__line">
+                  {line}
+                </p>
+              ))}
               <button
                 type="button"
                 className="tech-button-outline"
                 onClick={() => goToSection("test")}
               >
-                Hacer el test
+                {CONVERSION_COPY.miniHero.button}
               </button>
             </div>
             {CONFIG.ambientAttribution && (

@@ -519,6 +519,22 @@ canvas {
   margin-bottom: clamp(2rem, 4.2vh, 3rem);
 }
 
+.screen1-hero-line {
+  margin-bottom: clamp(0.7rem, 2.2vh, 1.45rem);
+}
+
+.screen1-hero-line-accent {
+  margin-top: 0;
+}
+
+.screen1-paypal-line {
+  margin: 0 auto clamp(1rem, 2.5vh, 1.5rem);
+  color: #9eaec1;
+  font-size: clamp(0.68rem, 1.3vw, 0.8rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .screen1-intro-line {
   margin: 0;
   color: #c9d0db;
@@ -619,6 +635,13 @@ canvas {
   line-height: 1.6;
 }
 
+.demos-section__disclaimer {
+  margin: 0.55rem 0 0;
+  color: #94a4b8;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
 .demos-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -678,6 +701,14 @@ canvas {
   text-transform: uppercase;
 }
 
+.promo-card__strapline {
+  margin: 0 0 0.5rem;
+  color: #d8e5f5;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .promo-card__title {
   margin: 0.8rem 0 0.5rem;
   color: #ffffff;
@@ -729,6 +760,21 @@ canvas {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.test-teaser__line {
+  margin: 0;
+  color: #b7c4d6;
+  font-size: clamp(0.84rem, 1.65vw, 0.96rem);
+  line-height: 1.5;
+}
+
+.test-teaser__line + .test-teaser__line {
+  margin-top: 0.4rem;
+}
+
+.test-teaser .tech-button-outline {
+  margin-top: 0.9rem;
 }
 
 .inline-whatsapp-cta-wrap {

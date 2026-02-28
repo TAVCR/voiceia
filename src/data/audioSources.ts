@@ -53,7 +53,7 @@ export const TEST_AUDIO_SOURCES: TestAudioSource[] = [
   },
 ];
 
-export const DEMO_AUDIO_SOURCES: DemoAudioSource[] = TEST_AUDIO_SOURCES.slice(0, 3).map(
+export const DEMO_AUDIO_SOURCES: DemoAudioSource[] = TEST_AUDIO_SOURCES.map(
   (audio, index) => ({
     id: `demo_${audio.id}`,
     title: `Demo ${index + 1}`,
