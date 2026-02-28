@@ -57,15 +57,13 @@ export const CONFIG = {
 export const COPY = {
   screen1: {
     tagline: "INICIO PROTOCOLO EVALUACIÓN",
-    title1: "¿PUEDES",
-    title2: "DISTINGUIR?",
+    title1: "LA VOZ NO SE ELIGE.",
+    title2: "SE DISEÑA.",
     introLines: [
-      "Las voces generadas por IA ya forman parte de nuestro día a día.",
-      "¿Y si en lugar de debatir si nos reemplazarán, las integráramos?",
-      "En Aivoxcr.com buscamos reconciliar el talento real con la innovación.",
-      "¿Te atreves a descubrir si puedes distinguir entre lo completamente humano y lo humano potenciado?",
+      "Actuación profesional + producción incluida.",
+      "Entrega rápida. Audio listo para pauta.",
     ],
-    buttonText: "Haz el test.",
+    buttonText: "Solicitar demo por WhatsApp",
   },
   screen2: {
     title: "EVALUACIÓN AUDITIVA",
@@ -96,7 +94,8 @@ export const COPY = {
   },
   screen4: {
     title: "EL PROCESO",
-    subtitle: "¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÓN VOCAL!",
+    subtitle:
+      "¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÓN VOCAL! LA VOZ NO SE ELIGE, SE DISEÑA.",
     benchmarkTitle: "BENCHMARK ELEVENLABS",
     benchmarkBody:
       "Incluso el AI Speech Classifier de ElevenLabs da una probabilidad bajísima de que los audios fueran generados con IA (≈2% a 5%) para la mayoría de los casos.",

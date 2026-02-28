@@ -560,9 +560,14 @@ canvas {
   margin: 0 auto clamp(1.1rem, 3vh, 1.8rem);
 }
 
-.screen1-nav-actions .tech-button-primary,
+.screen1-nav-actions .whatsapp-cta,
 .screen1-nav-actions .tech-button-outline {
   min-width: min(290px, 84vw);
+}
+
+.screen1-nav-actions .whatsapp-cta {
+  min-height: 52px;
+  font-size: 0.78rem;
 }
 
 .screen1-anchor-nav {
@@ -709,6 +714,21 @@ canvas {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.6rem;
+}
+
+.test-teaser {
+  margin: 1rem auto 0;
+  max-width: min(92vw, 980px);
+  padding: clamp(0.9rem, 2.2vw, 1.3rem);
+  text-align: center;
+}
+
+.test-teaser__title {
+  margin: 0 0 0.7rem;
+  color: #d8e0ec;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .inline-whatsapp-cta-wrap {

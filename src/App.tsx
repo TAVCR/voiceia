@@ -449,7 +449,7 @@ export default function App() {
             <div className="pricing-tab-content">
               <div className="pricing-tab-cta" id="precios">
                 <WhatsAppCTA
-                  label="Hablar ahora"
+                  label="Solicitar demo por WhatsApp"
                   location="pricing_modal_top"
                   message={whatsappPrefillMessage}
                   number={CONTACT.whatsapp}
@@ -684,19 +684,15 @@ export default function App() {
             </div>
 
             <div className="screen1-nav-actions">
-              <button
-                type="button"
-                className="tech-button-primary"
-                onClick={() => goToSection("demos")}
-              >
+              <WhatsAppCTA
+                label={COPY.screen1.buttonText}
+                location="hero_primary"
+                message={whatsappPrefillMessage}
+                number={CONTACT.whatsapp}
+                variant="primary"
+              />
+              <button type="button" className="tech-button-outline" onClick={() => goToSection("demos")}>
                 Escuchar demos
-              </button>
-              <button
-                type="button"
-                className="tech-button-outline"
-                onClick={() => goToSection("test")}
-              >
-                Hacer el test
               </button>
             </div>
 
@@ -725,8 +721,19 @@ export default function App() {
                 onRef={setAudioRef}
                 whatsappNumber={CONTACT.whatsapp}
                 whatsappMessage={whatsappPrefillMessage}
-                onGoProceso={() => goToSection("proceso")}
+                onGoExamples={() => goToSection("test")}
               />
+            </div>
+
+            <div className="test-teaser tech-box" aria-label="Acceso al test">
+              <p className="test-teaser__title">¿Quieres experimentar cómo funciona?</p>
+              <button
+                type="button"
+                className="tech-button-outline"
+                onClick={() => goToSection("test")}
+              >
+                Hacer el test
+              </button>
             </div>
             {CONFIG.ambientAttribution && (
               <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em] attribution-stack">
@@ -1605,6 +1612,16 @@ export default function App() {
                 </div>
               </div>
 
+            </div>
+
+            <div className="inline-whatsapp-cta-wrap">
+              <WhatsAppCTA
+                label="Solicitar demo por WhatsApp"
+                location="footer_cta"
+                message={whatsappPrefillMessage}
+                number={CONTACT.whatsapp}
+                variant="secondary"
+              />
             </div>
 
 
