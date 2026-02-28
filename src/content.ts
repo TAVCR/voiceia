@@ -85,7 +85,7 @@ export const COPY = {
     mainText:
       "TODAS LAS VOCES QUE ESCUCHASTE\nTUVIERON IA EN ALGUNA PARTE DEL PROCESO.",
     accentText: "PERO NINGUNA FUE CREADA\nDESDE CERO POR TEXTO.",
-    secondaryTextIntroPrefix: "Pero",
+    secondaryTextIntroPrefix: "",
     secondaryTextIntroEmphasis: "la actuaci\u00F3n base",
     secondaryTextIntroSuffix: "se mantiene humana y dirigida.",
     secondaryTextLine: "La voz no se elige:",
@@ -100,7 +100,7 @@ export const COPY = {
   screen4: {
     title: "EL PROCESO",
     subtitle:
-      "¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÓN VOCAL! LA VOZ NO SE ELIGE, SE DISEÑA.",
+      "¡CAMBIO DE PARADIGMA REAL EN PRODUCCIÓN VOCAL! LA VOZ YA NO SE ELIGE, SE DISEÑA.",
     benchmarkTitle: "BENCHMARK ELEVENLABS",
     benchmarkBody:
       "Incluso el AI Speech Classifier de ElevenLabs da una probabilidad bajísima de que los audios fueran generados con IA (≈2% a 5%) para la mayoría de los casos.",
