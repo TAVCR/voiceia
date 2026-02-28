@@ -57,8 +57,8 @@ export const CONFIG = {
 export const COPY = {
   screen1: {
     tagline: "INICIO PROTOCOLO EVALUACIÓN",
-    title1: "LA VOZ YA NO SE ELIGE.",
-    title2: "SE DISE\u00D1A.",
+    title1: "LA VOZ YA NO SE ELIGE",
+    title2: "SE DISE\u00D1A",
     introLines: [
       "\u00A1HAY UN CAMBIO REAL DE PARADIGMA!",
       "Las marcas sol\u00EDan adaptarse a voces disponibles.",
