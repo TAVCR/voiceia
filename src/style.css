@@ -1795,6 +1795,19 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  .screen1-title {
+    font-size: clamp(1.18rem, 7.2vw, 1.9rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .screen1-hero-line,
+  .screen1-hero-line-accent,
+  .screen1-title .nowrap-word {
+    white-space: normal !important;
+    text-wrap: balance;
+  }
+
   .sticky-whatsapp {
     right: 12px;
     bottom: calc(12px + env(safe-area-inset-bottom));
