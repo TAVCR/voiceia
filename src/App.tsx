@@ -683,7 +683,7 @@ export default function App() {
             <div className="screen1-nav-actions">
               <a
                 href={`${basePath}/asi-lo-hacemos-proceso-vocal-ia.html`}
-                className="tech-button-outline screen1-hero-link"
+                className="tech-button-primary screen1-hero-link"
               >
                 ASÍ LO HACEMOS
               </a>
