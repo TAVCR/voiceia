@@ -776,7 +776,7 @@ export default function App() {
                     key={link.href}
                     href={link.href}
                     className={`screen1-seo-link ${
-                      link.href === "/asi-lo-hacemos-proceso-vocal-ia.html"
+                      link.href.includes("asi-lo-hacemos-proceso-vocal-ia.html")
                         ? "screen1-seo-link--showcase"
                         : ""
                     }`}
