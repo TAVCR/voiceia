@@ -650,18 +650,6 @@ export default function App() {
               </div>
             )}
 
-            <div className="mb-8 md:mb-10">
-
-              <span className="text-xs text-tech-accent tracking-[0.4em] opacity-50">
-
-                {COPY.screen1.tagline}
-
-              </span>
-
-            </div>
-
-
-
             <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] text-balance screen1-title screen1-equal-gap">
 
               <span className="block text-white mb-4 nowrap-word">
@@ -826,6 +814,9 @@ export default function App() {
           <div className="max-w-5xl mx-auto w-full">
 
             <div className="mb-10 text-center">
+              <span className="text-xs text-tech-accent tracking-[0.4em] opacity-50">
+                {COPY.screen1.tagline}
+              </span>
 
               <h2 className="tech-title text-[clamp(2.1rem,6.2vw,4.5rem)] mb-6 title-accent tracking-[0.12em] text-balance screen2-title">
                 {COPY.screen2.title}
