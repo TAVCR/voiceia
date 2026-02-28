@@ -1801,27 +1801,93 @@ textarea {
 
 @media (max-width: 640px) {
   .screen3-title {
-    font-size: clamp(0.98rem, 3.5vw, 1.36rem) !important;
-    letter-spacing: 0.03em !important;
+    font-size: clamp(0.86rem, 3.05vw, 1.18rem) !important;
+    letter-spacing: 0.02em !important;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .screen3-main {
-    font-size: clamp(0.96rem, 3.35vw, 1.28rem) !important;
+    font-size: clamp(0.84rem, 2.98vw, 1.12rem) !important;
+    width: 100%;
+    text-align: center !important;
   }
 
   .screen3-accent {
-    font-size: clamp(1.02rem, 3.55vw, 1.42rem) !important;
-    letter-spacing: 0.03em !important;
+    font-size: clamp(0.92rem, 3.18vw, 1.24rem) !important;
+    letter-spacing: 0.02em !important;
+    width: 100%;
+    text-align: center !important;
+  }
+
+  .screen3-line,
+  .screen3-line--main,
+  .screen3-line--accent {
+    display: block !important;
+    width: 100% !important;
+    white-space: normal !important;
+    text-wrap: balance;
+    line-height: 1.08;
+    text-align: center !important;
+  }
+
+  .screen3-secondary-line {
+    font-size: clamp(0.98rem, 3.6vw, 1.22rem) !important;
+    line-height: 1.35;
+    letter-spacing: 0.06em !important;
+    width: min(100%, 96vw);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center !important;
+  }
+
+  .screen3-secondary-line--voice {
+    font-size: clamp(1.04rem, 3.8vw, 1.28rem) !important;
+  }
+
+  .screen3-cta {
+    width: min(100%, 320px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .screen4-title {
-    font-size: clamp(1.24rem, 5vw, 1.82rem) !important;
+    font-size: clamp(1.06rem, 4.2vw, 1.46rem) !important;
+    letter-spacing: 0.05em !important;
   }
 
   .screen4-subtitle {
-    font-size: clamp(0.7rem, 2.65vw, 0.94rem) !important;
-    letter-spacing: 0.12em !important;
+    font-size: clamp(0.62rem, 2.28vw, 0.82rem) !important;
+    letter-spacing: 0.08em !important;
     line-height: 1.45;
+    width: min(100%, 96vw);
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: balance;
+    text-align: center !important;
+  }
+
+  .screen4-showcase-title {
+    font-size: clamp(1.18rem, 4.7vw, 1.62rem) !important;
+    line-height: 1.05;
+    letter-spacing: 0.04em !important;
+    width: min(100%, 96vw);
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: balance;
+    text-align: center !important;
+  }
+
+  .screen4-showcase-subtitle {
+    font-size: clamp(0.66rem, 2.35vw, 0.86rem) !important;
+    letter-spacing: 0.09em !important;
+    line-height: 1.4;
+    width: min(100%, 96vw);
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: balance;
+    text-align: center !important;
   }
 
   .test-teaser__line {

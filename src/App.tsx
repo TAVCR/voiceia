@@ -1029,7 +1029,7 @@ export default function App() {
 
               <div className="fade-enter fade-enter-active">
 
-                <p className="text-[clamp(1.3rem,3.5vw,2.4rem)] text-tech-warning mb-6 uppercase tracking-wide">
+                <p className="text-[clamp(1.3rem,3.5vw,2.4rem)] text-tech-warning mb-6 uppercase tracking-wide screen3-secondary-line">
 
                   {COPY.screen3.secondaryTextIntroPrefix}{" "}
 
@@ -1043,7 +1043,7 @@ export default function App() {
 
                 </p>
 
-                <p className="text-[clamp(1.4rem,3.6vw,2.6rem)] text-tech-warning mb-16 uppercase tracking-wide">
+                <p className="text-[clamp(1.4rem,3.6vw,2.6rem)] text-tech-warning mb-16 uppercase tracking-wide screen3-secondary-line screen3-secondary-line--voice">
 
                   <span className="underline-emphasis">
 
@@ -1063,7 +1063,7 @@ export default function App() {
 
                 <button
 
-                  className="tech-button-outline"
+                  className="tech-button-outline screen3-cta"
 
                   onClick={() => {
 
@@ -1097,10 +1097,10 @@ export default function App() {
         <section className="screen-container">
           <div className="max-w-6xl mx-auto w-full">
             <div className="text-center mb-12">
-              <h2 className="tech-title text-[clamp(2rem,5.4vw,4.2rem)] title-accent mb-4">
+              <h2 className="tech-title text-[clamp(2rem,5.4vw,4.2rem)] title-accent mb-4 screen4-showcase-title">
                 {COPY.screen4Showcase.title}
               </h2>
-              <p className="text-[clamp(0.95rem,2.2vw,1.2rem)] text-tech-dim uppercase tracking-[0.16em]">
+              <p className="text-[clamp(0.95rem,2.2vw,1.2rem)] text-tech-dim uppercase tracking-[0.16em] screen4-showcase-subtitle">
                 {COPY.screen4Showcase.subtitle}
               </p>
             </div>
