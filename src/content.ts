@@ -142,6 +142,7 @@ export const COPY = {
       "Producción audiovisual",
       "Diseño sonoro",
       "Dirección vocal",
+      "EDICION DE VIDEO",
     ],
     description:
       "Donde el talento humano encuentra la innovación: No es menos actuación. Es control total del personaje.",
