@@ -1,4 +1,4 @@
-﻿import { TEST_AUDIO_SOURCES } from "./data/audioSources";
+import { TEST_AUDIO_SOURCES } from "./data/audioSources";
 
 export const LOGO_URL = `${import.meta.env.BASE_URL}logo-aivoxcr-cropped.png?v=3`;
 
@@ -63,8 +63,8 @@ export const COPY = {
       "\u00A1HAY UN CAMBIO REAL DE PARADIGMA!",
       "Las marcas sol\u00EDan adaptarse a voces disponibles.",
       "Ahora, nosotros dise\u00F1amos la voz que tu campa\u00F1a necesita.",
-      "Actuaci\u00F3n real + tecnolog\u00EDa IA avanzada.",
-      "Resultado: Audio final profesional sin procesos adicionales que integramos directamente en tu pieza Audiovisual.",
+      "Actuaci\u00F3n real + tecnolog\u00EDa IA avanzada + Dise\u00F1o de Audio.",
+      "Resultado: Sonido final profesional que integramos directamente en tu pieza Audiovisual.",
     ],
     buttonText: "SOLICITAR DEMO PERSONALIZADA POR WHATSAPP",
     secondaryButtonText: "ESCUCHAR DEMOS",
@@ -345,6 +345,7 @@ export const PRICING_STRATEGY = {
     "AIVOXCR puede incluir el proyecto en portafolio salvo NDA firmado.",
   ],
 };
+
 
 
 
