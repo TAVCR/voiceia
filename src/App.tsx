@@ -665,6 +665,8 @@ export default function App() {
 
             </h1>
 
+            <p className="screen1-title-hint">{COPY.screen1.titleHint}</p>
+
 
 
             <div className="tech-box screen1-intro screen1-equal-gap">
