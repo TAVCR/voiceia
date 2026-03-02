@@ -1425,6 +1425,23 @@ textarea {
   .title-factor-91.screen3-title {
     transform: scale(1.82);
   }
+
+  .screen3-reveal {
+    align-items: flex-start;
+    padding-top: clamp(1.2rem, 3.5vh, 2.4rem);
+  }
+
+  .screen3-stack {
+    margin-top: -0.4rem;
+  }
+
+  .screen3-reveal .screen3-logo {
+    margin-bottom: 0.85rem;
+  }
+
+  .screen3-reveal .screen3-hero {
+    margin-bottom: clamp(8.8rem, 16vh, 13rem) !important;
+  }
 }
 
 .title-factor-70.screen3-title,

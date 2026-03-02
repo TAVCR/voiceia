@@ -999,15 +999,15 @@ export default function App() {
 
 
       {currentScreen === 3 && (
-        <section className="screen-container screen-center">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="screen-container screen-center screen3-reveal">
+          <div className="max-w-4xl mx-auto text-center screen3-stack">
             {LOGO_URL ? (
               <img src={LOGO_URL} alt={LOGO_WORDMARK} className="screen3-logo" />
             ) : (
               <div className="logo-wordmark screen3-logo-wordmark">{LOGO_WORDMARK}</div>
             )}
 
-            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-91">
+            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-91 screen3-hero">
               <span className="block text-white mb-6 screen3-main">
                 {COPY.screen3.mainText.split("\n").map((line) => (
                   <span key={line} className="block screen3-line screen3-line--main">
