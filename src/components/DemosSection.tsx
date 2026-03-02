@@ -32,27 +32,11 @@ export default function DemosSection({
   onGoExamples,
   copy,
 }: DemosSectionProps) {
-  const subtitleUnderlinedFragment = "en todos los anuncios";
-  const subtitleParts = copy.demos.subtitle.split(subtitleUnderlinedFragment);
-  const hasUnderlinedFragment = subtitleParts.length > 1;
-
   return (
     <section id="demos" className="demos-section tech-box" aria-label="Demos reales">
       <div className="demos-section__head">
         <h2 className="demos-section__title">{copy.demos.title}</h2>
-        <p className="demos-section__subtitle">
-          {hasUnderlinedFragment ? (
-            <>
-              {subtitleParts[0]}
-              <span className="demos-section__subtitle-underline">
-                {subtitleUnderlinedFragment}
-              </span>
-              {subtitleParts.slice(1).join(subtitleUnderlinedFragment)}
-            </>
-          ) : (
-            copy.demos.subtitle
-          )}
-        </p>
+        <p className="demos-section__subtitle">{copy.demos.subtitle}</p>
         <p className="demos-section__disclaimer">{copy.demos.disclaimer}</p>
       </div>
 
