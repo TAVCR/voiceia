@@ -202,7 +202,7 @@ export const CONVERSION_COPY = {
     badge: "BONUS",
     title: "Desde $225 USD",
     line: "+ Diseño de audio incluido (según disponibilidad)",
-    subtext: "Incluye locución + mezcla/máster + SFX (si aplica). Hasta 30s por pieza.",
+    subtext: "Incluye locución + mezcla/máster + SFX + Edición de Video (si aplica). Hasta 30s por pieza.",
     note: "Música con licencia puede tener costo adicional.",
   },
   miniHero: {
