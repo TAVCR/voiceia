@@ -201,7 +201,7 @@ export const CONVERSION_COPY = {
     strapline: "Diseño vocal continuo para marcas en crecimiento.",
     badge: "BONUS",
     title: "Desde $225 USD",
-    line: "DISEÑO DE AUDIO Y EDICIÓN DE VIDEO INCLUIDAS (SEGÚN DISPONIBILIDAD)",
+    line: "DISEÑO DE AUDIO Y EDICIÓN DE VIDEO INCLUIDAS (SEGÚN DISPONIBILIDAD POR TIEMPO LIMITADO)",
     subtext: "Incluye locución + mezcla/máster + SFX + Edición de Video (si aplica). Hasta 30s por pieza.",
     note: "Música con licencia puede tener costo adicional.",
   },
