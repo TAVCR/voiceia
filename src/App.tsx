@@ -1007,27 +1007,28 @@ export default function App() {
               <div className="logo-wordmark screen3-logo-wordmark">{LOGO_WORDMARK}</div>
             )}
 
-            <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-91 screen3-hero">
-              <span className="block text-white mb-6 screen3-main">
-                {COPY.screen3.mainText.split("\n").map((line) => (
-                  <span key={line} className="block screen3-line screen3-line--main">
-                    {line}
-                  </span>
-                ))}
-              </span>
-              <span className="block title-accent text-[clamp(2.6rem,7.2vw,6.2rem)] glitch-text screen3-accent">
-                {COPY.screen3.accentText.split("\n").map((line) => (
-                  <span key={line} className="block screen3-line screen3-line--accent">
-                    {line}
-                  </span>
-                ))}
-              </span>
-            </h1>
+            <div className="screen3-content">
+              <h1 className="tech-title text-[clamp(2.4rem,6.6vw,5.6rem)] mb-16 leading-tight screen3-title title-factor-91 screen3-hero">
+                <span className="block text-white mb-6 screen3-main">
+                  {COPY.screen3.mainText.split("\n").map((line) => (
+                    <span key={line} className="block screen3-line screen3-line--main">
+                      {line}
+                    </span>
+                  ))}
+                </span>
+                <span className="block title-accent text-[clamp(2.6rem,7.2vw,6.2rem)] glitch-text screen3-accent">
+                  {COPY.screen3.accentText.split("\n").map((line) => (
+                    <span key={line} className="block screen3-line screen3-line--accent">
+                      {line}
+                    </span>
+                  ))}
+                </span>
+              </h1>
 
 
-            {showSecondary && (
+              {showSecondary && (
 
-              <div className="fade-enter fade-enter-active">
+              <div className="fade-enter fade-enter-active screen3-secondary-wrap">
 
                 <p className="text-[clamp(1.3rem,3.5vw,2.4rem)] text-tech-warning mb-6 uppercase tracking-wide screen3-secondary-line">
 
@@ -1084,6 +1085,7 @@ export default function App() {
               </div>
 
             )}
+            </div>
 
           </div>
 

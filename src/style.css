@@ -1422,25 +1422,44 @@ textarea {
 
 /* Desktop-only boost requested for post-test headline block (x2 visual scale). */
 @media (min-width: 641px) {
-  .title-factor-91.screen3-title {
-    transform: scale(1.82);
-  }
-
   .screen3-reveal {
     align-items: flex-start;
     padding-top: clamp(1.2rem, 3.5vh, 2.4rem);
   }
 
   .screen3-stack {
-    margin-top: -0.4rem;
+    min-height: calc(100svh - clamp(1.2rem, 3.5vh, 2.4rem) - clamp(2rem, 4vw, 5rem));
+    display: grid;
+    grid-template-rows: auto 1fr;
   }
 
-  .screen3-reveal .screen3-logo {
-    margin-bottom: 0.85rem;
+  .screen3-content {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .title-factor-91.screen3-title {
+    transform: none;
+  }
+
+  .screen3-reveal .screen3-main {
+    font-size: clamp(2.18rem, 6.1vw, 5.1rem) !important;
+    line-height: 1.02;
+  }
+
+  .screen3-reveal .screen3-accent {
+    font-size: clamp(2.36rem, 6.6vw, 5.6rem) !important;
+    line-height: 1.01;
   }
 
   .screen3-reveal .screen3-hero {
-    margin-bottom: clamp(8.8rem, 16vh, 13rem) !important;
+    margin-bottom: clamp(2.4rem, 5.5vh, 4rem) !important;
+  }
+
+  .screen3-secondary-wrap {
+    align-items: center;
   }
 }
 
