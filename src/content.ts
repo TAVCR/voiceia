@@ -194,7 +194,7 @@ export const CONVERSION_COPY = {
   demos: {
     title: "🎙️ Escucha demos reales",
     subtitle:
-      "Locución profesional con actuación real y modificación de voz inteligente. Producción incluida. Calidad lista para pauta.",
+      "Locución profesional con actuación real y modificación de voz inteligente. Producción incluida. Calidad lista para pauta. (Un mismo artista interpretó todas las voces)",
     support: "¿Quieres una versión adaptada a tu marca?",
     disclaimer: "Algunas piezas son demostrativas.",
   },
