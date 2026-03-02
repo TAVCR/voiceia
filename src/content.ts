@@ -116,7 +116,7 @@ export const COPY = {
         number: "02",
         title: "IA CAMBIA EL TIMBRE",
         description:
-          "La tecnología modifica únicamente las características tonales de la voz, manteniendo la interpretación intacta, le pone \"otra piel\".",
+          "El cliente elige la nueva voz, la tecnología modifica únicamente las características tonales de la voz original, manteniendo la interpretación intacta, le pone \"otra piel\".",
       },
       {
         number: "03",
