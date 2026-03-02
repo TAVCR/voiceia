@@ -277,6 +277,7 @@ export default function App() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
     e.preventDefault();
+    const formEl = e.currentTarget;
 
     setIsSubmitting(true);
 
@@ -288,32 +289,41 @@ export default function App() {
 
     try {
 
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(formEl);
+      let delivered = false;
 
-      const response = await fetch(CONFIG.formspreeUrl, {
+      try {
+        const response = await fetch(CONFIG.formspreeUrl, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
 
-        method: "POST",
+        if (response.ok) {
+          delivered = true;
+        } else {
+          const contentType = response.headers.get("content-type") || "";
+          if (contentType.includes("application/json")) {
+            const payload = await response.json().catch(() => null);
+            delivered = payload?.ok === true;
+          }
+        }
+      } catch {
+        // Fallback for environments where the request is delivered but CORS blocks response inspection.
+        await fetch(CONFIG.formspreeUrl, {
+          method: "POST",
+          body: new FormData(formEl),
+          mode: "no-cors",
+        });
+        delivered = true;
+      }
 
-        body: formData,
-
-        headers: { Accept: "application/json" },
-
-      });
-
-
-
-      if (response.ok) {
-
+      if (delivered) {
         sound.success();
-
         setSubmitStatus("success");
-
-        e.currentTarget.reset();
-
+        formEl.reset();
       } else {
-
         setSubmitStatus("error");
-
       }
 
     } catch (error) {
