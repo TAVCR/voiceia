@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 import AudioPlayer, { type AudioHandle } from "./components/AudioPlayer";
 import DemosSection from "./components/DemosSection";
@@ -63,6 +63,9 @@ export default function App() {
   const pricingTabLabel = "Estrategia de precios";
   const LAST_SCREEN = 7;
 
+  const isAnyAudioPlaying = () =>
+    Object.values(audioRefs.current).some((handle) => handle?.isPlaying?.());
+
   const goToSection = (
     target: "demos" | "test" | "proceso" | "contacto" | "precios"
   ) => {
@@ -113,11 +116,21 @@ export default function App() {
   const startAmbient = () => {
     const ambient = ambientRef.current;
     if (!ambient || !CONFIG.ambientAudioUrl) return;
+    if (isAnyAudioPlaying()) return;
     ambient.muted = false;
     const playPromise = ambient.play();
     if (playPromise && typeof playPromise.then === "function") {
       playPromise.catch(() => {});
     }
+  };
+
+  const handleScreen1Interaction = (event: PointerEvent<HTMLElement>) => {
+    if (currentScreen !== 1 || !CONFIG.ambientAudioUrl) return;
+    const target = event.target;
+    if (target instanceof HTMLElement && target.closest(".audio-player")) return;
+    window.setTimeout(() => {
+      startAmbient();
+    }, 0);
   };
 
   const openPricingTab = () => {
@@ -634,7 +647,11 @@ export default function App() {
 
       {currentScreen === 1 && (
 
-        <section className="screen-container" id="inicio">
+        <section
+          className="screen-container"
+          id="inicio"
+          onPointerDownCapture={handleScreen1Interaction}
+        >
 
           <div className="max-w-6xl mx-auto text-center">
             {LOGO_URL ? (
