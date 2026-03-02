@@ -6,7 +6,7 @@ export const LOGO_WORDMARK = "AIVOXCR.COM";
 
 export const CONTACT = {
   email: "aivoxcr@gmail.com",
-  whatsapp: "+506 85020909",
+  whatsapp: "+506 6168-0909",
 };
 
 export const CONFIG = {
@@ -346,6 +346,7 @@ export const PRICING_STRATEGY = {
     "AIVOXCR puede incluir el proyecto en portafolio salvo NDA firmado.",
   ],
 };
+
 
 
 
