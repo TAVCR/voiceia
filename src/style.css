@@ -1420,6 +1420,13 @@ textarea {
   transform: scale(0.91);
 }
 
+/* Desktop-only boost requested for post-test headline block (x2 visual scale). */
+@media (min-width: 641px) {
+  .title-factor-91.screen3-title {
+    transform: scale(1.82);
+  }
+}
+
 .title-factor-70.screen3-title,
 .title-factor-70.screen5-title,
 .title-factor-70.screen6-title,
