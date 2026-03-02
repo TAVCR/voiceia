@@ -51,6 +51,7 @@ export default function DemosSection({
               id={demo.id}
               audioUrl={demo.audioUrl}
               allowRepeat={true}
+              warmupMode="viewport"
               onStart={onStart}
               onRef={onRef}
               showMeta={true}

@@ -12,6 +12,7 @@ type AudioPlayerProps = {
   allowRepeat?: boolean;
   disabled?: boolean;
   showMeta?: boolean;
+  warmupMode?: "none" | "hover" | "viewport";
   onPlayComplete?: (id: string | number) => void;
   onStart?: (id: string | number) => void;
   onRef?: (id: string | number, handle: AudioHandle | null) => void;
@@ -23,6 +24,7 @@ export default function AudioPlayer({
   allowRepeat = false,
   disabled = false,
   showMeta = false,
+  warmupMode = "hover",
   onPlayComplete,
   onStart,
   onRef,
@@ -36,6 +38,7 @@ export default function AudioPlayer({
   const containerRef = useRef<HTMLDivElement>(null);
   const waveRef = useRef<WaveSurfer | null>(null);
   const pendingPlayRef = useRef(false);
+  const loadRequestedRef = useRef(false);
   const onPlayCompleteRef = useRef(onPlayComplete);
   const onRefRef = useRef(onRef);
   const onStartRef = useRef(onStart);
@@ -93,6 +96,7 @@ export default function AudioPlayer({
     wave.on("error", () => {
       setIsLoading(false);
       pendingPlayRef.current = false;
+      loadRequestedRef.current = false;
     });
 
     wave.on("play", () => setIsPlaying(true));
@@ -119,6 +123,45 @@ export default function AudioPlayer({
     };
   }, [audioUrl, id, allowRepeat]);
 
+  const requestLoad = useCallback(() => {
+    const wave = waveRef.current;
+    if (!wave || !audioUrl) return;
+    if (loadRequestedRef.current || hasLoaded || isLoading) return;
+
+    loadRequestedRef.current = true;
+    setIsLoading(true);
+    wave.load(audioUrl);
+  }, [audioUrl, hasLoaded, isLoading]);
+
+  useEffect(() => {
+    if (warmupMode !== "viewport") return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const timerId = window.setTimeout(() => {
+        requestLoad();
+      }, 450);
+      return () => window.clearTimeout(timerId);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          requestLoad();
+          observer.disconnect();
+          break;
+        }
+      },
+      { root: null, rootMargin: "300px 0px", threshold: 0.01 },
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [requestLoad, warmupMode]);
+
   const handlePlayPause = useCallback(() => {
     if (!waveRef.current) return;
     if (disabled) return;
@@ -129,13 +172,12 @@ export default function AudioPlayer({
 
     if (!hasLoaded) {
       pendingPlayRef.current = true;
-      setIsLoading(true);
-      waveRef.current.load(audioUrl);
+      requestLoad();
       return;
     }
 
     waveRef.current.playPause();
-  }, [allowRepeat, audioUrl, disabled, hasLoaded, hasPlayed, id, isLoading]);
+  }, [allowRepeat, disabled, hasLoaded, hasPlayed, id, isLoading, requestLoad]);
 
   const canPlay = !disabled && (allowRepeat || !hasPlayed);
   const statusLabel = isLoading ? "Cargando audio..." : "Listo";
@@ -154,6 +196,9 @@ export default function AudioPlayer({
         <button
           className="play-button"
           onClick={handlePlayPause}
+          onMouseEnter={warmupMode !== "none" ? requestLoad : undefined}
+          onFocus={warmupMode !== "none" ? requestLoad : undefined}
+          onTouchStart={warmupMode !== "none" ? requestLoad : undefined}
           disabled={!canPlay || isLoading}
           type="button"
           aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}
