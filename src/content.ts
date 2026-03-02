@@ -59,7 +59,7 @@ export const COPY = {
     tagline: "INICIO PROTOCOLO EVALUACIÓN",
     title1: "LA VOZ YA NO SE ELIGE",
     title2: "SE DISE\u00D1A",
-    titleHint: "(baja más para hacer el test)",
+    titleHint: "(Baja más para hacer el test)",
     introLines: [
       "\u00A1HAY UN CAMBIO REAL DE PARADIGMA!",
       "Las marcas sol\u00EDan adaptarse a voces disponibles.",

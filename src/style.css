@@ -799,7 +799,8 @@ canvas {
   margin-top: 0.4rem;
 }
 
-.test-teaser .tech-button-outline {
+.test-teaser .tech-button-outline,
+.test-teaser .tech-button-primary {
   margin-top: 0.9rem;
 }
 

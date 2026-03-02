@@ -734,7 +734,7 @@ export default function App() {
               ))}
               <button
                 type="button"
-                className="tech-button-outline"
+                className="tech-button-primary"
                 onClick={() => goToSection("test")}
               >
                 {CONVERSION_COPY.miniHero.button}
