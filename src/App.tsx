@@ -1425,25 +1425,11 @@ export default function App() {
 
 
               <h1 className="tech-title screen8-title mb-6">
-
                 <span className="block text-white mb-2 screen8-title-line">
-
-                  {COPY.screen8.title1}
-
+                  {COPY.screen8.titlePrimary}
                 </span>
-
-                <span className="block text-white mb-2 screen8-title-line">
-
-                  {COPY.screen8.title2}
-
-                </span>
-
-                <span className="block title-accent mb-2 screen8-title-line">
-                  {COPY.screen8.title3}
-                </span>
-
-                <span className="block text-white screen8-title-line">
-                  {COPY.screen8.title4}
+                <span className="block title-accent screen8-title-line">
+                  {COPY.screen8.titleAccent}
                 </span>
 
               </h1>

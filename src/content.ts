@@ -150,10 +150,8 @@ export const COPY = {
     buttonText: "Continuar",
   },
   screen8: {
-    title1: "INTERPRETACIÓN",
-    title2: "VOCAL",
-    title3: "POTENCIADA",
-    title4: "POR IA",
+    titlePrimary: "NO TE CONFORMES CON MENOS,",
+    titleAccent: "DISEÑA LA VOZ DE TU MARCA HOY",
     companyName: "AIVOXCR.COM",
     formTitle: "INICIAR_CONTACTO",
     formSubtitle: "Agenda una demostración / propuesta en 24h",
