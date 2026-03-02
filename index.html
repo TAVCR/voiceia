@@ -120,18 +120,63 @@
     <noscript>Esta experiencia requiere JavaScript para funcionar correctamente.</noscript>
     <!-- WhatsApp Click Tracking (Meta: Contact) -->
     <script>
-      document.addEventListener("click", function (e) {
-        const link = e.target.closest("a");
-        if (!link) return;
+      (function () {
+        var CONTACT_DEBOUNCE_MS = 2000;
+        var lastContactTrackAt = 0;
 
-        const url = link.href || "";
-        if (url.includes("api.whatsapp.com") || url.includes("wa.me")) {
-          if (typeof fbq === "function") {
-            fbq("track", "Contact");
-            console.log("Meta Pixel: Contact (WhatsApp click) enviado");
+        var isWhatsAppHost = function (hostname) {
+          var host = String(hostname || "").toLowerCase().replace(/^www\./, "");
+          return host === "wa.me" || host === "api.whatsapp.com" || host === "whatsapp.com";
+        };
+
+        var isWhatsAppLink = function (link) {
+          var rawHref = link.getAttribute("href") || "";
+          try {
+            var parsed = new URL(rawHref, window.location.href);
+            return isWhatsAppHost(parsed.hostname);
+          } catch (_error) {
+            var fallbackHref = link.href || rawHref;
+            return /(^|\/\/)(wa\.me|api\.whatsapp\.com|(?:www\.)?whatsapp\.com)(\/|$)/i.test(
+              fallbackHref,
+            );
           }
-        }
-      });
+        };
+
+        var getContactSource = function (link) {
+          if (
+            link.classList.contains("sticky-whatsapp") ||
+            link.classList.contains("sticky-whatsapp-seo")
+          ) {
+            return "floating_button";
+          }
+          return "link";
+        };
+
+        // Delegated listener: keeps working in SPA re-renders.
+        document.addEventListener(
+          "click",
+          function (event) {
+            var target = event.target;
+            if (!(target instanceof Element)) return;
+
+            var link = target.closest("a[href]");
+            if (!link || !isWhatsAppLink(link)) return;
+
+            var now = Date.now();
+            if (now - lastContactTrackAt < CONTACT_DEBOUNCE_MS) return;
+            lastContactTrackAt = now;
+
+            if (typeof fbq === "function") {
+              fbq("track", "Contact", {
+                contact_method: "whatsapp",
+                source: getContactSource(link),
+                href: link.href || "",
+              });
+            }
+          },
+          { capture: true, passive: true },
+        );
+      })();
     </script>
   </body>
 </html>
