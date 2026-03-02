@@ -654,6 +654,12 @@ canvas {
   line-height: 1.6;
 }
 
+.demos-section__subtitle-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
 .demos-section__disclaimer {
   margin: 0.55rem 0 0;
   color: #94a4b8;
