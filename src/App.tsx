@@ -53,7 +53,7 @@ export default function App() {
   const whatsappPrefillMessage = WHATSAPP_PREFILL_MESSAGE;
   const seoLinksScreen1 = [
     { href: `${basePath}/voces-humanas-potenciadas-ia.html`, label: "Voces humanas + IA" },
-    { href: `${basePath}/ventajas-produccion-vocal-ia.html`, label: "Ventajas del servicio" },
+    { href: `${basePath}/ventajas-produccion-vocal-ia.html`, label: "Ventajas del servicio y precio" },
     { href: `${basePath}/asi-lo-hacemos-proceso-vocal-ia.html`, label: "As\u00ED lo hacemos" },
   ];
   const seoLinksScreen8 = [
@@ -760,24 +760,6 @@ export default function App() {
                 {CONVERSION_COPY.miniHero.button}
               </button>
             </div>
-
-            <aside className="promo-card" aria-label="Promoción de tarifas">
-              <p className="promo-card__strapline">{CONVERSION_COPY.promo.strapline}</p>
-              <span className="promo-card__badge">{CONVERSION_COPY.promo.badge}</span>
-              <h3 className="promo-card__title">{CONVERSION_COPY.promo.title}</h3>
-              <p className="promo-card__line">{CONVERSION_COPY.promo.line}</p>
-              <p className="promo-card__subtext">{CONVERSION_COPY.promo.subtext}</p>
-              <p className="promo-card__note">{CONVERSION_COPY.promo.note}</p>
-              <div className="promo-card__actions">
-                <button
-                  type="button"
-                  className="tech-button-outline"
-                  onClick={() => goToSection("demos")}
-                >
-                  VER EJEMPLOS
-                </button>
-              </div>
-            </aside>
 
             {CONFIG.ambientAttribution && (
               <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em] attribution-stack">
