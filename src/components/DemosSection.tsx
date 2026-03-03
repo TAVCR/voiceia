@@ -7,7 +7,6 @@ type DemosSectionProps = {
   demos: DemoAudioSource[];
   onStart: (id: string | number) => void;
   onRef: (id: string | number, handle: AudioHandle | null) => void;
-  onGoExamples: () => void;
   whatsappNumber?: string;
   whatsappMessage: string;
   copy: {
@@ -17,14 +16,6 @@ type DemosSectionProps = {
       support: string;
       disclaimer: string;
     };
-    promo: {
-      strapline: string;
-      badge: string;
-      title: string;
-      line: string;
-      subtext: string;
-      note: string;
-    };
   };
 };
 
@@ -32,7 +23,6 @@ export default function DemosSection({
   demos,
   onStart,
   onRef,
-  onGoExamples,
   whatsappNumber,
   whatsappMessage,
   copy,
@@ -77,19 +67,6 @@ export default function DemosSection({
         )}
       </div>
 
-      <aside className="promo-card" aria-label="Promoción de tarifas">
-        <p className="promo-card__strapline">{copy.promo.strapline}</p>
-        <span className="promo-card__badge">{copy.promo.badge}</span>
-        <h3 className="promo-card__title">{copy.promo.title}</h3>
-        <p className="promo-card__line">{copy.promo.line}</p>
-        <p className="promo-card__subtext">{copy.promo.subtext}</p>
-        <p className="promo-card__note">{copy.promo.note}</p>
-        <div className="promo-card__actions">
-          <button type="button" className="tech-button-outline" onClick={onGoExamples}>
-            VER EJEMPLOS
-          </button>
-        </div>
-      </aside>
     </section>
   );
 }

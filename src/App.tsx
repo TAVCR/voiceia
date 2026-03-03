@@ -666,8 +666,6 @@ export default function App() {
               </div>
             )}
 
-            <p className="screen1-hero-subline">{COPY.screen1.heroSubline}</p>
-
             <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] text-balance screen1-title screen1-equal-gap">
 
               <span className="block text-white nowrap-word screen1-hero-line">
@@ -683,6 +681,8 @@ export default function App() {
               </span>
 
             </h1>
+
+            <p className="screen1-hero-subline">{COPY.screen1.heroSubline}</p>
 
             <p className="screen1-title-hint">{COPY.screen1.titleHint}</p>
 
@@ -736,7 +736,6 @@ export default function App() {
                 demos={DEMO_AUDIO_SOURCES}
                 onStart={handleStart}
                 onRef={setAudioRef}
-                onGoExamples={() => goToSection("demos")}
                 whatsappNumber={CONTACT.whatsapp}
                 whatsappMessage={whatsappPrefillMessage}
                 copy={CONVERSION_COPY}
@@ -761,6 +760,25 @@ export default function App() {
                 {CONVERSION_COPY.miniHero.button}
               </button>
             </div>
+
+            <aside className="promo-card" aria-label="Promoción de tarifas">
+              <p className="promo-card__strapline">{CONVERSION_COPY.promo.strapline}</p>
+              <span className="promo-card__badge">{CONVERSION_COPY.promo.badge}</span>
+              <h3 className="promo-card__title">{CONVERSION_COPY.promo.title}</h3>
+              <p className="promo-card__line">{CONVERSION_COPY.promo.line}</p>
+              <p className="promo-card__subtext">{CONVERSION_COPY.promo.subtext}</p>
+              <p className="promo-card__note">{CONVERSION_COPY.promo.note}</p>
+              <div className="promo-card__actions">
+                <button
+                  type="button"
+                  className="tech-button-outline"
+                  onClick={() => goToSection("demos")}
+                >
+                  VER EJEMPLOS
+                </button>
+              </div>
+            </aside>
+
             {CONFIG.ambientAttribution && (
               <p className="mt-6 text-[0.55rem] text-tech-dim uppercase tracking-[0.35em] attribution-stack">
                 <span className="attribution-line">
