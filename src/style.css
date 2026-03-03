@@ -534,6 +534,19 @@ canvas {
   margin-bottom: clamp(2rem, 4.2vh, 3rem);
 }
 
+.screen1-hero-subline {
+  margin: 0 auto clamp(0.8rem, 1.7vh, 1.2rem);
+  max-width: min(95vw, 980px);
+  color: var(--tech-accent);
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  font-size: clamp(0.62rem, 1.55vw, 1.35rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-wrap: balance;
+}
+
 .screen1-hero-line {
   margin-bottom: clamp(0.7rem, 2.2vh, 1.45rem);
   font-size: 0.7em;
@@ -2029,6 +2042,12 @@ textarea {
     font-size: 0.62em !important;
     white-space: nowrap !important;
     text-wrap: nowrap;
+  }
+
+  .screen1-hero-subline {
+    font-size: clamp(0.54rem, 2.55vw, 0.8rem);
+    margin-bottom: 0.75rem;
+    max-width: min(98vw, 430px);
   }
 
   .screen1-title-hint {

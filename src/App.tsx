@@ -666,6 +666,8 @@ export default function App() {
               </div>
             )}
 
+            <p className="screen1-hero-subline">{COPY.screen1.heroSubline}</p>
+
             <h1 className="tech-title text-[clamp(2.2rem,8.5vw,9rem)] text-balance screen1-title screen1-equal-gap">
 
               <span className="block text-white nowrap-word screen1-hero-line">

@@ -57,6 +57,7 @@ export const CONFIG = {
 export const COPY = {
   screen1: {
     tagline: "INICIO PROTOCOLO EVALUACIÓN",
+    heroSubline: "Producción vocal profesional para marcas y campañas",
     title1: "LA VOZ YA NO SE ELIGE",
     title2: "SE DISE\u00D1A",
     titleHint: "(BAJA MÁS PARA HACER EL TEST)",
