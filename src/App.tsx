@@ -1160,7 +1160,7 @@ export default function App() {
 
             <div className="text-center mt-12">
               <button
-                className="tech-button-primary"
+                className="tech-button-outline continue-button"
                 onClick={() => {
                   sound.clickMain();
                   nextScreen();
@@ -1260,7 +1260,7 @@ export default function App() {
 
               <button
 
-                className="tech-button-primary"
+                className="tech-button-outline continue-button"
 
                 onClick={() => {
 

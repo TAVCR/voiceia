@@ -412,9 +412,23 @@ canvas {
 }
 
 .continue-button {
-  padding: 1.5rem 4.2rem;
-  font-size: 1.1rem;
-  letter-spacing: 0.34em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(220px, 86vw);
+  min-height: 52px;
+  padding: 1rem 3rem !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.3em !important;
+  background: transparent !important;
+  color: var(--tech-accent) !important;
+  border: 2px solid var(--tech-accent);
+  box-shadow: none;
+}
+
+.continue-button:hover {
+  background: rgba(0, 242, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
 }
 
 .center-overlay {
