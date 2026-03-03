@@ -1913,13 +1913,13 @@ textarea {
   }
 
   .screen3-main {
-    font-size: clamp(0.84rem, 2.98vw, 1.12rem) !important;
+    font-size: clamp(1.09rem, 3.87vw, 1.46rem) !important;
     width: 100%;
     text-align: center !important;
   }
 
   .screen3-accent {
-    font-size: clamp(0.92rem, 3.18vw, 1.24rem) !important;
+    font-size: clamp(1.2rem, 4.13vw, 1.61rem) !important;
     letter-spacing: 0.02em !important;
     width: 100%;
     text-align: center !important;
