@@ -51,10 +51,16 @@ export const TEST_AUDIO_SOURCES: TestAudioSource[] = [
     humanAudioUrl:
       "https://cdn.jsdelivr.net/gh/TAVCR/voices-audio-cdn@v1.0.0/audios/PROMERICA%20BILLETERA%20ORIGINAL.mp3",
   },
+  {
+    id: 6,
+    title: "DEMO 5",
+    aiAudioUrl: "./audios/demo-5.mp3",
+    humanAudioUrl: "",
+  },
 ];
 
 export const DEMO_AUDIO_SOURCES: DemoAudioSource[] = TEST_AUDIO_SOURCES.filter(
-  (audio) => [1, 2, 4, 5].includes(audio.id)
+  (audio) => [1, 2, 4, 5, 6].includes(audio.id)
 ).map((audio, index) => ({
     id: `demo_${audio.id}`,
     title: `Demo ${index + 1}`,

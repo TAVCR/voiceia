@@ -735,6 +735,8 @@ export default function App() {
                 onStart={handleStart}
                 onRef={setAudioRef}
                 onGoExamples={() => goToSection("demos")}
+                whatsappNumber={CONTACT.whatsapp}
+                whatsappMessage={whatsappPrefillMessage}
                 copy={CONVERSION_COPY}
               />
             </div>

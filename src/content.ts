@@ -190,12 +190,12 @@ export const COPY = {
 
 export const CONVERSION_COPY = {
   demos: {
-    title: "🎙️ Escucha demos reales",
+    title: "¿Necesitas tu campaña lista esta semana?",
     subtitle:
-      "Actuación real y modificación de voz inteligente. Producción incluida. Calidad lista para pauta.",
+      "Escucha demos reales. Actuación humana y modificación de voz inteligente. Producción incluida. Calidad lista para pauta.",
     support: "¿Quieres una versión adaptada a tu marca?",
     disclaimer:
-      "Algunas piezas son demostrativas. (Un mismo artista interpretó todas las voces en todos los anuncios)",
+      "Un mismo artista interpretó todas las voces en todos los anuncios.",
   },
   promo: {
     strapline: "Diseño vocal continuo para marcas en crecimiento.",
