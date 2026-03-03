@@ -711,6 +711,17 @@ canvas {
 .demos-whatsapp-card__button {
   width: 100%;
   min-height: 48px;
+  background: transparent;
+  border-color: var(--tech-accent);
+  color: var(--tech-accent);
+  box-shadow: none;
+}
+
+.demos-whatsapp-card__button:hover {
+  background: rgba(0, 242, 255, 0.1);
+  border-color: var(--tech-accent);
+  color: var(--tech-accent);
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
 }
 
 .demos-card__title {
