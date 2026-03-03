@@ -64,7 +64,7 @@ export default function DemosSection({
         {whatsappNumber && (
           <article className="demos-whatsapp-card" aria-label="Contacto por WhatsApp">
             <p className="demos-whatsapp-card__eyebrow">Respuesta rápida</p>
-            <h3 className="demos-whatsapp-card__title">¿Listo para activar tu campaña?</h3>
+            <h3 className="demos-whatsapp-card__title">{copy.demos.support}</h3>
             <WhatsAppCTA
               label={`WhatsApp ${whatsappNumber}`}
               location="demos_fixed_card"
@@ -75,10 +75,6 @@ export default function DemosSection({
             />
           </article>
         )}
-      </div>
-
-      <div className="demos-cta">
-        <p className="demos-cta__support">{copy.demos.support}</p>
       </div>
 
       <aside className="promo-card" aria-label="Promoción de tarifas">
